@@ -342,3 +342,72 @@
 .social-icon::before {
   display: none !important;
 }
+/* Popup Overlay */
+.success-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 17, 32, 0.85); /* Dark background matching your brand */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup Content Card */
+.success-popup-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  animation: slideDown 0.4s ease-out;
+}
+
+.popup-icon-circle {
+  width: 70px;
+  height: 70px;
+  background: #2ecc71; /* Trusto Green */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 20px;
+}
+
+.success-popup-content h3 {
+  color: #0b1120;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.success-popup-content p {
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+.popup-close-btn {
+  background: #0b1120;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-close-btn:hover {
+  background: #2ecc71;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

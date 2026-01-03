@@ -2,17 +2,60 @@ import React, { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [result, setResult] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const whatsappUrl = "https://wa.me/919542424508?text=Hi%20Trusto%20Team!";
 
+  // Web3Forms Submission Logic
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    
+    const formData = new FormData(event.target);
+
+    // Your Access Key
+    formData.append("access_key", "ba282c69-e654-4340-a89d-2d06ba6efab4");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Success!");
+      setShowPopup(true);
+      event.target.reset(); // Clears the form
+      
+      // Auto-hide the popup after 4 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+        setResult("");
+      }, 4000);
+    } else {
+      console.log("Error", data);
+      setResult("Error: " + data.message);
+    }
+  };
+
   return (
     <div className="contact-page">
+      
+      {/* Success Popup Overlay */}
+      {showPopup && (
+        <div className="success-popup-overlay">
+          <div className="success-popup-content">
+            <div className="popup-icon-circle">
+               <i className="fas fa-check"></i>
+            </div>
+            <h3>Successfully Submitted!</h3>
+            <p>Thank you for reaching out. Our team will contact you shortly.</p>
+            <button className="popup-close-btn" onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
 
       {/* Header Section */}
       <section className="contact-hero">
@@ -35,7 +78,6 @@ const Contact = () => {
             <div className="contact-info-content">
               <h4>Email</h4>
               <p>trustobiotech08@gmail.com</p>
-             
             </div>
           </div>
 
@@ -47,7 +89,6 @@ const Contact = () => {
             <div className="contact-info-content">
               <h4>Phone</h4>
               <p>+91 95424 24508, +91-9990507737</p>
-              
             </div>
           </div>
 
@@ -66,58 +107,56 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Socials (Below Address – Corporate Style) */}
-       {/* Socials Section */}
-<div className="contact-social-section">
-  <h5 className="follow-us-title">Follow Us</h5>
-  <div className="contact-social-icons">
-    <a href="#" className="social-icon facebook" aria-label="Facebook">
-      <i className="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" className="social-icon instagram" aria-label="Instagram">
-      <i className="fab fa-instagram"></i>
-    </a>
-    <a href="#" className="social-icon youtube" aria-label="YouTube">
-      <i className="fab fa-youtube"></i>
-    </a>
-    <a href={whatsappUrl} className="social-icon whatsapp" aria-label="WhatsApp">
-      <i className="fab fa-whatsapp"></i>
-    </a>
-  </div>
-</div>
-
+          {/* Socials Section */}
+          <div className="contact-social-section">
+            <h5 className="follow-us-title">Follow Us</h5>
+            <div className="contact-social-icons">
+              <a href="#" className="social-icon facebook" aria-label="Facebook">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon instagram" aria-label="Instagram">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a href="#" className="social-icon youtube" aria-label="YouTube">
+                <i className="fab fa-youtube"></i>
+              </a>
+              <a href={whatsappUrl} className="social-icon whatsapp" aria-label="WhatsApp">
+                <i className="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
         </aside>
 
-        {/* RIGHT: Contact Form */}
+        {/* RIGHT: Contact Form Integrated with Web3Forms */}
         <section className="contact-form-side">
           <div className="contact-form-card">
             <h3>Contact Our Team</h3>
 
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={onSubmit}>
               <div className="form-row">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" placeholder="John Doe" />
+                  <input type="text" name="name" placeholder="John Doe" required />
                 </div>
 
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input type="email" placeholder="john@example.com" />
+                  <input type="email" name="email" placeholder="john@example.com" required />
                 </div>
               </div>
 
               <div className="form-group">
                 <label>Subject</label>
-                <input type="text" placeholder="Product Inquiry" />
+                <input type="text" name="subject" placeholder="Product Inquiry" required />
               </div>
 
               <div className="form-group">
                 <label>Message</label>
-                <textarea rows="4" placeholder="How can we help you?"></textarea>
+                <textarea name="message" rows="4" placeholder="How can we help you?" required></textarea>
               </div>
 
               <button type="submit" className="contact-submit-btn">
-                Submit Inquiry
+                {result ? result : "Submit Inquiry"}
               </button>
             </form>
           </div>
@@ -129,7 +168,7 @@ const Contact = () => {
       <section className="contact-map">
         <iframe
           title="Trustobiotech Location"
-          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3807.576839353995!2d78.4922623!3d17.3762072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDIyJzM0LjMiTiA3OMKwMjknMzIuMSJF!5e0!3m2!1sen!2sin!4v1700000000000"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.8329615597957!2d78.487841!3d17.371759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daaaaaaaab%3A0x6b8a8aaaaaaab!2sAzampura%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
           width="100%"
           height="420"
           style={{ border: 0 }}
