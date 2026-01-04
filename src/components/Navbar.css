@@ -1,18 +1,32 @@
-/* RESET */
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --trusto-green: #2ecc71;
+  --trusto-dark: #0b1120;
+  --text-main: #333333;
+  --border-light: #eaeaea;
+}
+
 .navbar {
   width: 100%;
   height: 80px;
   background: #ffffff;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--border-light);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -20,7 +34,7 @@
   max-width: 1400px;
   height: 100%;
   margin: 0 auto;
-
+  padding: 0 32px;
   display: flex;
   align-items: center;
 }
@@ -30,7 +44,9 @@
   width: auto;
 }
 
-/* DESKTOP MENU */
+/* ==========================================================================
+   2. DESKTOP NAVIGATION
+   ========================================================================== */
 .nav-menu-wrapper {
   margin-left: auto;
   display: flex;
@@ -47,182 +63,639 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-main);
   font-size: 16px;
   font-weight: 600;
   transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: #0d6efd;
+  color: var(--trusto-green);
 }
 
-.enquire-btn {
-  text-decoration: none;
-  background: #0b1120;
-  color: #fff !important;
-  padding: 12px 26px;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.enquire-btn:hover {
-  background: #084298;
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-}
-
-/* MOBILE ICON */
-.nav-hamburger {
-  display: none;
-  font-size: 2rem;
+/* DESKTOP DROPDOWN */
+.nav-dropdown {
+  position: relative;
   cursor: pointer;
-  color: #333;
-  margin-left: auto;
-  z-index: 1001;
 }
 
-/* RESPONSIVE BREAKPOINT (Tablets and Mobile) */
-@media (max-width: 1024px) {
-  .nav-hamburger {
-    display: block; /* Visible on Tab and Mobile only */
-  }
-
-  .nav-menu-wrapper {
-    position: fixed;
-    top: 80px;
-    left: -100%; /* Hidden by default */
-    width: 100%;
-    height: calc(100vh - 80px);
-    background: #ffffff;
-    flex-direction: column;
-    justify-content: center;
-    gap: 40px;
-    transition: 0.4s ease-in-out;
-    padding: 40px;
-  }
-
-  .nav-menu-wrapper.active {
-    left: 0; /* Slide in */
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    gap: 25px;
-  }
-
-  .nav-links a {
-    font-size: 20px;
-    width: 100%;
-    display: block;
-  }
-
-  .nav-actions {
-    width: 100%;
-    text-align: center;
-  }
-
-  .enquire-btn {
-    display: inline-block;
-    width: 80%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 600px) {
-
-  
-  .nav-logo-img {
-    height: 80px;
-  }
-}
-/* Update these specific sections in your Navbar.css */
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-weight: 600;
-  transition: 0.3s;
+  color: var(--text-main);
 }
 
-.nav-links a:hover {
-  color: #2ecc71; /* Trusto Green */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  min-width: 220px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: var(--trusto-dark);
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.product-item:hover {
+  background: #f0fff4;
+  color: var(--trusto-green);
+}
+
+.product-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+/* ENQUIRE BUTTON (Shared Base) */
 .enquire-btn {
   text-decoration: none;
-
-  color: #fff !important;
+  background: var(--trusto-dark);
+  color: #ffffff !important;
   padding: 12px 26px;
   border-radius: 30px;
   font-weight: 700;
   font-size: 15px;
   transition: 0.3s;
   border: 2px solid transparent;
+  display: inline-block;
 }
 
 .enquire-btn:hover {
   background: transparent;
-  color: #2ecc71 !important;
-  border-color: #2ecc71;
+  color: var(--trusto-green) !important;
+  border-color: var(--trusto-green);
   box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
 }
 
-/* For Mobile View Active State */
+/* ==========================================================================
+   3. MOBILE NAVIGATION (Breakpoints)
+   ========================================================================== */
+.nav-hamburger {
+  display: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  color: var(--trusto-green);
+  margin-left: auto;
+  z-index: 1002;
+}
+
 @media (max-width: 1024px) {
+  /* Prevent background scroll */
+  :root:has(.nav-menu-wrapper.active) {
+    overflow: hidden;
+  }
+
   .nav-hamburger {
-    color: #2ecc71; /* Hamburger matches brand color */
+    display: block;
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: #ffffff;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 0;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  .nav-menu-wrapper.active {
+    left: 0;
+  }
+
+  /* MOBILE LINKS */
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a, .dropdown-trigger {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 0;
+    width: 100%;
+    justify-content: flex-start;
+    color: #1a1a1a;
+  }
+
+  .dropdown-trigger {
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* MOBILE DROPDOWN INDENTATION */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding: 0 0 10px 20px;
+    margin-top: 5px;
+    border-left: 2px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-item {
+    padding: 8px 0;
+    font-weight: 500;
+  }
+
+  /* MOBILE CTA */
+  .nav-actions {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .enquire-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 18px;
+    background: var(--trusto-green);
+    border-radius: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  /* WhatsApp Cleanup */
+  .nav-menu-wrapper.active ~ .whatsapp-btn {
+    display: none !important;
   }
 }
-/* --- 1. Increased Logo Size --- */
-.tf-footer-logo-img {
-  height: 65px; /* Increased from 45px */
-  width: auto;
-  margin-bottom: 10px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); /* Adds subtle pop */
+
+@media (max-width: 600px) {
+  .nav-container { padding: 0 20px; }
+  .nav-logo-img { height: 75px; }
+  .nav-menu-wrapper { padding: 30px 25px; }
+}
+/* DESKTOP LAYOUT FIX */
+.nav-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  /* This pushes the brand to the left and the menu-wrapper to the right */
+  justify-content: space-between; 
 }
 
-/* --- 2. Button as Footer Background Style --- */
-.tf-newsletter-btn {
-  /* Match the footer background color */
-  background-color: #0b1120; 
-  /* Bold Trusto Green Border */
-  border: 2px solid #2ecc71; 
-  color: #2ecc71;
-  padding: 14px;
-  border-radius: 8px;
+.nav-brand {
+  flex-shrink: 0; /* Prevents logo from squishing */
+}
+
+/* This wrapper contains both the links AND the button */
+.nav-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Space between the last nav link and the button */
+  flex-grow: 1; /* Allows it to take up available space */
+  justify-content: flex-end; /* Pushes content to the right corner */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Space between individual links */
+}
+
+.nav-actions {
+  flex-shrink: 0; /* Ensures button stays at its full size on the right */
+}
+
+/* Specific button color update to match your desktop screenshot */
+.enquire-btn {
+  background: #0b1120; /* Dark Navy as seen in your last image */
+  color: #ffffff !important;
+  padding: 12px 28px;
+  border-radius: 50px;
   font-weight: 700;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
+  white-space: nowrap; /* Prevents text from wrapping */
 }
 
-.tf-newsletter-btn:hover {
-  /* Fill with green on hover */
-  background-color: #2ecc71;
-  color: #0b1120; 
-  box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+.enquire-btn:hover {
+  background: #2ecc71; /* Brand green on hover */
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
 }
-
-/* --- 3. Input Matching --- */
-.tf-newsletter-input {
-  background: rgba(30, 41, 59, 0.5); /* Semi-transparent navy */
-  border: 1px solid #334155;
-  padding: 14px;
-  border-radius: 8px;
-  color: #fff;
+/* NAVBAR BASE */
+.navbar {
   width: 100%;
-  margin-bottom: 5px;
+  height: 90px;
+  background: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Ensure the navbar itself has no internal padding */
+  padding: 0; 
 }
 
-.tf-newsletter-input:focus {
-  border-color: #2ecc71;
-  outline: none;
+/* MAIN CONTAINER - FORCING CORNERS */
+.nav-container {
+  width: 100%;
+  max-width: 100%; /* Removes the 1400px limit */
+  height: 100%;
+  margin: 0;      /* Removes centering */
+  padding: 0;     /* ABSOLUTE ZERO PADDING */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO - PINNED TO LEFT EDGE */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-logo-img {
+  height: 82px;
+  width: auto;
+  display: block;
+  /* If the logo still has a gap, use this negative margin to force it left */
+  margin-left: -42px; 
+}
+
+/* RIGHT SIDE ACTIONS */
+.nav-menu-wrapper {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  /* Add just a tiny bit of space on the right so the button doesn't touch the scrollbar */
+  padding-right: 15px; 
+}
+
+/* MOBILE FIX */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0;
+  }
+  .nav-logo-img {
+    height: 70px;
+    margin-left: -5px;
+  }
+}
+/* ==========================================================================
+   DESKTOP NAVIGATION LAYOUT
+   ========================================================================== */
+
+.nav-container {
+  width: 100%;
+  max-width: 100%; /* Spans full screen width */
+  height: 100%;
+  margin: 0;
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  height: 82px;
+  width: auto;
+  display: block;
+  /* Adjust this negative margin if your logo file has white space on the left */
+  margin-left: -42px; 
+}
+
+/* Updated Wrapper Logic */
+.nav-menu-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Takes up available space between logo and right edge */
+  justify-content: space-between; /* Separates links from the button */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /* This margin pushes the links slightly left from the button */
+  margin-left: 15%; 
+}
+
+.nav-actions {
+  flex-shrink: 0;
+  padding-right: 20px; /* Space from the far right browser edge */
+}
+
+/* Button Styling matching your last image */
+.enquire-btn {
+  background: #0b1120; /* Dark Navy color from image_8708ca.png */
+  color: #ffffff !important;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.enquire-btn:hover {
+  background: #2ecc71; /* Brand green from image_6a520a.png */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINT
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .nav-menu-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .nav-links {
+    margin-left: 0; /* Reset left push for mobile menu */
+    width: 100%;
+  }
+
+  .nav-logo-img {
+    margin-left: -5px; /* Tighter logo for mobile screens */
+  }
+}
+/* Update the existing nav-menu-wrapper to push items to the right */
+.nav-menu-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; 
+  /* This pushes the entire group (Links + Button) to the far right */
+  justify-content: flex-end; 
+  gap: 50px; /* Increased gap between the last link and the button */
+}
+
+/* Adjust the nav-links to align right */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /* Removes any previous left margin that was centering them */
+  margin-left: 0; 
+}
+
+/* Dropdown Arrow Styling */
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Space between text and arrow */
+}
+
+.arrow-icon {
+  font-size: 10px; /* Small, elegant arrow */
+  transition: transform 0.3s ease;
+  color: inherit;
+}
+
+/* Optional: Rotate arrow on hover if you have a dropdown menu active */
+.nav-dropdown:hover .arrow-icon {
+  transform: rotate(180deg);
+  color: #2ecc71; /* Matches Trusto Green */
+}
+
+/* Ensure the button stays at the absolute right */
+.nav-actions {
+  flex-shrink: 0;
+  padding-right: 20px;
+}
+/* ==========================================================================
+   UPDATED MOBILE NAVIGATION (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .nav-hamburger {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    color: #27ae60; /* Specific Green from image */
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 80px 40px; /* Space for the logo at top */
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-menu-wrapper.active {
+    left: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .nav-links li {
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  /* Typography matching the image */
+  .nav-links a, .dropdown-trigger {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-trigger {
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  /* The Container Box for Products in Mobile */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    margin: 10px 0;
+    padding: 10px;
+    background: #fafafa; /* Light grey background */
+    border: 1px solid #f0f0f0;
+    border-radius: 12px; /* Rounded container */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .product-item {
+    padding: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    border-bottom: none;
+  }
+
+  .product-icon {
+    margin-right: 12px;
+    font-size: 20px;
+  }
+
+  /* Mobile CTA Button - Black and Wide */
+  .nav-actions {
+    width: 100%;
+    margin-top: auto; /* Pushes button to bottom area */
+    padding-bottom: 40px;
+  }
+
+  .enquire-btn {
+    width: 100%;
+    background: #0b1120 !important; /* Dark Navy/Black */
+    padding: 16px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: block;
+  }
+}
+@media (max-width: 1024px) {
+  /* Prevent background scroll when menu is open */
+  :root:has(.nav-menu-wrapper.active) {
+    overflow: hidden;
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 0; /* Changed from 80px to cover the full screen */
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    padding: 100px 30px 40px 30px; /* Top padding for the 'X' button area */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+  }
+
+  /* Typography Refinement */
+  .nav-links li a, 
+  .dropdown-trigger {
+    font-size: 19px !important;
+    font-weight: 800 !important; /* Matches the ultra-bold look */
+    color: #000000 !important;
+    padding: 18px 0 !important;
+    text-transform: none; /* Keeps 'About Us' casing */
+  }
+
+  /* The Products Container Box */
+  .dropdown-menu {
+    position: static;
+    background: #f8f9fa; /* Very light grey background from image */
+    border: 1px solid #f1f1f1;
+    border-radius: 12px;
+    padding: 15px !important;
+    margin: 10px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .product-item {
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    padding: 5px 0 !important;
+    background: transparent !important;
+  }
+
+  /* Fixed Bottom "Enquire Now" Button */
+  .nav-actions {
+    margin-top: auto; /* Pushes to bottom */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .enquire-btn {
+    width: 90% !important;
+    max-width: none;
+    background: #0b1120 !important; /* Dark Navy/Black from image */
+    border-radius: 50px !important;
+    padding: 18px 0 !important;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
 }

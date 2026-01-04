@@ -537,3 +537,26 @@
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.tf-newsletter-btn:hover {
+  /* Fill with green on hover */
+  background-color: #2ecc71;
+  color: #0b1120; 
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- 3. Input Matching --- */
+.tf-newsletter-input {
+  background: rgba(30, 41, 59, 0.5); /* Semi-transparent navy */
+  border: 1px solid #334155;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.tf-newsletter-input:focus {
+  border-color: #2ecc71;
+  outline: none;
+}
