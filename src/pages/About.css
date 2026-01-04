@@ -1,44 +1,523 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+html { scroll-behavior: smooth; }
+
+:root {
+  --primary-aqua: #0ea5e9;
+  --primary-poultry: #e11d48;
+  --primary-swine: #d97706;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+
+  --white: #ffffff;
+  --bg-light: #f1f5f9;
+
+  --bg-dark: #0b1120;
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   2. PAGE BASE
+   ========================================================================== */
 .about-page {
-  min-height: 80vh;
-  background-color: #fdfdfd;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--text-main);
+  overflow-x: hidden;
 }
 
-.about-header {
-  background: #2c3e50;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.about-container {
-  max-width: 900px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 0 20px;
 }
 
-.about-section {
-  margin-bottom: 40px;
+.section-padding {
+  padding: 72px 0;
 }
 
-.about-section h2 {
-  color: #27ae60;
-  border-left: 5px solid #27ae60;
-  padding-left: 15px;
-  margin-bottom: 20px;
+/* ==========================================================================
+   3. TYPOGRAPHY (PROFESSIONAL SIZES)
+   ========================================================================== */
+.about-page h1 {
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
-.about-section p {
-  line-height: 1.8;
-  color: #444;
-  font-size: 1.1rem;
+.about-page h2 {
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+  font-weight: 800;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 
-.about-list {
-  list-style-type: square;
-  padding-left: 20px;
-}
-
-.about-list li {
+.about-page h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 800;
   margin-bottom: 10px;
-  color: #555;
+}
+
+.about-page h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.about-page p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  max-width: 70ch;
+}
+
+/* helper */
+.text-center { text-align: center; }
+.bg-light { background: var(--bg-light); }
+.bg-dark { background: var(--bg-dark); }
+.text-white { color: #fff; }
+
+/* ==========================================================================
+   4. HERO
+   ========================================================================== */
+.about-hero {
+  min-height: 58vh;
+  padding: 72px 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+    url('https://plus.unsplash.com/premium_photo-1676325102346-7f0f536d1f2f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-content p {
+  color: rgba(255,255,255,0.88);
+  margin: 10px auto 0;
+  max-width: 70ch;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(14,165,233,0.16);
+  border: 1px solid rgba(14,165,233,0.35);
+  color: #e6f6ff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   5. GRID LAYOUTS
+   ========================================================================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.styled-img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.14);
+}
+
+/* Section title for Aqua */
+.section-title {
+  display: grid;
+  gap: 10px;
+  max-width: 850px;
+}
+
+.section-icon {
+  font-size: 2.2rem;
+}
+
+.aqua-color { color: var(--primary-aqua); }
+
+/* ==========================================================================
+   6. AQUA STAGE CARDS (CLEAN + COMPACT)
+   ========================================================================== */
+.growth-stages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.stage-card {
+  background: var(--white);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-top: 4px solid var(--primary-aqua);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.05);
+  transition: var(--transition);
+}
+
+.stage-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 34px rgba(2, 6, 23, 0.10);
+}
+
+.stage-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.stage-card li {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.stage-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  color: var(--primary-aqua);
+  font-weight: 900;
+}
+
+/* ==========================================================================
+   7. SECTOR BOXES (POULTRY & SWINE)
+   ========================================================================== */
+.secondary-sectors .grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.sector-box {
+  min-height: 320px;
+  border-radius: 18px;
+  padding: 26px;
+  display: flex;
+  align-items: flex-end;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(2, 6, 23, 0.14);
+}
+
+.sector-box .content {
+  position: relative;
+  z-index: 1;
+}
+
+.poultry-bg {
+  background:
+    linear-gradient(to top, rgba(2,6,23,0.75), rgba(2,6,23,0.08)),
+    url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.swine-bg {
+  background:
+    linear-gradient(to top, rgba(2,6,23,0.75), rgba(2,6,23,0.08)),
+    url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.box-icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   8. DIFFERENTIATORS / VALUES
+   ========================================================================== */
+.diff-section h2 {
+  color: #fff;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.value-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: left;
+}
+
+.value-card svg {
+  font-size: 2.2rem;
+  color: #7dd3fc;
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   9. VISION / MISSION
+   ========================================================================== */
+.vm-card {
+  background: var(--bg-light);
+  padding: 26px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.vm-icon {
+  font-size: 2.2rem;
+  color: var(--primary-aqua);
+  margin-bottom: 10px;
+}
+
+.vm-card p {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .section-padding { padding: 60px 0; }
+  .grid-2 { grid-template-columns: 1fr; gap: 28px; text-align: left; }
+  .growth-stages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .values-grid { grid-template-columns: 1fr; }
+  .sector-box { min-height: 280px; }
+}
+
+@media (max-width: 640px) {
+  .about-hero { min-height: 52vh; background-attachment: scroll; }
+  .growth-stages-grid { grid-template-columns: 1fr; }
+  .badge { font-size: 0.82rem; padding: 7px 14px; }
+  .stage-card { padding: 18px; }
+}
+/* ============================= */
+/* GLOBAL SECTION RHYTHM SYSTEM */
+/* ============================= */
+
+.section-padding {
+  padding: 72px 0;
+}
+
+.section-padding.tight {
+  padding: 64px 0;
+}
+
+.section-padding.large {
+  padding: 96px 0;
+}
+/* ============================= */
+/* SECTION SEPARATORS            */
+/* ============================= */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(15, 23, 42, 0.12),
+    transparent
+  );
+  margin: 0;
+}
+/* ============================= */
+/* AQUA STAGE CARD REFINEMENT   */
+/* ============================= */
+
+.stage-card {
+  padding: 20px;
+  border-top-width: 5px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+}
+
+.stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+}
+
+.stage-card h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+/* ============================= */
+/* SECTOR IMAGE CARDS POLISH    */
+/* ============================= */
+
+.sector-box {
+  position: relative;
+}
+
+.sector-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(2, 6, 23, 0.85),
+    rgba(2, 6, 23, 0.25)
+  );
+  z-index: 0;
+}
+
+.sector-box .content {
+  position: relative;
+  z-index: 1;
+}
+
+.sector-box h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.sector-box p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.sector-box:hover {
+  transform: translateY(-4px);
+}
+/* ============================= */
+/* DARK SECTION POLISH          */
+/* ============================= */
+
+.diff-section {
+  padding: 88px 0;
+}
+
+.diff-section h2 {
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
+}
+
+.value-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+}
+
+.value-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(125, 211, 252, 0.35);
+}
+/* ============================= */
+/* VISION / MISSION REFINEMENT  */
+/* ============================= */
+
+.vm-card {
+  padding: 28px;
+}
+
+.vm-card h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.vm-card p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+/* ============================= */
+/* AOS MOBILE TUNING            */
+/* ============================= */
+@media (max-width: 768px) {
+
+  [data-aos] {
+    transform: translate3d(0, 10px, 0) !important;
+  }
+
+}
+/* ============================= */
+/* GLOBAL SMOOTH SCROLL         */
+/* ============================= */
+html {
+  scroll-behavior: smooth;
+}
+/* ============================= */
+/* ULTRA SMOOTH SCROLL FIX      */
+/* ============================= */
+
+/* GPU acceleration */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent layout shifting during AOS */
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+/* Reduce transform distance for smoothness */
+@media (max-width: 768px) {
+  [data-aos] {
+    transform: translate3d(0, 6px, 0) !important;
+  }
+}
+/* ============================= */
+/* AQUA SECTION VISUAL ENHANCE  */
+/* ============================= */
+
+.aqua-section {
+  position: relative;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(240, 249, 255, 0.9),
+      rgba(240, 249, 255, 0.7)
+    ),
+    url("https://images.unsplash.com/photo-1660680300128-f3436f8fa072?q=80&w=1207&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+}
+/* ============================= */
+/* AQUA FLOATING IMAGE ACCENT   */
+/* ============================= */
+
+.aqua-section::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: 120px;
+  width: 420px;
+  height: 420px;
+
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* Hide decorative image on small screens */
+@media (max-width: 1024px) {
+  .aqua-section::after {
+    display: none;
+  }
+}
+/* ============================= */
+/* CARD CONTRAST ON IMAGE BG    */
+/* ============================= */
+
+.aqua-section .stage-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
 }

@@ -60,35 +60,72 @@ const Navbar = () => {
             </li>
 
             {/* CORRECTED DROPDOWN STRUCTURE */}
-            <li className={`nav-dropdown ${isProductsOpen ? 'active' : ''}`}>
-              <div className="dropdown-trigger" onClick={() => setIsProductsOpen(!isProductsOpen)}>
-                <div className="trigger-content">
-                  <HiCube className="mobile-only-icon" /> Products
-                </div>
-                <span className="arrow-icon">
-                  {isProductsOpen ? <HiChevronUp className="active-arrow" /> : <HiChevronDown />}
-                </span>
-              </div>
+          <li className={`nav-dropdown ${isProductsOpen ? 'active' : ''}`}>
 
-              {/* ul is a direct child of li, but it contains its own li children */}
-              <ul className={`dropdown-menu ${isProductsOpen ? 'show-mobile' : ''}`}>
-                <li>
-                  <Link to="/products/aqua" onClick={closeMenu} className="product-item">
-                    <span className="product-emoji">🐟</span> Aqua
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/products/poultry" onClick={closeMenu} className="product-item">
-                    <span className="product-emoji">🐔</span> Poultry
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/products/swine" onClick={closeMenu} className="product-item">
-                    <span className="product-emoji">🐷</span> Swine (Pig)
-                  </Link>
-                </li>
-              </ul>
-            </li>
+  {/* Products trigger */}
+  <div
+    className="dropdown-trigger"
+    onClick={(e) => {
+      e.stopPropagation();                 // prevent parent/menu close
+      setIsProductsOpen(prev => !prev);    // ✅ toggle open/close
+    }}
+  >
+    <div className="trigger-content">
+      <HiCube className="mobile-only-icon" />
+      <span>Products</span>
+    </div>
+
+    <span className={`arrow-icon ${isProductsOpen ? 'active-arrow' : ''}`}>
+      {isProductsOpen ? <HiChevronUp /> : <HiChevronDown />}
+    </span>
+  </div>
+
+  {/* Products dropdown */}
+  <ul className={`dropdown-menu ${isProductsOpen ? 'show-mobile' : ''}`}>
+    <li>
+      <Link
+        to="/products/aqua"
+        className="product-item"
+        onClick={() => {
+          setIsProductsOpen(false); // close dropdown
+          closeMenu();              // close mobile menu
+        }}
+      >
+        <span className="product-emoji">🐟</span>
+        Aqua
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/products/poultry"
+        className="product-item"
+        onClick={() => {
+          setIsProductsOpen(false);
+          closeMenu();
+        }}
+      >
+        <span className="product-emoji">🐔</span>
+        Poultry
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/products/swine"
+        className="product-item"
+        onClick={() => {
+          setIsProductsOpen(false);
+          closeMenu();
+        }}
+      >
+        <span className="product-emoji">🐷</span>
+        Swine (Pig)
+      </Link>
+    </li>
+  </ul>
+</li>
+
 
             <li>
               <Link to="/contact" onClick={closeMenu}>
