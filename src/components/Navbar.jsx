@@ -50,49 +50,49 @@ const Navbar = () => {
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={closeMenu}>
-                <HiHome className="mobile-icon" /> Home
+                <HiHome className="mobile-only-icon" /> Home
               </Link>
             </li>
             <li>
               <Link to="/about" onClick={closeMenu}>
-                <HiInformationCircle className="mobile-icon" /> About Us
+                <HiInformationCircle className="mobile-only-icon" /> About Us
               </Link>
             </li>
 
+            {/* CORRECTED DROPDOWN STRUCTURE */}
             <li className={`nav-dropdown ${isProductsOpen ? 'active' : ''}`}>
               <div className="dropdown-trigger" onClick={() => setIsProductsOpen(!isProductsOpen)}>
-                <div className="trigger-left">
-                  <HiCube className="mobile-icon" /> Products
+                <div className="trigger-content">
+                  <HiCube className="mobile-only-icon" /> Products
                 </div>
                 <span className="arrow-icon">
-                  {isProductsOpen ? <HiChevronUp className="green-arrow" /> : <HiChevronDown />}
+                  {isProductsOpen ? <HiChevronUp className="active-arrow" /> : <HiChevronDown />}
                 </span>
               </div>
 
-              {isProductsOpen && (
-                <ul className="dropdown-menu-mobile">
-                  <li>
-                    <Link to="/products/aqua" onClick={closeMenu} className="product-item">
-                      <span className="product-icon">🐟</span> Aqua
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/products/poultry" onClick={closeMenu} className="product-item">
-                      <span className="product-icon">🐔</span> Poultry
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/products/swine" onClick={closeMenu} className="product-item">
-                      <span className="product-icon">🐷</span> Swine (Pig)
-                    </Link>
-                  </li>
-                </ul>
-              )}
+              {/* ul is a direct child of li, but it contains its own li children */}
+              <ul className={`dropdown-menu ${isProductsOpen ? 'show-mobile' : ''}`}>
+                <li>
+                  <Link to="/products/aqua" onClick={closeMenu} className="product-item">
+                    <span className="product-emoji">🐟</span> Aqua
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products/poultry" onClick={closeMenu} className="product-item">
+                    <span className="product-emoji">🐔</span> Poultry
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/products/swine" onClick={closeMenu} className="product-item">
+                    <span className="product-emoji">🐷</span> Swine (Pig)
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             <li>
               <Link to="/contact" onClick={closeMenu}>
-                <HiPhone className="mobile-icon" /> Contact Us
+                <HiPhone className="mobile-only-icon" /> Contact Us
               </Link>
             </li>
           </ul>

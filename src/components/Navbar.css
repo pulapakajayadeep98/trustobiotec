@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET & BASE STYLES
+   1. RESET & VARIABLES
    ========================================================================== */
 * {
   margin: 0;
@@ -14,66 +14,99 @@
   --border-light: #eaeaea;
 }
 
+/* ==========================================================================
+   2. NAVBAR BASE
+   ========================================================================== */
 .navbar {
   width: 100%;
-  height: 80px;
+  height: 76px;
   background: #ffffff;
   border-bottom: 1px solid var(--border-light);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .navbar.scrolled {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .nav-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
-}
-
-.nav-logo-img {
-  height: 82px;
-  width: auto;
+  justify-content: space-between;
 }
 
 /* ==========================================================================
-   2. DESKTOP NAVIGATION
+   3. LOGO
+   ========================================================================== */
+.nav-brand {
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  height: 68px;
+  width: auto;
+  display: block;
+  margin-left: -65px;
+}
+
+/* ==========================================================================
+   4. DESKTOP NAVIGATION
    ========================================================================== */
 .nav-menu-wrapper {
-  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: flex-end;
+  gap: 50px;
+  flex-grow: 1;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
 }
 
 .nav-links a {
+  position: relative;
   text-decoration: none;
   color: var(--text-main);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  transition: 0.3s;
+  letter-spacing: 0.2px;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--trusto-green);
 }
 
-/* DESKTOP DROPDOWN */
+/* Hover underline */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--trusto-green);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. PRODUCTS DROPDOWN (DESKTOP)
+   ========================================================================== */
 .nav-dropdown {
   position: relative;
   cursor: pointer;
@@ -82,20 +115,20 @@
 .dropdown-trigger {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-weight: 600;
   color: var(--text-main);
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 120%;
+  top: 100%;
   left: 0;
+  min-width: 240px;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  min-width: 220px;
-  padding: 10px 0;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -109,19 +142,20 @@
   transform: translateY(0);
 }
 
-.dropdown-menu li {
-  list-style: none;
-}
-
+/* ==========================================================================
+   6. PRODUCT ITEMS (DESKTOP + MOBILE SAME)
+   ========================================================================== */
 .product-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 14px;
+  padding: 12px 18px;
   font-size: 15px;
-  color: var(--trusto-dark);
+  font-weight: 600;
+  color: #1a1a1a;
   text-decoration: none;
-  transition: background 0.3s;
+  border-radius: 8px;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .product-item:hover {
@@ -129,68 +163,85 @@
   color: var(--trusto-green);
 }
 
-.product-icon {
-  font-size: 18px;
-  width: 24px;
+.product-emoji {
+  font-size: 20px;
+  width: 28px;
   text-align: center;
 }
 
-/* ENQUIRE BUTTON (Shared Base) */
-.enquire-btn {
-  text-decoration: none;
-  background: var(--trusto-dark);
-  color: #ffffff !important;
-  padding: 12px 26px;
-  border-radius: 30px;
+/* Active product */
+.product-item.active,
+.product-item[aria-current="page"] {
+  background: #f0fff4;
+  color: var(--trusto-green);
   font-weight: 700;
-  font-size: 15px;
-  transition: 0.3s;
-  border: 2px solid transparent;
-  display: inline-block;
-}
-
-.enquire-btn:hover {
-  background: transparent;
-  color: var(--trusto-green) !important;
-  border-color: var(--trusto-green);
-  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+  border-left: 3px solid var(--trusto-green);
 }
 
 /* ==========================================================================
-   3. MOBILE NAVIGATION (Breakpoints)
+   7. ENQUIRE BUTTON
+   ========================================================================== */
+.enquire-btn {
+  background: var(--trusto-dark);
+  color: #ffffff !important;
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  text-align: center;
+  align-items: center;
+  margin-right: -64px;
+}
+
+.enquire-btn:hover {
+  background: var(--trusto-green);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* ==========================================================================
+   8. HAMBURGER
    ========================================================================== */
 .nav-hamburger {
   display: none;
   font-size: 2.2rem;
   cursor: pointer;
   color: var(--trusto-green);
-  margin-left: auto;
-  z-index: 1002;
 }
 
+/* ==========================================================================
+   9. MOBILE & TABLET (≤1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
-  /* Prevent background scroll */
-  :root:has(.nav-menu-wrapper.active) {
-    overflow: hidden;
-  }
 
   .nav-hamburger {
     display: block;
   }
 
+  .nav-container {
+    padding: 0 16px;
+  }
+
+  .nav-logo-img {
+    height: 48px;
+  }
+
   .nav-menu-wrapper {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
     background: #ffffff;
+    padding: 90px 24px 40px;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start;
-    padding: 40px;
     gap: 0;
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: left 0.4s ease;
     z-index: 1001;
     overflow-y: auto;
   }
@@ -199,710 +250,194 @@
     left: 0;
   }
 
-  /* MOBILE LINKS */
   .nav-links {
     flex-direction: column;
     width: 100%;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a, .dropdown-trigger {
-    font-size: 18px;
-    font-weight: 700;
-    padding: 12px 0;
-    width: 100%;
-    justify-content: flex-start;
-    color: #1a1a1a;
-  }
-
-  .dropdown-trigger {
-    text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 1px;
-  }
-
-  /* MOBILE DROPDOWN INDENTATION */
-  .dropdown-menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    padding: 0 0 10px 20px;
-    margin-top: 5px;
-    border-left: 2px solid #f0f0f0;
-    display: flex;
-    flex-direction: column;
     gap: 8px;
   }
 
-  .product-item {
-    padding: 8px 0;
-    font-weight: 500;
-  }
-
-  /* MOBILE CTA */
-  .nav-actions {
-    width: 100%;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .enquire-btn {
-    width: 100%;
-    max-width: 340px;
-    padding: 18px;
-    background: var(--trusto-green);
-    border-radius: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-  }
-
-  /* WhatsApp Cleanup */
-  .nav-menu-wrapper.active ~ .whatsapp-btn {
-    display: none !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .nav-container { padding: 0 20px; }
-  .nav-logo-img { height: 75px; }
-  .nav-menu-wrapper { padding: 30px 25px; }
-}
-/* DESKTOP LAYOUT FIX */
-.nav-container {
-  width: 100%;
-  max-width: 1400px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  /* This pushes the brand to the left and the menu-wrapper to the right */
-  justify-content: space-between; 
-}
-
-.nav-brand {
-  flex-shrink: 0; /* Prevents logo from squishing */
-}
-
-/* This wrapper contains both the links AND the button */
-.nav-menu-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 40px; /* Space between the last nav link and the button */
-  flex-grow: 1; /* Allows it to take up available space */
-  justify-content: flex-end; /* Pushes content to the right corner */
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 30px; /* Space between individual links */
-}
-
-.nav-actions {
-  flex-shrink: 0; /* Ensures button stays at its full size on the right */
-}
-
-/* Specific button color update to match your desktop screenshot */
-.enquire-btn {
-  background: #0b1120; /* Dark Navy as seen in your last image */
-  color: #ffffff !important;
-  padding: 12px 28px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  white-space: nowrap; /* Prevents text from wrapping */
-}
-
-.enquire-btn:hover {
-  background: #2ecc71; /* Brand green on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-}
-/* NAVBAR BASE */
-.navbar {
-  width: 100%;
-  height: 90px;
-  background: #ffffff;
-  border-bottom: 1px solid #eaeaea;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  /* Ensure the navbar itself has no internal padding */
-  padding: 0; 
-}
-
-/* MAIN CONTAINER - FORCING CORNERS */
-.nav-container {
-  width: 100%;
-  max-width: 100%; /* Removes the 1400px limit */
-  height: 100%;
-  margin: 0;      /* Removes centering */
-  padding: 0;     /* ABSOLUTE ZERO PADDING */
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* LOGO - PINNED TO LEFT EDGE */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-logo-img {
-  height: 82px;
-  width: auto;
-  display: block;
-  /* If the logo still has a gap, use this negative margin to force it left */
-  margin-left: -42px; 
-}
-
-/* RIGHT SIDE ACTIONS */
-.nav-menu-wrapper {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  /* Add just a tiny bit of space on the right so the button doesn't touch the scrollbar */
-  padding-right: 15px; 
-}
-
-/* MOBILE FIX */
-@media (max-width: 1024px) {
-  .nav-container {
-    padding: 0;
-  }
-  .nav-logo-img {
-    height: 70px;
-    margin-left: -5px;
-  }
-}
-/* ==========================================================================
-   DESKTOP NAVIGATION LAYOUT
-   ========================================================================== */
-
-.nav-container {
-  width: 100%;
-  max-width: 100%; /* Spans full screen width */
-  height: 100%;
-  margin: 0;
-  padding: 0; 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-brand {
-  flex-shrink: 0;
-}
-
-.nav-logo-img {
-  height: 82px;
-  width: auto;
-  display: block;
-  /* Adjust this negative margin if your logo file has white space on the left */
-  margin-left: -42px; 
-}
-
-/* Updated Wrapper Logic */
-.nav-menu-wrapper {
-  display: flex;
-  align-items: center;
-  flex-grow: 1; /* Takes up available space between logo and right edge */
-  justify-content: space-between; /* Separates links from the button */
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  /* This margin pushes the links slightly left from the button */
-  margin-left: 15%; 
-}
-
-.nav-actions {
-  flex-shrink: 0;
-  padding-right: 20px; /* Space from the far right browser edge */
-}
-
-/* Button Styling matching your last image */
-.enquire-btn {
-  background: #0b1120; /* Dark Navy color from image_8708ca.png */
-  color: #ffffff !important;
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.enquire-btn:hover {
-  background: #2ecc71; /* Brand green from image_6a520a.png */
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-}
-
-/* ==========================================================================
-   MOBILE BREAKPOINT
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .nav-menu-wrapper {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .nav-links {
-    margin-left: 0; /* Reset left push for mobile menu */
-    width: 100%;
-  }
-
-  .nav-logo-img {
-    margin-left: -5px; /* Tighter logo for mobile screens */
-  }
-}
-/* Update the existing nav-menu-wrapper to push items to the right */
-.nav-menu-wrapper {
-  display: flex;
-  align-items: center;
-  flex-grow: 1; 
-  /* This pushes the entire group (Links + Button) to the far right */
-  justify-content: flex-end; 
-  gap: 50px; /* Increased gap between the last link and the button */
-}
-
-/* Adjust the nav-links to align right */
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  /* Removes any previous left margin that was centering them */
-  margin-left: 0; 
-}
-
-/* Dropdown Arrow Styling */
-.dropdown-trigger {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* Space between text and arrow */
-}
-
-.arrow-icon {
-  font-size: 10px; /* Small, elegant arrow */
-  transition: transform 0.3s ease;
-  color: inherit;
-}
-
-/* Optional: Rotate arrow on hover if you have a dropdown menu active */
-.nav-dropdown:hover .arrow-icon {
-  transform: rotate(180deg);
-  color: #2ecc71; /* Matches Trusto Green */
-}
-
-/* Ensure the button stays at the absolute right */
-.nav-actions {
-  flex-shrink: 0;
-  padding-right: 20px;
-}
-/* ==========================================================================
-   UPDATED MOBILE NAVIGATION (max-width: 1024px)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .nav-hamburger {
-    display: block;
-    position: absolute;
-    right: 25px;
-    top: 25px;
-    color: #27ae60; /* Specific Green from image */
-  }
-
-  .nav-menu-wrapper {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 80px 40px; /* Space for the logo at top */
-    transition: 0.3s ease-in-out;
-  }
-
-  .nav-menu-wrapper.active {
-    left: 0;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 0;
-    width: 100%;
-  }
-
   .nav-links li {
     width: 100%;
-    padding: 15px 0;
   }
 
-  /* Typography matching the image */
-  .nav-links a, .dropdown-trigger {
+  .nav-links a,
+  .dropdown-trigger {
     font-size: 18px;
     font-weight: 800;
-    color: #1a1a1a;
-    text-decoration: none;
+    color: #000000;
+    padding: 14px 0;
+    width: 100%;
     display: flex;
     align-items: center;
   }
 
-  .dropdown-trigger {
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-  }
-
-  /* The Container Box for Products in Mobile */
+  /* Products dropdown on mobile */
   .dropdown-menu {
     position: static;
     opacity: 1;
     visibility: visible;
     transform: none;
+    background: transparent;
     box-shadow: none;
-    margin: 10px 0;
-    padding: 10px;
-    background: #fafafa; /* Light grey background */
-    border: 1px solid #f0f0f0;
-    border-radius: 12px; /* Rounded container */
+    padding: 0;
+    margin: 8px 0 12px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    gap: 6px;
   }
 
   .product-item {
-    padding: 12px;
-    font-weight: 700;
     font-size: 16px;
-    border-bottom: none;
+    padding: 14px 10px;
   }
 
-  .product-icon {
-    margin-right: 12px;
-    font-size: 20px;
-  }
-
-  /* Mobile CTA Button - Black and Wide */
+  /* CTA below menu */
   .nav-actions {
     width: 100%;
-    margin-top: auto; /* Pushes button to bottom area */
-    padding-bottom: 40px;
-  }
-
-  .enquire-btn {
-    width: 100%;
-    background: #0b1120 !important; /* Dark Navy/Black */
-    padding: 16px;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    display: block;
-  }
-}
-@media (max-width: 1024px) {
-  /* Prevent background scroll when menu is open */
-  :root:has(.nav-menu-wrapper.active) {
-    overflow: hidden;
-  }
-
-  .nav-menu-wrapper {
-    position: fixed;
-    top: 0; /* Changed from 80px to cover the full screen */
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    padding: 100px 30px 40px 30px; /* Top padding for the 'X' button area */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1001;
-  }
-
-  /* Typography Refinement */
-  .nav-links li a, 
-  .dropdown-trigger {
-    font-size: 19px !important;
-    font-weight: 800 !important; /* Matches the ultra-bold look */
-    color: #000000 !important;
-    padding: 18px 0 !important;
-    text-transform: none; /* Keeps 'About Us' casing */
-  }
-
-  /* The Products Container Box */
-  .dropdown-menu {
-    position: static;
-    background: #f8f9fa; /* Very light grey background from image */
-    border: 1px solid #f1f1f1;
-    border-radius: 12px;
-    padding: 15px !important;
-    margin: 10px 0 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-
-  .product-item {
-    font-weight: 700 !important;
-    font-size: 17px !important;
-    padding: 5px 0 !important;
-    background: transparent !important;
-  }
-
-  /* Fixed Bottom "Enquire Now" Button */
-  .nav-actions {
-    margin-top: auto; /* Pushes to bottom */
-    width: 100%;
+    margin-top: 12px;
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
   }
 
   .enquire-btn {
-    width: 90% !important;
-    max-width: none;
-    background: #0b1120 !important; /* Dark Navy/Black from image */
-    border-radius: 50px !important;
-    padding: 18px 0 !important;
-    font-size: 16px;
-    letter-spacing: 1px;
+    width: 220px;
+    padding: 12px 0;
+    font-size: 14px;
   }
 }
+/* ============================= */
+/* MOBILE DROPDOWN HIERARCHY FIX */
+/* ============================= */
 @media (max-width: 1024px) {
-  /* Main Links Styling */
-  .nav-links li a, 
-  .dropdown-trigger {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 19px !important;
-    font-weight: 800 !important;
-    color: #000000 !important;
-    padding: 15px 0 !important;
-    cursor: pointer;
+
+  /* Parent: Products */
+  .nav-dropdown {
+    width: 100%;
   }
 
-  .nav-icon-main {
-    font-size: 22px;
-    color: #666; /* Subtle grey for main icons */
+  /* Children container */
+  .nav-dropdown .dropdown-menu {
+    margin-left: 20px;          /* Indent children */
+    margin-top: 6px;
+    gap: 4px;
   }
 
-  .arrow-green {
-    color: #2ecc71; /* Matches the green arrow in your image */
+  /* Child items (Aqua / Poultry / Swine) */
+  .nav-dropdown .product-item {
+    font-size: 15px;            /* Smaller than main links */
+    font-weight: 600;
+    padding: 8px 6px;
+    color: #222;
+  }
+
+  /* Reduce emoji dominance on mobile */
+  .nav-dropdown .product-emoji {
     font-size: 18px;
   }
 
-  /* The Products List Container */
-  .dropdown-menu-mobile {
-    background: #f7f8f9; /* Light grey background */
-    border-radius: 16px;
-    padding: 20px !important;
-    margin: 10px 0 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    list-style: none;
-    animation: slideDown 0.3s ease-out;
-  }
-
-  .product-item {
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    color: #000000 !important;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-
-  .product-icon {
-    margin-right: 15px;
-    font-size: 22px;
-    width: 30px;
-    display: inline-block;
-  }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* Main menu items (Home, About, Products, Contact) */
+  .nav-links > li > a,
+  .nav-links > li > .dropdown-trigger {
+    font-size: 18px;
+    font-weight: 800;
   }
 }
-/* --- Desktop Base (Hidden Icons) --- */
-.mobile-icon {
-  display: none; /* Hide icons on desktop by default */
-}
-
-/* --- Mobile View (Show Icons & Styling) --- */
+/* ============================= */
+/* MOBILE CLOSE (X) BUTTON FIX  */
+/* ============================= */
 @media (max-width: 1024px) {
-  .nav-menu-wrapper {
+
+  .nav-hamburger {
     position: fixed;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    padding: 100px 30px 40px 30px;
-    display: flex;
-    flex-direction: column;
-    transition: 0.4s ease;
-    z-index: 1001;
+    top: 18px;
+    right: 18px;
+    z-index: 2000;           /* ABOVE menu */
+    background: transparent;
   }
 
-  .nav-menu-wrapper.active {
-    left: 0;
+  .nav-hamburger svg {
+    font-size: 28px;
   }
 
-  .nav-links {
-    flex-direction: column;
-    gap: 5px;
+}
+/* ============================= */
+/* REMOVE MOBILE LIST BULLETS   */
+/* ============================= */
+@media (max-width: 1024px) {
+
+  .dropdown-menu,
+  .dropdown-menu li {
+    list-style: none !important;
   }
 
-  .nav-links li a, 
-  .dropdown-trigger {
-    display: flex;
-    align-items: center;
-    font-size: 20px !important;
-    font-weight: 800 !important; /* Extra bold like the screenshot */
-    color: #000000 !important;
-    padding: 15px 0 !important;
-    text-decoration: none;
+}
+/* ============================= */
+/* MOBILE MENU TOP ALIGN FIX    */
+/* ============================= */
+@media (max-width: 1024px) {
+
+  .nav-menu-wrapper {
+    padding-top: 60px !important;   /* Reduced from 90–100px */
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 30px;
+    justify-content: flex-start;
   }
 
-  /* Show Icons only on Mobile */
-  .mobile-icon {
-    display: block;
-    font-size: 24px;
-    margin-right: 15px;
-    color: #555; /* Modern grey icon color */
+}
+@media (max-width: 1024px) {
+
+  .nav-links > li {
+    margin-bottom: 8px;
   }
 
-  .trigger-left {
-    display: flex;
-    align-items: center;
+  /* Divider under active item (Home) */
+  .nav-links a.active,
+  .nav-links a[aria-current="page"] {
+    border-bottom: 2px solid var(--trusto-green);
+    padding-bottom: 6px;
   }
 
-  .arrow-icon {
-    margin-left: auto; /* Pushes arrow to the far right */
-    font-size: 20px;
+}
+@media (max-width: 1024px) {
+
+  .nav-dropdown .dropdown-menu {
+    margin-left: 28px;
+    margin-top: 6px;
   }
 
-  .green-arrow {
-    color: #2ecc71;
+  .nav-dropdown .product-item {
+    padding: 6px 0;
   }
 
-  /* Products Container Box */
-  .dropdown-menu-mobile {
-    background: #f7f8f9; /* Light grey background from your image */
-    border-radius: 15px;
-    padding: 20px !important;
-    margin: 10px 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+}
+@media (max-width: 1024px) {
 
-  .product-item {
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    display: flex;
-    align-items: center;
-  }
-
-  .product-icon {
-    margin-right: 15px;
-    font-size: 22px;
-  }
-
-  /* Fixed Bottom Button */
   .nav-actions {
     margin-top: auto;
-    width: 100%;
-    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
   }
 
-  .enquire-btn {
-    width: 100%;
-    background: #0b1120 !important;
-    color: #fff !important;
-    padding: 18px;
-    border-radius: 50px;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    display: block;
-  }
 }
 /* ============================= */
-/* MOBILE – PLACE CTA BELOW MENU */
+/* FINAL MOBILE CTA PLACEMENT   */
 /* ============================= */
 @media (max-width: 1024px) {
 
+  /* Stop CTA from floating */
   .nav-actions {
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    margin-top: 12px !important;
+    padding: 0 !important;
+    position: static !important;
+    justify-content: flex-start;
   }
 
-}
-/* ============================= */
-/* MOBILE – COMPACT NAVBAR */
-/* ============================= */
-@media (max-width: 1024px) {
-
-  .navbar {
-    height: 64px; /* Reduced from 80px */
-  }
-
-  .nav-logo-img {
-    height: 48px; /* Smaller logo */
-  }
-
-  .nav-container {
-    padding: 0 16px;
-  }
-
-}
-
-/* ============================= */
-/* MOBILE – CTA BUTTON SIZE */
-/* ============================= */
-@media (max-width: 1024px) {
-
+  /* Button sizing & alignment */
   .enquire-btn {
-    width: 220px;       /* Reduced width */
-    padding: 12px 0;   /* Reduced height */
+    width: 100%;
+    max-width: 260px;
+    padding: 12px 0;
     font-size: 14px;
     border-radius: 40px;
   }

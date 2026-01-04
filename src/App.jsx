@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 600,           // smooth & professional
+      easing: 'ease-out-cubic',
+      once: true,              // animate only once
+      offset: 50,
+    });
+  }, []);
+
   return (
     <Router>
       <div className="app-wrapper">
         <Navbar />
+
         <main className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -21,6 +36,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+
         <Footer />
       </div>
     </Router>
