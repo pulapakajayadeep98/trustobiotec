@@ -15,12 +15,16 @@ import './App.css';
 function App() {
 
   useEffect(() => {
-    AOS.init({
-      duration: 600,           // smooth & professional
-      easing: 'ease-out-cubic',
-      once: true,              // animate only once
-      offset: 50,
-    });
+AOS.init({
+  duration: 700,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 80,
+  delay: 0,
+  mirror: false,
+  disable: false, // 🔥 THIS ENABLES MOBILE
+});
+
   }, []);
 
   return (
