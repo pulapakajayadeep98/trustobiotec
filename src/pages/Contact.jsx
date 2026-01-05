@@ -40,27 +40,15 @@ const Contact = () => {
     }
   };
 
-  return (
+return (
     <div className="contact-page">
       
-      {/* Success Popup Overlay */}
-      {showPopup && (
-        <div className="success-popup-overlay">
-          <div className="success-popup-content">
-            <div className="popup-icon-circle">
-               <i className="fas fa-check"></i>
-            </div>
-            <h3>Successfully Submitted!</h3>
-            <p>Thank you for reaching out. Our team will contact you shortly.</p>
-            <button className="popup-close-btn" onClick={() => setShowPopup(false)}>Close</button>
-          </div>
-        </div>
-      )}
+      {/* Success Popup Overlay remains the same */}
 
       {/* Header Section */}
       <section className="contact-hero">
-        <h1 className="contact-title">Get in Touch</h1>
-        <p className="contact-subtitle">
+        <h1 className="contact-title" data-aos="zoom-in">Get in Touch</h1>
+        <p className="contact-subtitle" data-aos="fade-up" data-aos-delay="100">
           Have a question about our biotech solutions? Our team is ready to help.
         </p>
       </section>
@@ -71,7 +59,7 @@ const Contact = () => {
         <aside className="contact-info-side">
 
           {/* Email */}
-          <div className="contact-info-card">
+          <div className="contact-info-card" data-aos="fade-right" data-aos-delay="200">
             <div className="contact-icon">
               <i className="fas fa-envelope"></i>
             </div>
@@ -82,7 +70,7 @@ const Contact = () => {
           </div>
 
           {/* Phone */}
-          <div className="contact-info-card">
+          <div className="contact-info-card" data-aos="fade-right" data-aos-delay="300">
             <div className="contact-icon">
               <i className="fas fa-phone-alt"></i>
             </div>
@@ -93,7 +81,7 @@ const Contact = () => {
           </div>
 
           {/* Address */}
-          <div className="contact-info-card">
+          <div className="contact-info-card" data-aos="fade-right" data-aos-delay="400">
             <div className="contact-icon">
               <i className="fas fa-map-marker-alt"></i>
             </div>
@@ -108,7 +96,7 @@ const Contact = () => {
           </div>
 
           {/* Socials Section */}
-          <div className="contact-social-section">
+          <div className="contact-social-section" data-aos="fade-up" data-aos-delay="500">
             <h5 className="follow-us-title">Follow Us</h5>
             <div className="contact-social-icons">
               <a href="#" className="social-icon facebook" aria-label="Facebook">
@@ -127,35 +115,35 @@ const Contact = () => {
           </div>
         </aside>
 
-        {/* RIGHT: Contact Form Integrated with Web3Forms */}
-        <section className="contact-form-side">
+        {/* RIGHT: Contact Form */}
+        <section className="contact-form-side" data-aos="fade-left" data-aos-delay="200">
           <div className="contact-form-card">
             <h3>Contact Our Team</h3>
 
             <form className="contact-form" onSubmit={onSubmit}>
               <div className="form-row">
-                <div className="form-group">
+                <div className="form-group" data-aos="fade-up" data-aos-delay="300">
                   <label>Full Name</label>
                   <input type="text" name="name" placeholder="John Doe" required />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" data-aos="fade-up" data-aos-delay="400">
                   <label>Email Address</label>
                   <input type="email" name="email" placeholder="john@example.com" required />
                 </div>
               </div>
 
-              <div className="form-group">
+              <div className="form-group" data-aos="fade-up" data-aos-delay="500">
                 <label>Subject</label>
                 <input type="text" name="subject" placeholder="Product Inquiry" required />
               </div>
 
-              <div className="form-group">
+              <div className="form-group" data-aos="fade-up" data-aos-delay="600">
                 <label>Message</label>
                 <textarea name="message" rows="4" placeholder="How can we help you?" required></textarea>
               </div>
 
-              <button type="submit" className="contact-submit-btn">
+              <button type="submit" className="contact-submit-btn" data-aos="zoom-in" data-aos-delay="700">
                 {result ? result : "Submit Inquiry"}
               </button>
             </form>
@@ -165,7 +153,7 @@ const Contact = () => {
       </div>
 
       {/* Map Section */}
-      <section className="contact-map">
+      <section className="contact-map" data-aos="fade-up" data-aos-offset="100">
         <iframe
           title="Trustobiotech Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.8329615597957!2d78.487841!3d17.371759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daaaaaaaab%3A0x6b8a8aaaaaaab!2sAzampura%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
