@@ -17,34 +17,55 @@ const About = () => {
       <section className="about-hero">
         <div className="hero-overlay"></div>
         <div className="container hero-content" data-aos="fade-up">
-          <span className="badge">35+ Years of Biotech Excellence</span>
-          <h1>🧬 ABOUT TRUSTO BIOTECH</h1>
-          <p>Science-driven biotechnology specializing in Aquaculture and Poultry nutrition, with a rapidly expanding presence in the Swine sector.</p>
+          
+          <h1> ABOUT TRUSTO BIOTECH</h1>
+      <span className="badge">35+ Years of Excellence</span>
         </div>
       </section>
 
       {/* 2. WHO WE ARE SECTION */}
-      <section className="about-intro section-padding">
-        <div className="container grid-2">
-          <div className="intro-text" data-aos="fade-right">
-            <h2>Who We Are</h2>
-            <p>Trusto Biotech is a science-driven biotechnology company specializing in Aquaculture and Poultry nutrition solutions. With over 35 years of industry experience, we are committed to improving animal health, productivity, and farm sustainability through innovative, reliable, and farmer-focused solutions.</p>
-            <p>Built on trust, performance, and consistent results, we partner with farmers and integrators across India to address modern farming challenges using non-antibiotic, nutrition-based technologies.</p>
-          </div>
-          <div className="intro-image" data-aos="fade-left">
-            <img src="https://plus.unsplash.com/premium_photo-1676325102346-7f0f536d1f2f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Biotech Lab" className="styled-img" />
-          </div>
-        </div>
-      </section>
+     <section className="about-intro section-padding">
+  <div className="container grid-2">
+    <div className="intro-text" data-aos="fade-right">
+      <h2 className="section-heading">Who We Are</h2>
+      <div className="intro-description">
+        <p>
+          <strong>Trusto Biotech</strong> is a company specializing in Aquaculture and Poultry nutrition solutions. 
+          With over 35 years of industry experience, we are committed to improving animal health, productivity, 
+          and farm sustainability through innovative, reliable, and farmer-focused solutions.
+        </p>
+        <p>
+          Built on trust, performance, and consistent results, we partner with farmers and integrators 
+          across India to address modern farming challenges using non-antibiotic, nutrition-based technologies.
+        </p>
+      </div>
+    </div>
+    <div className="intro-image" data-aos="fade-left">
+      <img 
+        src="https://plus.unsplash.com/premium_photo-1676325102346-7f0f536d1f2f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="Biotech Lab Research" 
+        className="styled-img" 
+      />
+    </div>
+  </div>
+</section>
 
       {/* 3. AQUACULTURE - CORE FOCUS */}
       <section className="aqua-section section-padding bg-light">
-        <div className="container">
-          <div className="section-title" data-aos="fade-up">
-            <GiShrimp className="section-icon aqua-color" />
-            <h2>🌊 Aquaculture – Our Core Focus</h2>
-            <p>Deeply involved since 2012 in supporting shrimp and fish farming through stage-wise nutrition and pond ecosystem management.</p>
-          </div>
+     <div className="container">
+   <div className="section-title text-center" data-aos="fade-up">
+      {/* This group handles the icon and text side-by-side */}
+      <div className="title-group">
+        <GiShrimp className="section-icon aqua-color" />
+        <h2>Aquaculture – Our Core Focus</h2>
+      </div>
+      
+      {/* This paragraph stays centered below the group */}
+      <p className="section-description">
+        Deeply involved since 2012 in supporting shrimp and fish farming through 
+        stage-wise nutrition and pond ecosystem management.
+      </p>
+    </div>
 
           <div className="growth-stages-grid">
             <div className="stage-card" data-aos="flip-left">
@@ -84,25 +105,31 @@ const About = () => {
       </section>
 
       {/* 4. POULTRY & SWINE SECTION */}
-      <section className="secondary-sectors section-padding">
-        <div className="container grid-2">
-          <div className="sector-box poultry-bg" data-aos="fade-up">
-            <div className="content">
-              <GiChicken className="box-icon" />
-              <h3>🐔 Poultry – A Strong Pillar</h3>
-              <p>Decades of field experience in mycotoxin management, gut health, and mineral nutrition for Chick Development, Growth Phase, and Shell Quality.</p>
-            </div>
-          </div>
-          <div className="sector-box swine-bg" data-aos="fade-up" data-aos-delay="200">
-            <div className="content">
-              <GiPig className="box-icon" />
-              <h3>🐷 Swine – Rapidly Expanding</h3>
-              <p>Scientific swine farming solutions focusing on digestive health, growth performance, and antibiotic-free productivity enhancement.</p>
-            </div>
-          </div>
+    <section className="secondary-sectors section-padding">
+  <div className="container grid-2">
+    {/* Poultry Box */}
+    <div className="sector-box poultry-bg" data-aos="fade-up">
+      <div className="content">
+        <div className="header-inline">
+          <GiChicken className="box-icon" />
+          <h3>Poultry – A Strong Pillar</h3>
         </div>
-      </section>
+        <p>Decades of field experience in mycotoxin management, gut health, and mineral nutrition for Chick Development, Growth Phase, and Shell Quality.</p>
+      </div>
+    </div>
 
+    {/* Swine Box */}
+    <div className="sector-box swine-bg" data-aos="fade-up" data-aos-delay="200">
+      <div className="content">
+        <div className="header-inline">
+          <GiPig className="box-icon" />
+          <h3>Swine – Rapidly Expanding</h3>
+        </div>
+        <p>Scientific swine farming solutions focusing on digestive health, growth performance, and antibiotic-free productivity enhancement.</p>
+      </div>
+    </div>
+  </div>
+</section>
       {/* 5. DIFFERENTIATORS */}
       <section className="diff-section section-padding bg-dark text-white">
         <div className="container">
