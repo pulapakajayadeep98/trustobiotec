@@ -138,7 +138,7 @@ const Footer = () => {
 
       <div className="tf-footer-bottom-bar">
         <div className="tf-bottom-container">
-          <p>&copy; {currentYear} Trustobiotech. All rights reserved.</p>
+          <p>&copy; {currentYear} Trustobiotech. All rights reserved.- Designed by P & J Technologies </p>
           <div className="tf-bottom-links">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms of Service</Link>
