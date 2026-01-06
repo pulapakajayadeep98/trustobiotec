@@ -11,31 +11,7 @@
   font-family: sans-serif;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
 
-.nav-links button {
-  background: none;
-  border: none;
-  margin-left: 1.5rem;
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--dark);
-}
-
-.nav-links button.active-link {
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
-}
 
 .main-content {
   flex: 1;

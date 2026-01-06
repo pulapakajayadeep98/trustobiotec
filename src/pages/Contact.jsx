@@ -124,7 +124,7 @@ return (
               <div className="form-row">
                 <div className="form-group" data-aos="fade-up" data-aos-delay="300">
                   <label>Full Name</label>
-                  <input type="text" name="name" placeholder="John Doe" required />
+                  <input type="text" name="name" placeholder="Enter your full name" required />
                 </div>
 
                 <div className="form-group" data-aos="fade-up" data-aos-delay="400">
@@ -135,16 +135,16 @@ return (
 
               <div className="form-group" data-aos="fade-up" data-aos-delay="500">
                 <label>Subject</label>
-                <input type="text" name="subject" placeholder="Product Inquiry" required />
+                <input type="text" name="subject" placeholder="Enter your subject" required />
               </div>
 
               <div className="form-group" data-aos="fade-up" data-aos-delay="600">
                 <label>Message</label>
-                <textarea name="message" rows="4" placeholder="How can we help you?" required></textarea>
+                <textarea name="message" rows="4" placeholder="Enter your message" required></textarea>
               </div>
 
               <button type="submit" className="contact-submit-btn" data-aos="zoom-in" data-aos-delay="700">
-                {result ? result : "Submit Inquiry"}
+                {result ? result : "Submit "}
               </button>
             </form>
           </div>
