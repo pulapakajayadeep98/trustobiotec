@@ -20,7 +20,7 @@ const slides = [
   {
     id: 1,
     title: "Precision Aquaculture ",
-    subtitle: "FIELD-PROVEN SOLUTIONS SINCE 2012",
+
     tagline: "Advancing shrimp and fish health through stage-wise nutrition and pond ecosystem management.",
     image: "/aqua1.png",
     link: "/products/aqua",
@@ -29,7 +29,7 @@ const slides = [
   {
     id: 2,
     title: "Resilient Poultry Nutrition Systems",
-    subtitle: "35+ YEARS OF INDUSTRY LEGACY",
+
     tagline: "Comprehensive strategies for mycotoxin management, gut integrity, and peak layer performance.",
     image: "/poultry.png", 
     link: "/products/poultry",
@@ -38,7 +38,7 @@ const slides = [
   {
     id: 3,
     title: "Optimized Swine Growth & FCR",
-    subtitle: "EXPORT-QUALITY BIO-INTERVENTIONS",
+
     tagline: "Scientific swine farming solutions focusing on digestive health and antibiotic-free productivity.",
     image: "/swarn.png", 
     link: "/products/swine",

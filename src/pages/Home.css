@@ -1957,4 +1957,312 @@
   .cta-actions-row { width: 100%; align-items: center; }
   .cta-text h2 { font-size: 2rem; }
   .cta-support-info { justify-content: center; }
+}/* =====================================================
+   MOBILE VIEW FIXES – HOME PAGE ONLY
+   Target: max-width 768px
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------- GLOBAL FIX ---------- */
+  .home-wrapper {
+    overflow-x: hidden;
+  }
+
+  .section-padding {
+    padding: 50px 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ---------- HERO SECTION ---------- */
+  .premium-hero {
+    height: auto;
+  }
+
+  .hero-split-container {
+    flex-direction: column;
+  }
+
+  .hero-text-side {
+    width: 100%;
+    padding: 110px 16px 30px;
+    text-align: center;
+  }
+
+  .hero-content-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .status-badge {
+    margin: 0 auto 14px;
+    font-size: 12px;
+  }
+
+  .hero-text-side h1 {
+    font-size: 30px;
+  }
+
+  .hero-text-side p {
+    font-size: 15px;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-btns button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-image-side {
+    height: 260px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* ---------- TECH BAR ---------- */
+  .tech-bar-container {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .tech-item {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .t-icon {
+    font-size: 26px;
+  }
+
+  /* ---------- SCIENCE STORY ---------- */
+  .science-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .science-image img {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* ---------- PILLAR SECTIONS ---------- */
+  .pillar-row,
+  .pillar-row.reverse {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .pillar-image,
+  .pillar-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pillar-main-img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .pillar-icon {
+    font-size: 42px;
+  }
+
+  .pillar-stages {
+    text-align: left;
+  }
+
+  /* ---------- PRODUCT CAROUSEL ---------- */
+  .product-glass-card {
+    min-width: 200px;
+  }
+
+  .product-main-img {
+    max-height: 90px;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .cta-content-card {
+    padding: 30px 18px;
+  }
+
+  .cta-actions-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cta-primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
+  }
+}
+/* =====================================================
+   MOBILE HERO IMAGE VISIBILITY FIX
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* Ensure hero has visible height */
+  .premium-hero {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  /* Force image side to appear */
+  .hero-image-side {
+    display: block;
+    width: 100%;
+    height: 300px;
+    min-height: 300px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
+  }
+
+  /* Reduce overlay intensity so image is visible */
+  .premium-hero::before,
+  .premium-hero::after {
+    opacity: 0.6;
+  }
+
+  /* Stack content properly */
+  .hero-split-container {
+    flex-direction: column;
+  }
+
+  /* Text section spacing */
+  .hero-text-side {
+    padding: 110px 16px 24px;
+    text-align: center;
+  }
+
+  /* Prevent text covering image */
+  .hero-content-wrapper {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 15, 32, 0.85),
+      rgba(8, 15, 32, 0.55)
+    );
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  /* Buttons full-width */
+  .hero-btns {
+    flex-direction: column;
+  }
+
+  .hero-btns button {
+    width: 100%;
+  }
+}
+/* =====================================================
+   MOBILE HERO — IMAGE FIRST LAYOUT
+   ===================================================== */
+@media (max-width: 768px) {
+
+  /* Stack hero sections */
+  .hero-split-container {
+    flex-direction: column;
+  }
+
+  /* IMAGE SECTION FIRST */
+  .hero-image-side {
+    order: 1;
+    width: 100%;
+    height: 260px;
+    min-height: 260px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
+  }
+
+  /* TEXT SECTION SECOND */
+  .hero-text-side {
+    order: 2;
+    padding: 24px 16px 32px;
+    text-align: center;
+  }
+
+  /* Content card look */
+  .hero-content-wrapper {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 15, 30, 0.95),
+      rgba(10, 15, 30, 0.85)
+    );
+    border-radius: 20px;
+    padding: 22px 18px;
+    margin-top: -40px; /* overlaps image slightly (premium look) */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Headline sizing */
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* Badge alignment */
+  .hero-badges {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* CTA buttons */
+  .hero-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-btns button {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 999px;
+  }
+
+  /* Reduce heavy overlays */
+  .premium-hero::before,
+  .premium-hero::after {
+    display: none;
+  }
 }
