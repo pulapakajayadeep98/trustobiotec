@@ -1,28 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Products from './pages/Products';
-import Contact from './pages/Contact';
-import Cart from './pages/Cart'; // New Page
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Products from "./pages/Products";
+import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
 
-import './App.css';
+// ✅ Page Loader
+import PageLoader from "./components/PageLoader";
 
+import "./App.css";
+
+/* ---------------- ROUTE CONTENT WRAPPER ---------------- */
+function AppContent({ cart, updateQty, cartCount }) {
+  const location = useLocation();
+  const [loading, setLoading] = useState(false);
+
+  // 🔁 Trigger loader on route change
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 700);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  return (
+    <>
+      {/* Page Transition Loader */}
+      <PageLoader show={loading} />
+
+      <Navbar cartCount={cartCount} />
+
+      <main className="content">
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+
+          {/* Products */}
+          <Route
+            path="/products/:category"
+            element={<Products cart={cart} updateQty={updateQty} />}
+          />
+          <Route
+            path="/products"
+            element={<Products cart={cart} updateQty={updateQty} />}
+          />
+
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Cart */}
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} updateQty={updateQty} />}
+          />
+        </Routes>
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+
+/* ---------------- MAIN APP ---------------- */
 function App() {
-  // 1. GLOBAL CART STATE
+  // 🛒 GLOBAL CART STATE
   const [cart, setCart] = useState({});
 
-  // 2. CALCULATE GLOBAL CART COUNT FOR NAVBAR
+  // 🧮 CART COUNT
   const cartCount = Object.values(cart).reduce((a, b) => a + b, 0);
 
-  // 3. GLOBAL UPDATE QUANTITY FUNCTION
+  // ➕➖ UPDATE QUANTITY
   const updateQty = (id, delta) => {
-    setCart(prev => {
+    setCart((prev) => {
       const newQty = (prev[id] || 0) + delta;
       if (newQty <= 0) {
         const { [id]: removed, ...rest } = prev;
@@ -32,10 +90,11 @@ function App() {
     });
   };
 
+  // ✨ AOS INIT
   useEffect(() => {
     AOS.init({
       duration: 700,
-      easing: 'ease-out-cubic',
+      easing: "ease-out-cubic",
       once: true,
       offset: 80,
     });
@@ -44,26 +103,11 @@ function App() {
   return (
     <Router>
       <div className="app-wrapper">
-        {/* Pass cartCount to Navbar */}
-        <Navbar cartCount={cartCount} />
-
-        <main className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            
-            {/* Support categories and pass cart props */}
-            <Route path="/products/:category" element={<Products cart={cart} updateQty={updateQty} />} />
-            <Route path="/products" element={<Products cart={cart} updateQty={updateQty} />} />
-            
-            <Route path="/contact" element={<Contact />} />
-
-            {/* NEW CART ROUTE */}
-            <Route path="/cart" element={<Cart cart={cart} updateQty={updateQty} />} />
-          </Routes>
-        </main>
-
-        <Footer />
+        <AppContent
+          cart={cart}
+          updateQty={updateQty}
+          cartCount={cartCount}
+        />
       </div>
     </Router>
   );
