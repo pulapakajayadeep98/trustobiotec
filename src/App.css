@@ -1,0 +1,47 @@
+:root {
+  --primary: #2ecc71;
+  --dark: #2c3e50;
+  --light: #ecf0f1;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+
+
+.main-content {
+  flex: 1;
+  padding: 3rem 5%;
+}
+
+/* Product Tabs */
+.tab-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab-content {
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}

@@ -1,0 +1,561 @@
+/* ==========================================================================
+   1. THEME VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --nav-dark: #0b1120;       /* Brand Navy */
+  --nav-height: 70px;        /* Sleek High-end Height */
+  --trusto-green: #2ecc71;   /* Brand Green */
+  --trusto-orange: #f39c12;  /* Brand Orange */
+  --white: #ffffff;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. NAVBAR BASE (STABLE DARK THEME)
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background:  rgba(255,255,255,0.85); /* Force Brand Consistency */
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: none;
+}
+
+.nav-container {
+  max-width: 1320px;         /* Streamlined Content Width */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;             /* 🔥 Switched to Flex for precise corner pinning */
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   3. LEFT CORNER: LOGO
+   ========================================================================== */
+.nav-brand {
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  height: 52px;              /* Professional compact sizing */
+  width: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   4. MIDDLE: NAVIGATION & SEARCH
+   ========================================================================== */
+.nav-right-section {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end; /* Align links/search toward the right group */
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;               /* Professional spacing */
+  list-style: none;
+}
+
+.nav-links a, .dropdown-trigger {
+  color: #0b1120;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover { color: var(--trusto-green); }
+
+/* Compact Search Bar */
+.nav-search-wrapper {
+  width: 300px;              /* 🔥 Decreased fixed width */
+  flex-shrink: 0;
+}
+
+.search-bar-inner {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar-inner input {
+  width: 100%;
+  padding: 8px 12px 8px 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #f1f5f9;
+  color: #0b1120;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.search-icon-nav {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0b1120;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   5. FAR RIGHT: DUAL-TONE CART
+   ========================================================================== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 1rem;
+}
+
+.cart-corner-link {
+  position: relative;
+  font-size: 1.9rem;
+  color: var(--trusto-green) !important; /* Green Icon */
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge-nav {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--trusto-orange) !important; /* Orange Bubble */
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 900;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--nav-dark);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   6. DROPDOWN (DESKTOP)
+   ========================================================================== */
+.nav-dropdown { position: relative; }
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--nav-dark);
+  min-width: 210px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: none;
+  list-style: none;
+}
+
+@media (min-width: 1025px) {
+  .nav-dropdown:hover .dropdown-menu { display: block; }
+}
+
+.nav-links a {
+    color: #fdfdfd;
+    font-weight: 600;
+}
+.dropdown-menu li a {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-menu li a:hover { background: rgba(255, 255, 255, 0.05); }
+
+/* ==========================================================================
+   7. RESPONSIVE (TABLET & MOBILE)
+   ========================================================================== */
+.nav-hamburger {
+  color:#0f172a;
+  font-size: 2.1rem;
+  cursor: pointer;
+  display: none;
+  z-index: 3001; /* Above menu */
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: block; }
+  .nav-search-wrapper, .nav-right-section { display: none; }
+  
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    color: white;
+    background: var(--nav-dark);
+    padding: 90px 2rem;
+    transition: var(--transition);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 3000;
+  }
+
+  .nav-menu-wrapper.active { right: 0; }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1.5rem;
+    color: white;
+  }
+
+  /* Indented Mobile Dropdown */
+  .dropdown-menu.show {
+    display: flex !important;
+    flex-direction: column;
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img { height: 42px; }
+  .nav-container { padding: 0 1rem; }
+  
+}
+
+/* ==========================================================================
+   UPDATED MIDDLE SECTION SPACING
+   ========================================================================== */
+
+.nav-right-section {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end; 
+  /* INCREASE THIS GAP to separate the Links from the Search Bar */
+  gap: 3.5rem; 
+}
+
+.nav-links {
+  display: flex;
+  /* Keep a professional gap between individual links */
+  gap: 2.5rem; 
+  list-style: none;
+}
+
+/* 2. SEARCH BAR - ADD EXTRA BUFFER GAP */
+.nav-search-wrapper {
+  /* This ensures the search bar starts further away from the 'Contact' link */
+  margin-left: 1.5rem; 
+  width: 300px; 
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   CART POSITIONING FIX (Far Right Corner)
+   ========================================================================== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  /* Space between the search bar and the cart icon */
+  margin-left: 2rem; 
+  gap: 1.5rem;
+}
+/* Navbar.css refined dropdown */
+.dropdown-menu {
+  background: var(--nav-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Adds depth */
+  border-radius: 8px;
+  padding: 12px 0;
+}
+
+.dropdown-menu li a {
+  padding: 10px 20px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(46, 204, 113, 0.1); /* Subtle green tint on hover */
+  color: var(--trusto-green);
+}
+/* Update this specific block in your @media (max-width: 1024px) section */
+@media (max-width: 1024px) {
+  /* ... existing code ... */
+
+  /* 🔥 Force the menu to show when the state is active */
+  .dropdown-menu.show {
+    display: flex !important;
+    flex-direction: column;
+    position: static; /* Allows it to push other links down */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px; /* Indentation for sub-items */
+    margin-top: 10px;
+    opacity: 1;
+    visibility: visible;
+  }
+ 
+}
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}.nav-links a {
+  color: #0f172a; /* softer navy */
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: #2ecc71;
+}
+.search-bar-inner input {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+@media (max-width: 1024px) {
+  .nav-hamburger { 
+    display: block; 
+    color: #0b1120; /* Hamburger color on the white navbar */
+  }
+  
+  /* Hides search bar on mobile to keep header clean */
+  .nav-search-wrapper { display: none; }
+  
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #0b1120; /* Your Brand Navy */
+    padding: 90px 2rem;
+    transition: var(--transition);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 3000;
+    display: block; /* Ensure it's ready to show */
+  }
+
+  .nav-menu-wrapper.active { right: 0; }
+
+  /* 🔥 FORCE WHITE TEXT FOR MOBILE LINKS */
+  .nav-links {
+    flex-direction: column;
+    gap: 2rem;
+    display: flex;
+  }
+
+  .nav-links a, 
+  .nav-links .dropdown-trigger span {
+    color: #ffffff !important; /* Pure white text */
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .nav-links .arrow {
+    color: #ffffff; /* White dropdown arrow */
+  }
+
+  /* Indented Mobile Dropdown Items */
+  .dropdown-menu.show {
+    display: flex !important;
+    flex-direction: column;
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    margin-top: 10px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .dropdown-menu.show li a {
+    color: rgba(255, 255, 255, 0.8) !important; /* Slightly dimmed white for sub-items */
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+/* Navy by default (Hamburger) */
+.nav-hamburger {
+  color: #0b1120; 
+  transition: color 0.3s ease;
+}
+
+/* 🔥 Pure White when menu is open (Closing X) */
+.nav-hamburger.menu-open {
+  color: #ffffff !important;
+}
+@media (max-width: 1024px) {
+  /* ... existing mobile styles ... */
+
+  /* 🔥 FORCE WHITE FONT FOR MOBILE DROPDOWN LINKS */
+  .dropdown-menu.show li a {
+    color: #ffffff !important; /* Set text to pure white */
+    font-weight: 500;
+    opacity: 1; /* Ensure text isn't dimmed */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  /* Optional: Add a hover effect for mobile touch */
+  .dropdown-menu.show li a:active {
+    color: var(--trusto-green) !important;
+  }
+
+  /* Ensure the icons (emoji) within the links are also clearly visible */
+  .dropdown-menu.show li a span {
+    color: #ffffff;
+  }
+}/* ==========================================================================
+   DESKTOP DROPDOWN STYLING (White Background & Navy Text)
+   ========================================================================== */
+
+/* 1. Change the dropdown container background to white */
+.dropdown-menu {
+  background: #ffffff !important; /* White background  */
+  border: 1px solid #e2e8f0; /* Subtle border for definition */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Lighter shadow for white bg */
+  border-radius: 12px;
+  padding: 10px 0;
+}
+
+/* 2. Change the font color to Navy */
+.dropdown-menu li a {
+  color: #0b1120 !important; /* Brand Navy  */
+  font-weight: 600;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+/* 3. Hover effect: Green text with a very light green background tint */
+.dropdown-menu li a:hover {
+  background: rgba(46, 204, 113, 0.05) !important; /* Very subtle green tint */
+  color: var(--trusto-green) !important; /* Brand Green  */
+}
+
+/* Ensure icons/emojis don't lose their clarity */
+.dropdown-menu li a span {
+  font-size: 1.1rem;
+}
+/* ==========================================================================
+   DESKTOP DROPDOWN STYLING (White Background & Navy Text)
+   This only triggers for screens LARGER than 1024px
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .dropdown-menu {
+    background: #ffffff !important; /* Pure white for desktop */
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 10px 0;
+    display: none; /* Controlled by hover */
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li a {
+    color: #0b1120 !important; /* Brand Navy font */
+    font-weight: 600;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-menu li a:hover {
+    background: rgba(46, 204, 113, 0.05) !important; 
+    color: var(--trusto-green) !important; /* Brand Green on hover */
+  }
+}
+
+/* ==========================================================================
+   MOBILE VIEW RESTORATION (Dark Theme)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* Restore Dark Sidebar */
+  .nav-menu-wrapper {
+    background: #0b1120 !important; /* Restore Brand Navy */
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+  }
+
+  /* Restore White Text for Mobile Links */
+  .nav-links li a, 
+  .dropdown-trigger span {
+    color: #ffffff !important; /* White font */
+    font-weight: 500;
+  }
+
+  /* Restore White "X" icon when open */
+  .nav-hamburger.menu-open {
+    color: #ffffff !important; /* */
+  }
+
+  /* Mobile Dropdown Container (Transparent/Dark) */
+  .dropdown-menu.show {
+    background: transparent !important; /* No white box on mobile */
+    display: flex !important;
+    flex-direction: column;
+    position: static;
+    padding-left: 20px;
+    margin-top: 10px;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Sub-links in Mobile (Aquaculture, etc.) */
+  .dropdown-menu.show li a {
+    color: rgba(255, 255, 255, 0.9) !important; /* Almost white */
+    font-size: 1rem;
+    padding: 12px 0;
+    border: none; /* Remove dividers if they were present */
+  }
+
+  .dropdown-menu.show li a:active {
+    color: var(--trusto-green) !important;
+  }
+}

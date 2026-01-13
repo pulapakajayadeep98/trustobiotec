@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.tf-main-footer {
+  background-color: #0b1120; /* Deep Navy */
+  color: #94a3b8;
+  padding: 80px 0 0;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.tf-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr 1.2fr;
+  gap: 40px;
+  padding: 0 20px 60px;
+}
+
+.tf-footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tf-footer-logo-img {
+  height: 45px;
+  width: auto;
+  mix-blend-mode: lighten; /* Ensures transparency */
+}
+
+.tf-footer-brand-name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.tf-footer-description {
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* Social Icons - Original Colors, No Bars */
+.tf-social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.tf-icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+  text-decoration: none !important; /* Removes underlines */
+  border-bottom: none !important;
+}
+
+.tf-fb { color: #1877F2; }
+.tf-ig { color: #E4405F; }
+.tf-mail { color: #ffffff; }
+.tf-wa { color: #25D366; }
+
+.tf-icon-box:hover {
+  transform: translateY(-5px);
+  background-color: #334155;
+}
+
+/* Titles & Lines */
+.tf-footer-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tf-footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 35px;
+  height: 3px;
+  background-color: #2ecc71; /* Biotech Green */
+}
+
+/* Navigation Links */
+.tf-footer-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.tf-footer-nav li { margin-bottom: 12px; }
+
+.tf-footer-nav a {
+  text-decoration: none !important;
+  color: inherit;
+  transition: 0.3s;
+  border-bottom: none !important;
+}
+
+.tf-footer-nav a:hover { color: #ffffff; padding-left: 5px; }
+
+/* Contact Items */
+/* Contact Items - Alignment Fixes */
+.tf-contact-item {
+  display: flex;
+  align-items: center; /* This aligns icon and text vertically */
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.tf-contact-icon {
+  color: #2ecc71;
+  font-size: 1.1rem; /* Slightly larger for better visibility */
+  width: 20px;       /* Fixed width so text starts at the same line */
+  text-align: center;
+}
+
+.tf-contact-item p, 
+.tf-contact-item a {
+  margin: 0;
+  color: inherit;
+  text-decoration: none !important;
+  line-height: 1.4;
+  transition: 0.3s;
+}
+
+.tf-contact-item a:hover {
+  color: #ffffff;
+}
+
+/* Specific fix for multi-line address to keep icon at the top */
+.tf-contact-item:last-child {
+  align-items: flex-start; 
+}
+.tf-contact-item:last-child .tf-contact-icon {
+  margin-top: 4px; 
+}
+.tf-contact-icon { color: #2ecc71; font-size: 1rem; margin-top: 5px; }
+
+.tf-contact-item p, .tf-contact-item a {
+  margin: 0;
+  color: inherit;
+  text-decoration: none !important;
+}
+
+/* Newsletter */
+.tf-newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+
+.tf-newsletter-input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+}
+
+.tf-newsletter-btn {
+  background-color: #2ecc71;
+  color: #0b1120;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tf-newsletter-btn:hover { background-color: #27ae60; box-shadow: 0 0 15px rgba(46, 204, 113, 0.4); }
+
+/* Bottom Bar */
+.tf-footer-bottom-bar {
+  border-top: 1px solid #1e293b;
+  padding: 25px 0;
+  margin-top: 30px;
+}
+
+.tf-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 0.85rem;
+}
+
+.tf-bottom-links a { text-decoration: none; color: inherit; margin-left: 20px; }
+
+/* Floating WhatsApp Pulse */
+.tf-whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  text-decoration: none !important;
+  animation: tf-pulse 2s infinite;
+}
+
+@keyframes tf-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 900px) {
+  .tf-footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .tf-footer-container { grid-template-columns: 1fr; }
+  .tf-bottom-container { flex-direction: column; text-align: center; gap: 15px; }
+}
+.tf-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* Changed from uneven fr units to equal columns for better balance */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  padding: 0 20px 60px;
+  /* This ensures the content stretches to the edges of the 1200px limit */
+  justify-content: space-between; 
+}
+
+/* Fix the logo alignment to the far left */
+.tf-footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  margin-left: -5px; /* Pulls logo slightly left to align with text below */
+}
+
+/* Ensure the text doesn't have unnecessary padding */
+.tf-footer-description {
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  max-width: 280px; /* Prevents text from stretching too wide */
+}
+
+/* Keep responsive behavior */
+@media (max-width: 1024px) {
+  .tf-footer-container {
+    grid-template-columns: 1.3fr 0.7fr 1fr; /* Drop to 3 columns on mid-screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .tf-footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .tf-footer-container { grid-template-columns: 1fr; }
+}
+.tf-newsletter-btn:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.tf-contact-item {
+  display: flex;
+  align-items: center; /* Ensures icon is centered with single-line text */
+  gap: 15px;
+  margin-bottom: 18px;
+}
+.tf-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* Balanced ratios for a 4-column layout */
+  grid-template-columns: 1.2fr 0.8fr 1fr 1fr; 
+  gap: 40px;
+  padding: 0 20px 60px;
+}
+/* Update these specific classes in Footer.css */
+
+.tf-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Creates the space you were missing */
+  width: 100%;
+}
+
+.tf-newsletter-input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 14px;
+  border-radius: 8px; /* Matches button radius */
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box; /* Prevents overlap */
+}
+
+.tf-newsletter-btn {
+  background-color: #2ecc71;
+  color: #0b1120;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  width: 100%; /* Matches input width exactly */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/* --- Add this new class --- */
+.tf-newsletter-text {
+  margin-bottom: 20px; /* This creates the space you requested */
+  line-height: 1.5;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* --- Keep your existing form styles --- */
+.tf-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  width: 100%;
+}
+/* Update these specific sections in your CSS */
+
+.tf-footer-container {
+  /* Increase max-width or set to 100% to reduce side gaps */
+  max-width: 1400px; 
+  margin: 0 auto;
+  display: grid;
+  /* Adjusted ratios: Giving the first column (logo/text) more room 
+     prevents the middle columns from being pushed too far right */
+  grid-template-columns: 1.5fr 0.8fr 1fr 1.2fr; 
+  gap: 30px;
+  /* Reduced left padding to bring content closer to the edge */
+  padding: 0 10px 60px 10px; 
+}
+
+.tf-footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  /* Reset any negative margins that might cause misalignment */
+  margin-left: 0; 
+}
+
+.tf-footer-description {
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  /* Ensure the text doesn't squeeze too narrow, which creates "dead space" */
+  max-width: 320px; 
+}
+
+/* Ensure the bottom bar follows the same width */
+.tf-bottom-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+/* --- Desktop & Base Styles --- */
+.tf-footer-container {
+  /* Set max-width to 100% and a larger max-limit to remove side gaps */
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto;
+  display: grid;
+  /* First column gets more space to stay left */
+  grid-template-columns: 1.5fr 0.8fr 1fr 1.2fr; 
+  gap: 30px;
+  /* Minimal padding so content stays close to edges */
+  padding: 0 15px 60px 15px; 
+  box-sizing: border-box;
+}
+
+.tf-footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: flex-start; /* Forces alignment to left */
+}
+
+/* --- Mobile & Tablet Responsive View --- */
+
+/* Tablets (iPad/Small Laptops) */
+@media (max-width: 1024px) {
+  .tf-footer-container {
+    grid-template-columns: 1fr 1fr; /* Two columns per row */
+    gap: 40px 20px;
+  }
+}
+
+/* Phones (iPhone/Android) */
+@media (max-width: 600px) {
+  .tf-footer-container {
+    /* Stack everything in one column */
+    grid-template-columns: 1fr; 
+    padding: 0 20px 40px 20px;
+    gap: 35px;
+  }
+
+  /* Force all text and items to align left on mobile */
+  .tf-footer-logo-wrapper,
+  .tf-footer-title,
+  .tf-footer-description,
+  .tf-social-icons,
+  .tf-contact-item {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  /* Make sure titles' green lines stay on the left */
+  .tf-footer-title::after {
+    left: 0;
+  }
+
+  .tf-footer-description {
+    max-width: 100%; /* Use full width on mobile */
+  }
+
+  /* Adjust Bottom Bar for Mobile */
+  .tf-bottom-container {
+    flex-direction: column;
+    align-items: flex-start; /* Keep copyright on the left */
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .tf-bottom-links {
+    margin-top: 10px;
+  }
+
+  .tf-bottom-links a {
+    margin-left: 0;
+    margin-right: 15px; /* Space links horizontally on mobile */
+    display: inline-block;
+  }
+}
+/* Newsletter Success Popup */
+.tf-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 17, 32, 0.9); /* Deep Navy matching footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.tf-popup-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: tf-fadeInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tf-popup-icon {
+  width: 80px;
+  height: 80px;
+  background: #2ecc71; /* Trusto Green */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin: 0 auto 25px;
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+}
+
+.tf-popup-content h3 {
+  color: #0b1120;
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.tf-popup-content p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.tf-popup-btn {
+  background: #0b1120;
+  color: #ffffff;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tf-popup-btn:hover {
+  background: #2ecc71;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+@keyframes tf-fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.tf-newsletter-btn:hover {
+  /* Fill with green on hover */
+  background-color: #2ecc71;
+  color: #0b1120; 
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- 3. Input Matching --- */
+.tf-newsletter-input {
+  background: rgba(30, 41, 59, 0.5); /* Semi-transparent navy */
+  border: 1px solid #334155;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.tf-newsletter-input:focus {
+  border-color: #2ecc71;
+  outline: none;
+}
