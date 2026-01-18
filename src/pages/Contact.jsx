@@ -90,7 +90,7 @@ return (
             <div className="contact-info-content">
               <h4>Office Address</h4>
               <p>
-                16-7-382/19, Azampura Masjid,<br />
+                16-7-382/18, Azampura Masjid,<br />
                 Azampura, Chaderghat,<br />
                 Hyderabad – 500024
               </p>
