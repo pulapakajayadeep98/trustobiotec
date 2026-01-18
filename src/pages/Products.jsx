@@ -41,7 +41,7 @@ const allProducts = {
     { 
       id: 4, 
       name: "WHITE F", 
-      image: "/images/aqua/white-f.png", 
+      image: "/whitef.png", 
       price: 2500, 
       tagline: "Solution for White Faeces", 
       category: "HEALTH", 
@@ -52,7 +52,7 @@ const allProducts = {
     { 
       id: 5, 
       name: "SUPERSAFE (SS)", 
-      image: "/images/aqua/supersafe.png", 
+      image: "/supersafe.png", 
       price: 3200, 
       tagline: "EMS & RMS Support", 
       category: "HEALTH", 
@@ -74,7 +74,7 @@ const allProducts = {
     { 
       id: 7, 
       name: "CONVERTAL PLUS", 
-      image: "/images/aqua/convertal.png", 
+      image: "/convertalplus.png", 
       price: 2800, 
       tagline: "EHP & Feed Utilisation Support", 
       category: "HEALTH", 
@@ -118,7 +118,7 @@ const allProducts = {
     { 
       id: 11, 
       name: "ANTI-GILLFLUK", 
-      image: "/images/aqua/anti-gillfluk.png", 
+      image: "/antigillfluk.png", 
       price: 1700, 
       tagline: "External Parasite Protection", 
       category: "HEALTH", 
@@ -140,7 +140,7 @@ const allProducts = {
     { 
       id: 13, 
       name: "WELPOND", 
-      image: "/images/aqua/welpond.png", 
+      image: "/wellpond.png", 
       price: 2200, 
       tagline: "Shrimp Friendly Pond", 
       category: "POND QUALITY", 
@@ -162,7 +162,7 @@ const allProducts = {
     { 
       id: 15, 
       name: "TRUSTOGARD Fish", 
-      image: "/images/aqua/trustogard-fish.png", 
+      image: "/trustoguard.png", 
       price: 1800, 
       tagline: "Protection & Growth for Fish", 
       category: "GROWTH", 
@@ -173,7 +173,7 @@ const allProducts = {
     { 
       id: 16, 
       name: "Q-POND", 
-      image: "/Qpond.png", 
+      image: "/qpond1.png", 
       price: 1400, 
       tagline: "Water Quality Improver", 
       category: "POND QUALITY", 
@@ -206,7 +206,7 @@ const allProducts = {
     { 
       id: 19, 
       name: "V-KWIK", 
-      image: "/images/aqua/v-kwik.png", 
+      image: "/vkwik.png", 
       price: 1400, 
       tagline: "Support Against Vibrio", 
       category: "HEALTH", 

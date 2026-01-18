@@ -113,10 +113,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4. POULTRY & SWINE SECTION */}
-   {/* 4. POULTRY & SWINE SECTION */}
-
-{/* 4. POULTRY & SWINE SECTION */}
 {/* 4. POULTRY & SWINE SECTION */}
 <section className="secondary-sectors section-padding">
   <div className="container grid-2 sector-grid-gap">
