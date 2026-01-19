@@ -1,142 +1,129 @@
 /* ==========================================================================
-   HOME.CSS (CLEAN - NO DUPLICATES)
-   Matches: Home.jsx classNames
+   HOME.CSS - FINAL PRODUCTION VERSION (NO DUPLICATES)
    ========================================================================== */
 
-/* ---------- Theme Variables (fallbacks if not defined globally) ---------- */
 :root {
   --trusto-green: #10b981;
   --trusto-navy: #0b1120;
   --soft-bg: #f8fafc;
   --text-muted: #64748b;
-  --border-soft: #e2e8f0;
 }
 
-/* ==========================================================================
-   1) GLOBAL WRAPPER
-   ========================================================================== */
 .home-wrapper {
   overflow-x: hidden;
   background: var(--soft-bg);
 }
 
-/* Basic helpers used in JSX */
-.section-padding {
-  padding: 90px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.text-center {
-  text-align: center;
-}
+.section-padding { padding: 90px 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* ==========================================================================
-   2) HERO THEMES (used on .hero-slide via slide.theme)
-   ========================================================================== */
-.aqua-theme {
-  --hero-grad: linear-gradient(135deg, #0b1120 0%, #0d2c4d 100%);
-  --hero-accent: #0ea5e9;
-}
-
-.poultry-theme {
-  --hero-grad: linear-gradient(135deg, #0b1120 0%, #4d1d0d 100%);
-  --hero-accent: #f59e0b;
-}
-
-.swine-theme {
-  --hero-grad: linear-gradient(135deg, #0b1120 0%, #2e0d4d 100%);
-  --hero-accent: #a855f7;
-}
-
-/* ==========================================================================
-   3) PREMIUM HERO CAROUSEL
+   PREMIUM HERO SECTION (FULL IMAGE + BLUR GLASS CARD)
    ========================================================================== */
 .premium-hero {
   position: relative;
   width: 100%;
-  /* Fix navbar gap issue: hero starts immediately */
-  margin-top: 0;
-  padding-top: 0;
-  background: var(--trusto-navy);
-  overflow: hidden;
-  /* Desktop height */
   height: 85vh;
   min-height: 620px;
+  background: var(--trusto-navy);
+  overflow: hidden;
 }
 
-/* Each slide */
 .hero-slide {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--hero-grad);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.7s ease;
-  display: flex;
-  align-items: stretch; /* IMPORTANT: prevents top-gap */
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-slide.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 2;
-}
+.hero-slide.active { opacity: 1; visibility: visible; z-index: 2; }
 
-/* 50/50 split */
 .hero-split-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* LEFT: Text */
+/* FULL IMAGE LAYER - Realistic Enhancement */
+.hero-image-side {
+  position: absolute !important;
+  inset: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: brightness(1.05) contrast(1.05) saturate(1.05) !important;
+}
+
+/* NATURAL GRADIENT OVERLAY (Not dark fog) */
+.hero-image-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(11, 17, 32, 0.35) 0%,
+    rgba(11, 17, 32, 0.15) 35%,
+    rgba(11, 17, 32, 0.05) 65%,
+    transparent 100%
+  ) !important;
+}
+
+/* CONTENT ALIGNMENT */
 .hero-text-side {
-  background: var(--hero-grad);
+  position: relative;
+  z-index: 3;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 6%;
-  color: #fff;
+  justify-content: flex-start;
+  padding-left: 6%;
 }
 
-.hero-content-wrapper {
-  max-width: 560px;
-  width: 100%;
+/* BLUR-GLASS CARD (Desktop) */
+@media (min-width: 769px) {
+  .hero-content-wrapper {
+    position: relative;
+    max-width: 620px;
+    padding: 40px;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.28) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .hero-content-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(15, 23, 42, 0.35);
+    z-index: -1;
+  }
 }
 
-/* badge */
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 1px;
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 18px;
 }
 
-/* pulse dot */
 .pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--hero-accent);
+  background: #ffd814;
   position: relative;
-  flex-shrink: 0;
 }
 
 .pulse-dot::after {
@@ -144,7 +131,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: var(--hero-accent);
+  background: #ffd814;
   animation: heroRipple 2s infinite;
 }
 
@@ -153,96 +140,300 @@
   100% { transform: scale(4); opacity: 0; }
 }
 
-/* subtitle (you render slide.subtitle but it’s empty; still keep style) */
-.hero-sub {
-  display: block;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--hero-accent);
-  font-size: 0.85rem;
-  margin-bottom: 12px;
-}
-
 .hero-content-wrapper h1 {
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
   line-height: 1.1;
-  margin: 0 0 14px;
+  color: #fff;
   font-weight: 900;
+  margin-bottom: 14px;
 }
 
 .hero-content-wrapper p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.1rem;
-  line-height: 1.65;
-  margin: 0 0 26px;
-  max-width: 520px;
-}
-
-/* hero buttons */
-.hero-btns {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Buttons used across page */
-.main-btn,
-.alt-btn,
-.cta-primary-btn {
-  border: none;
-  cursor: pointer;
-  font-weight: 800;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.main-btn {
-  background: #ffd814;
-  color: #0b1120;
-  padding: 14px 22px;
-  border-radius: 999px;
-  box-shadow: 0 10px 25px rgba(255, 216, 20, 0.18);
-}
-
-.main-btn:hover {
-  background: #f7ca00;
-  transform: translateY(-2px);
-}
-
-.alt-btn {
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.alt-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* RIGHT: Image side */
-.hero-image-side {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 540px;
 }
 
 /* ==========================================================================
-   4) TECH BAR
+   MOBILE HERO ADAPTATION
    ========================================================================== */
-.tech-bar-section {
-  background: var(--soft-bg);
-  padding: 0 18px;
+@media (max-width: 768px) {
+  .premium-hero { height: 100svh; }
+
+  .hero-text-side {
+    padding: 0 14px 110px !important; /* Safe space for WhatsApp */
+    align-items: flex-end !important;
+    justify-content: center !important;
+  }
+
+  .hero-content-wrapper {
+    background: rgba(15, 23, 42, 0.6) !important;
+    padding: 20px !important;
+    border-radius: 18px !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-content-wrapper h1 { font-size: 1.6rem !important; }
+  .hero-content-wrapper p { 
+    font-size: 0.95rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-btns { display: none !important; } /* Clean conversion mode */
+
+  .hero-image-side::after {
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 12%, transparent 60%) !important;
+  }
+}
+/* ============================================================
+   UPDATED PREMIUM BUTTONS (Trusto Green Theme)
+   ============================================================ */
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px;
 }
 
+/* Common base styles */
+.main-btn, 
+.alt-btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer !important;
+    border: none;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* --- LOGO GREEN: "Explore Solutions" Button --- */
+.main-btn {
+    background-color: #16a34a; /* Precise Trusto Logo Green */
+    color: #ffffff; /* White text looks better on green */
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+}
+
+.main-btn:hover {
+    background-color: #15803d; /* Deeper green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
+}
+
+.main-btn svg {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.main-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* --- GLASSMORPHISM: "The Trusto Legacy" Button --- */
+.alt-btn {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.alt-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+    
+    .main-btn, 
+    .alt-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+@media (max-width: 768px) {
+
+  /* Completely hide the technical bar on mobile */
+
+  .tech-bar-section {
+
+    display: none !important;
+
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  /* Force hero to full viewport height */
+
+  .premium-hero {
+
+    height: 100vh !important;
+
+    min-height: 100vh !important;
+
+    margin-top: 0 !important;
+
+    padding-top: 0 !important;
+
+  }
+
+
+
+  /* Ensure the background image covers everything */
+
+  .hero-image-side {
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    background-size: cover !important;
+
+    background-position: center !important;
+
+    background-repeat: no-repeat !important;
+
+    background-color: transparent !important; /* Remove background color */
+
+  }
+
+
+
+  /* Make sure the text side is transparent so image shows through */
+
+  .hero-text-side {
+
+    background: transparent !important;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end; /* Keeps content at bottom like typical mobile heroes */
+
+    padding-bottom: 60px;
+
+  }
+
+
+
+  /* Center the content card on top of the image */
+
+  .hero-content-wrapper {
+
+    background: rgba(15, 23, 42, 0.6) !important; /* Semi-transparent for readability */
+
+    backdrop-filter: blur(10px);
+
+    width: 90% !important;
+
+    margin: 0 auto;
+
+  }
+
+}.home-wrapper {
+
+  overflow-x: hidden;
+
+  background: var(--soft-bg);
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  /* Remove any padding/margins that create gaps between the hero and next section */
+
+  .science-story {
+
+    margin-top: 0 !important;
+
+    padding-top: 40px;
+
+  }
+
+}
+@media (max-width: 768px) {
+  /* Set the hero to full screen height */
+  .premium-hero {
+    height: 100svh !important; 
+    min-height: 100svh !important;
+  }
+
+  /* Target the text container to move the card DOWN */
+  .hero-text-side {
+    position: relative !important;
+    z-index: 5;
+    height: 100%;
+    display: flex !important;
+    
+    /* 🔥 This keeps the card at the bottom */
+    align-items: flex-end !important; 
+    
+    /* 🔥 REDUCE this value to move the card LOWER (closer to the bottom edge) */
+    padding: 0 14px 40px !important; 
+    
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Make the card slightly more compact to show more image */
+  .hero-content-wrapper {
+    background: rgba(15, 23, 42, 0.65) !important;
+    padding: 16px 14px !important;
+    border-radius: 18px !important;
+    width: 92% !important;
+    margin: 0 auto;
+    /* Prevent the card from being too tall */
+    max-height: fit-content;
+  }
+
+  /* Ensure headings don't take up too much vertical space */
+  .hero-content-wrapper h1 {
+    font-size: 1.55rem !important;
+    margin: 8px 0 !important;
+  }
+
+  .hero-content-wrapper p {
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+    -webkit-line-clamp: 2; /* Limit to 2 lines to save space */
+  }
+}
+/* ==========================================================================
+   TECH BAR & CAROUSEL
+   ========================================================================== */
 .tech-bar-container {
   max-width: 1200px;
   margin: -55px auto 0;
@@ -257,11 +448,67 @@
   z-index: 5;
 }
 
+.scroller-track {
+  display: flex;
+  gap: 26px;
+  animation: infiniteScroll 45s linear infinite;
+}
+
+@keyframes infiniteScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-1836px); }
+}
+
+.product-glass-card {
+  flex: 0 0 280px;
+  background: #fff;
+  border: 1px solid #eef2f6;
+  border-radius: 24px;
+  padding: 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.12);
+}
+
+/* ==========================================================================
+   HOME.CSS - REMAINING SECTIONS (PREMIUM REFINEMENT)
+   ========================================================================== */
+
+/* ---------- 1. TECHNICAL ADVANTAGE BAR ---------- */
+.tech-bar-section {
+  background: var(--soft-bg);
+  padding: 0 18px;
+}
+
+.tech-bar-container {
+  max-width: 1200px;
+  margin: -55px auto 0; /* Creates the overlap with the hero section */
+  background: #ffffff;
+  padding: 34px;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  position: relative;
+  z-index: 5;
+  cursor: default !important; /* Removes text-edit cursor */
+  user-select: none;
+}
+
 .tech-item {
   display: flex;
   gap: 16px;
   align-items: flex-start;
   padding: 0 16px;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
 }
 
 .tech-item:not(:last-child) {
@@ -269,9 +516,10 @@
 }
 
 .t-icon {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   color: var(--trusto-green);
   flex-shrink: 0;
+  filter: drop-shadow(0 4px 6px rgba(16, 185, 129, 0.2));
 }
 
 .t-text h4 {
@@ -290,82 +538,228 @@
   line-height: 1.5;
 }
 
+
 /* ==========================================================================
-   5) SCIENCE STORY
+   SCIENCE STORY SECTION REFINEMENT
    ========================================================================== */
+
 .science-story {
-  background: #fff;
+  background: #ffffff;
+  padding: 100px 0; /* Increased vertical breathing room */
+  overflow: hidden;
 }
 
 .science-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 70px;
+  grid-template-columns: 1.1fr 0.9fr; /* Slightly wider text area */
+  gap: 80px; /* Spacious gap between text and image */
   align-items: center;
 }
 
+/* Typography Hierarchy */
 .overline {
   display: inline-block;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 0.85rem;
-  color: #64748b;
-  margin-bottom: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 50px;
 }
 
-.brand-blue {
-  color: #0ea5e9;
+/* Decorative line before "Few Words About Us" */
+.overline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 40px;
+  height: 2px;
+  background: var(--trusto-green);
+  transform: translateY(-50%);
 }
 
 .science-content h2 {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  line-height: 1.2;
-  margin: 0 0 14px;
-  color: #0f172a;
+  font-size: clamp(2rem, 4vw, 3rem); /* Responsive fluid font size */
+  line-height: 1.15;
+  margin-bottom: 24px;
+  color: var(--trusto-navy);
   font-weight: 900;
 }
 
+.brand-blue {
+  color: var(--trusto-green);
+}
 .science-content p {
-  margin: 0;
+  margin-bottom: 30px;
   color: #334155;
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
+/* Feature Boxes Styling */
 .science-features {
-  margin-top: 22px;
   display: grid;
-  gap: 12px;
+  gap: 16px;
+  margin-top: 30px;
 }
 
 .s-feat {
-  padding: 14px 14px;
-  background: #f0f9ff;
-  border-left: 4px solid #0ea5e9;
-  border-radius: 10px;
-  color: #334155;
-  font-size: 0.98rem;
-  line-height: 1.55;
+  padding: 18px 22px;
+  background: #f8fafc; /* Very light slate */
+  border-left: 5px solid #0ea5e9;
+  border-radius: 12px;
+  color: #1e293b;
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
+.s-feat:hover {
+  transform: translateX(10px);
+  background: #f1f5f9;
+}
+
+.s-feat strong {
+  color: var(--trusto-navy);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 800;
+}
+
+/* Image & Shadow Effect */
 .science-image {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .styled-img {
   width: 100%;
-  max-width: 520px;
-  border-radius: 26px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  max-width: 540px;
+  border-radius: 30px; /* Modern rounded corners */
+  box-shadow: 
+    0 20px 50px rgba(15, 23, 42, 0.1),
+    0 10px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.styled-img:hover {
+  transform: scale(1.02);
 }
 
 /* ==========================================================================
-   6) PILLAR DEEP DIVE
+   MOBILE ADAPTATION
    ========================================================================== */
+@media (max-width: 1024px) {
+  .science-grid {
+    grid-template-columns: 1fr; /* Stack on tablet/mobile */
+    gap: 50px;
+    text-align: center;
+  }
+
+  .science-content {
+    order: 2; /* Move text below image on mobile */
+    text-align: left; /* Keep text left-aligned for readability */
+  }
+
+  .science-image {
+    order: 1;
+  }
+
+  .overline {
+    padding-left: 0;
+  }
+  
+  .overline::before {
+    display: none;
+  }
+
+  .science-content h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .science-story {
+    padding: 60px 0;
+  }
+  
+  .s-feat:hover {
+    transform: none; /* Disable hover effect on mobile */
+  }
+}
+/* --- ABOUT US SECTION REFINEMENT --- */
+.science-story {
+  background: #ffffff;
+  padding: 100px 0; /* Professional breathing room */
+}
+
+/* Updated Heading Style */
+.overline {
+  display: block;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--trusto-green); /* Matches your logo green */
+  margin-bottom: 12px;
+}
+
+.science-content h2 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--trusto-navy);
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+/* Feature matter for sectors */
+.s-feat {
+  padding: 16px 20px;
+  background: #f8fafc;
+  border-left: 4px solid var(--trusto-green); /* Visual anchor for the sector */
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #334155;
+  transition: transform 0.3s ease;
+}
+
+.s-feat:hover {
+  transform: translateX(8px);
+  background: #f1f5f9;
+}
+
+.s-feat strong {
+  display: block;
+  color: var(--trusto-navy);
+  font-weight: 800;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Handling */
+@media (max-width: 1024px) {
+  .science-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .science-content {
+    order: 2; /* Text below image on mobile */
+  }
+  .science-image {
+    order: 1;
+  }
+}
+/* ---------- 3. PILLAR DEEP DIVE ---------- */
 .pillar-deep-dive {
-  background: #fff;
+  background: #ffffff;
 }
 
 .pillar-row {
@@ -376,25 +770,15 @@
   margin-bottom: 100px;
 }
 
-.pillar-row:last-child {
-  margin-bottom: 0;
-}
-
-.pillar-row.reverse .pillar-content {
-  order: 2;
-}
-.pillar-row.reverse .pillar-image {
-  order: 1;
-}
-
-.pillar-image {
-  position: relative;
-}
+.pillar-row.reverse { direction: rtl; }
+.pillar-row.reverse .pillar-content, 
+.pillar-row.reverse .pillar-image { direction: ltr; }
 
 .pillar-main-img {
   width: 100%;
   border-radius: 28px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  user-select: none;
 }
 
 .experience-tag {
@@ -402,28 +786,13 @@
   top: 18px;
   left: 18px;
   background: #0ea5e9;
-  color: #fff;
+  color: #ffffff;
   padding: 8px 14px;
   border-radius: 12px;
   font-weight: 900;
   font-size: 0.85rem;
-  box-shadow: 0 10px 20px rgba(14,165,233,0.25);
+  box-shadow: 0 10px 20px rgba(14, 165, 233, 0.25);
 }
-
-.pillar-content {
-  color: #0f172a;
-}
-
-.pillar-icon {
-  font-size: 3.2rem;
-  margin-bottom: 14px;
-}
-
-.aqua-color { color: #0ea5e9; }
-.poultry-color { color: #e11d48; }
-.swine-color { color: #d97706; }
-.brand-red { color: #e11d48; }
-.brand-purple { color: #d97706; }
 
 .pillar-content h2 {
   font-size: clamp(1.9rem, 3vw, 2.7rem);
@@ -432,12 +801,10 @@
   line-height: 1.2;
 }
 
-.pillar-content p {
-  color: #475569;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  margin: 0;
-}
+.pillar-icon { font-size: 3.5rem; margin-bottom: 14px; }
+.aqua-color { color: #0ea5e9; }
+.poultry-color { color: #e11d48; }
+.swine-color { color: #d97706; }
 
 .pillar-stages {
   margin: 18px 0 24px;
@@ -455,17 +822,10 @@
   line-height: 1.55;
 }
 
-/* ==========================================================================
-   7) PRODUCT CAROUSEL (INFINITE SCROLLER)
-   ========================================================================== */
+/* ---------- 4. INFINITE PRODUCT CAROUSEL ---------- */
 .premium-product-carousel {
   background: #fdfdfd;
   overflow: hidden;
-}
-
-.carousel-header p {
-  margin: 10px 0 0;
-  color: #64748b;
 }
 
 .infinite-scroller {
@@ -492,20 +852,21 @@
 
 .product-glass-card {
   flex: 0 0 280px;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #eef2f6;
   border-radius: 24px;
   padding: 22px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  cursor: pointer !important;
   text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
 }
 
 .product-glass-card:hover {
   transform: translateY(-8px);
   border-color: #0ea5e9;
-  box-shadow: 0 20px 40px rgba(14,165,233,0.12);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.12);
 }
 
 .product-img-wrapper {
@@ -517,58 +878,25 @@
 }
 
 .product-main-img {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 90%;
+  max-width: 90%;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
 .product-glass-card:hover .product-main-img {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
-.product-info h4 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-  color: #0f172a;
-  font-weight: 900;
-}
-
-.view-details {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 0.88rem;
-  color: #0ea5e9;
-  font-weight: 800;
-  opacity: 0.9;
-}
-
-/* ==========================================================================
-   8) FINAL CTA SECTION
-   ========================================================================== */
+/* ---------- 5. FINAL CTA SECTION ---------- */
 .final-conversion-footer {
   position: relative;
   padding: 100px 0;
   background: #f8fafc;
-  overflow: hidden;
-}
-
-.cta-pattern-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-  background-size: 25px 25px;
-  opacity: 0.35;
-  pointer-events: none;
 }
 
 .cta-content-card {
-  position: relative;
-  z-index: 2;
-  background: #fff;
-  border: 1px solid var(--border-soft);
+  background: #ffffff;
   padding: 60px;
   border-radius: 32px;
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
@@ -576,241 +904,1337 @@
   grid-template-columns: 1.3fr 0.7fr;
   gap: 40px;
   align-items: center;
-}
-
-.cta-text {
-  text-align: left;
-}
-
-.overline.dark {
-  color: #64748b;
-}
-
-.brand-emerald {
-  color: var(--trusto-green);
-}
-
-.cta-text h2 {
-  margin: 10px 0 14px;
-  font-size: 2.4rem;
-  font-weight: 900;
-  color: #0f172a;
-  line-height: 1.15;
-}
-
-.cta-text p {
-  margin: 0;
-  color: #475569;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.cta-actions-row {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  user-select: none;
 }
 
 .cta-primary-btn {
   width: 100%;
   background: var(--trusto-green);
-  color: #fff;
-  padding: 16px 18px;
+  color: #ffffff;
+  padding: 18px;
   border-radius: 999px;
-  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.18);
+  font-weight: 800;
+  cursor: pointer !important;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .cta-primary-btn:hover {
   background: #059669;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2);
 }
 
-.cta-support-info {
+/* ---------- 6. RESPONSIVE REFINEMENTS ---------- */
+@media (max-width: 1024px) {
+  .tech-bar-container { grid-template-columns: 1fr; margin-top: 20px; }
+  .tech-item:not(:last-child) { border-right: none; border-bottom: 1px solid #f1f5f9; padding-bottom: 18px; }
+  .pillar-row { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .pillar-row.reverse { direction: ltr; }
+  .cta-content-card { grid-template-columns: 1fr; text-align: center; padding: 40px 20px; }
+}
+
+/* ============================================================
+   POULTRY FULL-BACKGROUND REFINEMENT
+   ============================================================ */
+
+.pillar-row.full-bg {
+  position: relative;
+  min-height: 650px; /* Adjust height to match reference */
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+  overflow: hidden;
+  margin: 60px 0;
+}
+
+/* Background Image Layer */
+.pillar-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Dark Gradient Overlay for Text Readability (Matching Alltech Style) */
+.card-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right, 
+    rgba(0, 0, 0, 0.85) 20%, 
+    rgba(0, 0, 0, 0.4) 60%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  z-index: 2;
+}
+
+/* Force content to stay above the background */
+.pillar-row.full-bg .container {
+  position: relative;
+  z-index: 3;
+}
+
+.pillar-row.full-bg .pillar-content {
+  max-width: 650px; /* Keeps text on the left half */
+  color: #ffffff;
+  text-align: left;
+}
+
+.pillar-row.full-bg h2 {
+  color: #ffffff;
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.pillar-row.full-bg p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* High Fidelity Stages in Dark Mode */
+.pillar-stages.dark-mode .p-stage {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  backdrop-filter: blur(5px);
+}
+
+/* --- Mobile Fix for Full Background --- */
+@media (max-width: 768px) {
+  .pillar-row.full-bg {
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+
+  .card-overlay-dark {
+    background: rgba(0, 0, 0, 0.7); /* Darken more for small screens */
+  }
+
+  .pillar-row.full-bg .pillar-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .pillar-row.full-bg h2 {
+    font-size: 2rem;
+  }
+}
+/* ============================================================
+   POULTRY LEFT-ALIGNED & STORY BUTTON REFINEMENT
+   ============================================================ */
+
+.pillar-content-left {
+  max-width: 600px;
+  text-align: left; /* Forces strictly left-aligned text */
+  position: relative;
+  z-index: 5;
+  color: #ffffff;
+}
+
+/* Badge with horizontal line as per reference image_fa1717.jpg */
+.proven-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--trusto-green);
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+.badge-line {
+  width: 30px;
+  height: 2px;
+  background: var(--trusto-green);
+}
+
+.pillar-content-left h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* Compact Horizontal Stages */
+.compact-stages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.c-stage {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  backdrop-filter: blur(4px);
+}
+
+/* --- THE CIRCULAR PLAY BUTTON --- */
+.story-btn-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-top: 10px;
+}
+
+.watch-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.play-icon-circle {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.play-triangle {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #ffffff; /* Triangle shape */
+  margin-left: 4px;
+}
+
+/* Hover State */
+.story-btn-wrapper:hover .play-icon-circle {
+  background: #ffffff;
+}
+
+.story-btn-wrapper:hover .play-triangle {
+  border-left-color: #000000;
+}
+
+.story-btn-wrapper:hover .watch-text {
+  border-bottom-color: #ffffff;
+}
+
+/* Mobile Alignment */
+@media (max-width: 768px) {
+  .pillar-content-left {
+    max-width: 100%;
+    text-align: center; /* Center only on mobile for better ergonomics */
+  }
+  .compact-stages-grid {
+    justify-content: center;
+  }
+  .story-btn-wrapper {
+    justify-content: center;
+  }
+  .proven-badge {
+    justify-content: center;
+  }
+}/* ============================================================
+   POULTRY FULL-WIDTH HIGH FIDELITY REFINEMENT
+   ============================================================ */
+
+.pillar-row.high-fidelity.edge-to-edge {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 520px; /* Compact height as requested */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.pillar-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 1;
+}
+
+/* Gradient for readability matching image_058dcb.jpg */
+.card-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right, 
+    rgba(0, 0, 0, 0.85) 0%, 
+    rgba(0, 0, 0, 0.5) 45%, 
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.full-width-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.pillar-content-left {
+  max-width: 620px;
+  text-align: left; /* Strict left alignment */
+  color: #ffffff;
+}
+
+/* Badge with line from reference image_fa1717.jpg */
+.proven-badge {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #16a34a; /* Brand Green */
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.badge-line {
+  width: 35px;
+  height: 2px;
+  background: #16a34a;
+}
+
+.pillar-content-left h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.compact-stages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.c-stage {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  backdrop-filter: blur(8px);
+}
+
+/* --- THE CIRCULAR PLAY BUTTON UI --- */
+.story-btn-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.watch-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.play-icon-circle {
+  width: 46px;
+  height: 46px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.play-triangle {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #ffffff;
+  margin-left: 4px;
+}
+
+/* Hover Interactivity */
+.story-btn-wrapper:hover .play-icon-circle {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.story-btn-wrapper:hover .play-triangle {
+  border-left-color: #000000;
+}
+
+/* Mobile Alignment Fix */
+@media (max-width: 768px) {
+  .pillar-row.high-fidelity.edge-to-edge {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    min-height: 480px;
+  }
+  .pillar-content-left {
+    text-align: center;
+  }
+  .proven-badge, .compact-stages-grid, .story-btn-wrapper {
+    justify-content: center;
+  }
+  .badge-line { display: none; }
+}
+/* ============================================================
+   POULTRY SECTION BUTTON & SPACING
+   ============================================================ */
+
+/* Main Section Spacing */
+.pillar-row.high-fidelity {
+  padding: 100px 0; /* Vertical breathing room */
+  background: #ffffff; /* Clean white background */
+}
+
+/* Button Wrapper styling to create a professional button */
+.story-btn-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #16a34a; /* Trusto Green from Logo */
+  color: #ffffff;
+  padding: 16px 36px;
+  border-radius: 50px; /* Modern pill shape */
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.2);
+  margin-top: 35px; /* Space above button */
+  border: none;
+}
+
+/* Hover Effect */
+.story-btn-wrapper:hover {
+  background-color: #15803d; /* Darker green on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(22, 163, 74, 0.3);
+}
+
+/* Watch text inside wrapper */
+.watch-text {
+  letter-spacing: 0.5px;
+}
+
+/* Spacing for Compact Stages Matter */
+.compact-stages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.c-stage {
+  padding: 10px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .story-btn-wrapper {
+    width: 70%; /* Full width button on mobile */
+  
+    padding: 16px 36px;
+  }
+}
+/* ============================================================
+   MOBILE VIEW REFINEMENT (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Hide the Tech Bar on mobile as requested */
+  .tech-bar-section {
+    display: none !important;
+  }
+
+  /* 2. Full screen Hero with Image Background */
+  .premium-hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-slide {
+    height: 100%;
+  }
+
+  .hero-split-container {
+    display: block !important;
+    height: 100%;
+    position: relative;
+  }
+
+  /* 3. Force image to cover background without any color block */
+  .hero-image-side {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    z-index: 1;
+  }
+
+  /* 4. Text Side - Lower position to reveal the animal image */
+  .hero-text-side {
+    position: relative !important;
+    z-index: 5;
+    height: 100%;
+    background: transparent !important;
+    display: flex !important;
+    align-items: flex-end !important; /* Positions text at bottom */
+    padding: 0 20px 80px !important; /* Bottom padding to avoid WhatsApp icon */
+    text-align: center;
+  }
+
+  /* 5. Glass Content Card - Compact and readable */
+  .hero-content-wrapper {
+    background: rgba(15, 23, 42, 0.65) !important; /* Dark glass for text contrast */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px !important;
+    padding: 24px 18px !important;
+    width: 100% !important;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Typography tweaks */
+  .hero-content-wrapper h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+    margin: 10px 0 !important;
+  }
+
+  .hero-content-wrapper p {
+    font-size: 0.95rem !important;
+    margin-bottom: 20px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 6. Buttons - Stacked for better mobile thumb reach */
+  .hero-btns {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100%;
+  }
+
+  .main-btn, .alt-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 14px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* 7. Pillar Section & Science Story - Proper Spacing */
+  .science-grid, .pillar-row {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+
+  .science-content, .pillar-content {
+    padding: 0 15px !important;
+  }
+
+  .s-feat, .p-stage {
+    text-align: left;
+    font-size: 0.9rem !important;
+  }
+}@media (max-width: 768px) {
+  /* 1. Hide the technical bar on mobile as requested */
+  .tech-bar-section {
+    display: none !important;
+  }
+
+  /* 2. Full screen Hero with pure Image Background */
+  .premium-hero {
+    height: 100svh !important; /* svh is better for mobile browsers */
+    min-height: 100svh !important;
+    background: #000; /* Fallback for loading */
+  }
+
+  .hero-split-container {
+    display: block !important;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Force background image to fill whole screen without color blocks */
+  .hero-image-side {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    z-index: 1;
+  }
+
+  /* 3. Lowered Content Card to reveal animal faces */
+  .hero-text-side {
+    position: relative !important;
+    z-index: 5;
+    height: 100%;
+    background: transparent !important;
+    display: flex !important;
+    align-items: flex-end !important; /* Keeps card at the bottom */
+    padding: 0 14px 60px !important; /* Reduced padding pulls card LOWER */
+    text-align: center;
+  }
+
+  /* 4. Refined Glassmorphism Card */
+  .hero-content-wrapper {
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px !important;
+    padding: 20px 16px !important;
+    width: 100% !important;
+  }
+
+  .hero-content-wrapper h1 {
+    font-size: 1.6rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-content-wrapper p {
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    -webkit-line-clamp: 2; /* Keep it compact */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}/* --- PRIMARY GREEN BUTTON --- */
+.main-btn {
+  background-color: #16a34a !important; /* Official Trusto Green */
+  color: #ffffff !important;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-btn:hover {
+  background-color: #15803d !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(22, 163, 74, 0.3);
+}
+
+/* --- SECONDARY GLASS BUTTON --- */
+.alt-btn {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px);
+}
+
+.alt-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+/* ==========================================================================
+   MOBILE VIEW: IMAGE TOP, MATTER BOTTOM
+   ========================================================================== */
+@media (max-width: 992px) {
+  .pillar-row.high-fidelity {
+    display: flex !important;
+    flex-direction: column !important; /* Forces vertical stacking */
+    padding: 0;
+    min-height: auto;
+    background: #ffffff; /* Matter section background */
+  }
+
+  /* 1. Image sits at the top */
+  .pillar-bg-image {
+    position: relative !important; /* Pulls it out of absolute positioning */
+    width: 100% !important;
+    height: 300px !important; /* Adjust height as needed */
+    order: 1; /* Ensures it stays at top */
+  }
+
+  /* 2. Matter section sits below */
+  .full-width-inner {
+    order: 2;
+    padding: 40px 20px 60px; /* Space for matter and button */
+    text-align: center;
+  }
+
+  .pillar-content-left {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* 3. Center badges and buttons for mobile */
+  .proven-badge {
+    justify-content: center;
+  }
+
+  .compact-stages-grid {
+    flex-direction: column; /* Stack stages vertically for narrow screens */
+    align-items: center;
+  }
+
+  .c-stage {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .story-btn-wrapper {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    margin: 20px auto 0;
+  }
+
+  /* Remove any dark overlays that were meant for text-on-image */
+  .card-overlay-dark {
+    display: none;
+  }
+}/* ==========================================================================
+   MOBILE VIEW: IMAGE TOP + DARK GRADIENT MATTER (HIGH FIDELITY)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .pillar-row.high-fidelity {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    /* Main background is dark to blend with the shadow */
+    background: #0b1120 !important; 
+    position: relative;
+  }
+
+  /* 1. Image Container with Shadow Overlay */
+  .pillar-bg-image {
+    position: relative !important;
+    width: 100% !important;
+    height: 50vh !important; /* Image takes half screen */
+    background-size: cover !important;
+    background-position: center 20% !important; /* Pulls bird's head into view */
+    order: 1;
+    z-index: 1;
+  }
+
+  /* 🔥 THE KEY: Black Shadow Gradient Overlay on the Image */
+  .pillar-bg-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Transition from transparent at top to solid dark navy/black at bottom */
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 17, 32, 0) 0%,
+      rgba(11, 17, 32, 0.4) 50%,
+      rgba(11, 17, 32, 1) 100%
+    );
+    z-index: 2;
+  }
+
+  /* 2. Matter section below - Blends into the shadow */
+  .full-width-inner {
+    order: 2;
+    flex: 1;
+    background: #0b1120; /* Matches the bottom of the gradient */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 24px 80px !important; /* Padding for WhatsApp clearance */
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    margin-top: -20px; /* Slight pull up to ensure seamless blend */
+  }
+
+  .pillar-content-left {
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* Typography tweaks for Dark Background */
+  .proven-badge {
+    color: #10b981 !important; /* Trusto Green for visibility */
+    justify-content: center;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+  }
+
+  .badge-line {
+    background: #10b981 !important;
+  }
+
+  .pillar-content-left h2 {
+    font-size: 1.75rem !important;
+    color: #ffffff !important; /* White text for contrast */
+    margin-bottom: 12px !important;
+    line-height: 1.2;
+  }
+
+  .pillar-content-left p {
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 25px !important;
+    line-height: 1.6;
+  }
+
+  /* Compact Stages - Glassmorphism style */
+  .compact-stages-grid {
+    display: flex;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .c-stage {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    text-align: left;
+  }
+
+  .c-stage strong {
+    color: #10b981 !important;
+  }
+
+  /* 3. Primary Button */
+  .story-btn-wrapper {
+    width: 100% !important;
+    max-width: 340px;
+    background-color: #16a34a !important; /* Trusto Green */
+    margin: 0 auto !important;
+    padding: 16px !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+  }
+
+  .watch-text {
+    color: #ffffff !important;
+    font-weight: 700;
+  }
+}/* ==========================================================================
+   AQUACULTURE DOMINANCE SECTION (HIGH FIDELITY)
+   ========================================================================== */
+
+.aqua-dominance {
+  display: flex;
+  min-height: 700px;
+  background: #ffffff;
+  overflow: hidden;
+  margin: 80px 0;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+}
+
+/* LEFT: Image Half */
+.pillar-image-half {
+  flex: 1;
+  position: relative;
+  min-height: 500px;
+}
+
+.pillar-bg-image.aqua-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.experience-tag-premium {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: #0ea5e9;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+  z-index: 5;
+}
+
+/* RIGHT: Content Half */
+.pillar-content-half {
+  flex: 1.1;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  background: #ffffff;
+}
+
+.content-inner {
+  max-width: 600px;
+}
+
+/* Badges & Lines */
+.proven-badge.aqua {
+  color: #0ea5e9;
+  font-weight: 800;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+}
+
+.badge-line.aqua-line {
+  width: 40px;
+  height: 2px;
+  background: #0ea5e9;
+}
+
+.pillar-content-half h2 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #0b1120;
+  margin-bottom: 25px;
+}
+
+.pillar-content-half p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 35px;
+}
+
+/* Dominating Tech Grid */
+.technical-grid-aqua {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 45px;
+}
+
+.tech-box {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #eef2f6;
+  transition: transform 0.3s ease;
+}
+
+.tech-box:hover {
+  transform: translateX(10px);
+  border-color: #0ea5e9;
+}
+
+.tech-icon {
+  font-size: 2.2rem;
+  color: #0ea5e9;
+  flex-shrink: 0;
+}
+
+.tech-box strong {
+  display: block;
+  font-size: 1rem;
+  color: #0b1120;
+  margin-bottom: 4px;
+  font-weight: 800;
+}
+
+.tech-box span {
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Dominating Button */
+.explore-btn-aqua {
+  background: #16a34a; /* Brand Green */
+  color: #fff;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.explore-btn-aqua:hover {
+  background: #15803d;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(22, 163, 74, 0.3);
+}
+
+/* ==========================================================================
+   MOBILE VIEW ADAPTATION
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .aqua-dominance {
+    flex-direction: column;
+    border-radius: 0;
+  }
+  
+  .pillar-image-half {
+    min-height: 350px;
+  }
+  
+  .pillar-content-half {
+    padding: 40px 20px 80px;
+    text-align: center;
+  }
+  
+  .proven-badge.aqua {
+    justify-content: center;
+  }
+  
+  .tech-box {
+    text-align: left;
+  }
+  
+  .explore-btn-aqua {
+    width: 100%;
+  }
+}
+.science-content p { max-width: 520px; }
+.science-features { margin-top: 36px; }
+@media (max-width: 768px) {
+  .science-content { order: 1; }
+  .science-image { order: 2; }
+}
+@media (max-width: 768px) {
+  .science-image { margin-top: 24px; }
+}
+.science-story {
+  padding: 100px 0;
+}.pillar-deep-dive.section-padding {
+  padding: 90px 0;
+}.aqua-dominance {
+  margin: 80px 0;
+}/* 🔥 FIX EXCESS GAP BEFORE AQUACULTURE ONLY */
+.pillar-deep-dive .aqua-dominance {
+  margin-top: 30px;   /* reduced from 80px */
+}.pillar-deep-dive {
+  padding-top: 60px; /* was 90px */
+}@media (max-width: 768px) {
+  .aqua-dominance {
+    margin-top: 20px;
+  }
+}
+/* 🔥 FORCE-REMOVE EXTRA HEIGHT FROM AQUACULTURE ONLY */
+.aqua-dominance {
+  min-height: auto !important;
+  height: auto !important;
+  padding-bottom: 32px !important;
+  margin-bottom: 0 !important;
+}/* Remove extra spacing applied by pillar-row for Aquaculture */
+.pillar-row.aqua-dominance {
+  padding-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .aqua-dominance {
+    min-height: unset !important;
+    padding-bottom: 24px !important;
+  }
+}
+/* ============================= */
+/* AQUACULTURE PRODUCT SCROLLER */
+/* ============================= */
+
+.aqua-product-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 24px 0 40px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar (clean look) */
+.aqua-product-scroll::-webkit-scrollbar {
+  display: none;
+}
+.aqua-product-scroll {
+  scrollbar-width: none;
+}
+
+/* Horizontal row */
+.aqua-scroll-track {
+  display: flex;
+  gap: 32px;
+  padding: 0 24px;
+  width: max-content;
+}
+
+/* Individual product card */
+.aqua-product-card {
+  min-width: 260px;
+  max-width: 260px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Image */
+.aqua-product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+/* Title */
+.aqua-product-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* Link text */
+.aqua-product-card span {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Hover effect (desktop only) */
+@media (hover: hover) {
+  .aqua-product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .aqua-scroll-track {
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .aqua-product-card {
+    min-width: 220px;
+    max-width: 220px;
+    padding: 16px;
+  }
+
+  .aqua-product-card img {
+    height: 170px;
+  }
+}/* ============================= */
+/* AQUACULTURE MORE PRODUCTS BTN */
+/* ============================= */
+
+.aqua-more-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.aqua-more-btn {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.25);
+  transition: all 0.3s ease;
+}
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+  .aqua-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(22, 163, 74, 0.35);
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .aqua-more-btn-wrapper {
+    margin-top: 28px;
+  }
+
+  .aqua-more-btn {
+    width: 90%;
+    max-width: 320px;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}
+/* ============================= */
+/* FINAL CONVERSION CTA SECTION */
+/* ============================= */
+
+.final-conversion-footer {
+  padding: 100px 0;
+  background: #f9fbfc;
+}
+
+.cta-content-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 56px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left text */
+.cta-text {
+  max-width: 560px;
+}
+
+.cta-text .overline {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #16a34a;
+  margin-bottom: 12px;
+}
+
+.cta-text h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.cta-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* Right actions */
+.cta-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+/* Primary CTA button */
+.cta-primary-btn {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  border: none;
+  padding: 18px 44px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 16px 40px rgba(22, 163, 74, 0.35);
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .cta-primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(22, 163, 74, 0.45);
+  }
+}
+
+/* Support info */
+.cta-support-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: #0f172a;
 }
 
 .support-icon {
-  font-size: 2.2rem;
-  color: var(--trusto-green);
+  font-size: 22px;
+  color: #16a34a;
 }
 
 .cta-support-info strong {
   display: block;
-  font-size: 0.95rem;
-  color: #0f172a;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .cta-support-info span {
   display: block;
-  font-size: 0.85rem;
+  font-size: 14px;
   color: #64748b;
-  font-weight: 700;
 }
 
-/* ==========================================================================
-   9) RESPONSIVE (TABLET + MOBILE)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  /* HERO: stack */
-  .premium-hero {
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .hero-slide {
-    position: relative; /* IMPORTANT for mobile stacking */
-    display: none;
-    height: auto;
-  }
-
-  .hero-slide.active {
-    display: flex;
-  }
-
-  .hero-split-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-  }
-
-  .hero-image-side {
-    height: 340px;
-    background-position: center;
-  }
-
-  .hero-text-side {
-    padding: 36px 18px 54px;
-    text-align: center;
-  }
-
-  .hero-btns {
-    justify-content: center;
-  }
-
-  /* Tech bar */
-  .tech-bar-container {
-    grid-template-columns: 1fr;
-    margin: 18px auto 0;
-  }
-
-  .tech-item:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 18px;
-  }
-
-  /* Science */
-  .science-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-
-  .science-content {
-    text-align: left;
-  }
-
-  /* Pillars */
-  .pillar-row {
-    grid-template-columns: 1fr;
-    gap: 34px;
-    text-align: center;
-  }
-
-  .pillar-row.reverse .pillar-content { order: 1; }
-  .pillar-row.reverse .pillar-image { order: 2; }
-
-  .p-stage {
-    text-align: left;
-  }
-
-  /* CTA */
-  .cta-content-card {
-    grid-template-columns: 1fr;
-    padding: 44px 22px;
-    text-align: center;
-  }
-
-  .cta-text {
-    text-align: center;
-  }
-
-  .cta-support-info {
-    justify-content: center;
-  }
-}
+/* ============================= */
+/* MOBILE RESPONSIVE */
+/* ============================= */
 
 @media (max-width: 768px) {
-  /* Remove any possible top-gap feel */
-  .premium-hero {
-    padding-top: 0;
-    margin-top: 0;
+  .final-conversion-footer {
+    padding: 64px 0;
   }
 
-  .hero-image-side {
-    height: 260px; /* mobile header image */
-  }
-
-  .hero-content-wrapper h1 {
-    font-size: 1.9rem;
-  }
-
-  .hero-content-wrapper p {
-    font-size: 0.98rem;
-  }
-
-  .hero-btns {
+  .cta-content-card {
     flex-direction: column;
+    padding: 40px 28px;
+    text-align: left;
+  }
+
+  .cta-text h2 {
+    font-size: 28px;
+  }
+
+  .cta-actions-row {
     width: 100%;
-    gap: 12px;
+    align-items: flex-start;
   }
 
-  .main-btn,
-  .alt-btn {
+  .cta-primary-btn {
     width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-  }
-
-  .tech-bar-container {
-    padding: 22px;
-    border-radius: 18px;
-  }
-
-  .t-icon {
-    font-size: 2.1rem;
-  }
-
-  .section-padding {
-    padding: 70px 0;
-  }
-
-  .product-glass-card {
-    flex: 0 0 240px;
-    padding: 18px;
-  }
-
-  .product-img-wrapper {
-    height: 170px;
+    justify-content: center;
   }
 }
 
-@media (max-width: 420px) {
-  .hero-image-side {
-    height: 230px;
-  }
 
-  .hero-content-wrapper h1 {
-    font-size: 1.7rem;
-  }
 
-  .tech-bar-container {
-    padding: 18px;
-  }
 
-  .product-glass-card {
-    flex: 0 0 210px;
-  }
-}
+
+

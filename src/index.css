@@ -9,3 +9,61 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
 }
+/* GLOBAL FIXES */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  /* Fix: Prevent text-edit cursor from appearing on images and containers */
+  cursor: default !important; 
+}
+
+/* Prevent text highlighting on visual elements */
+.hero-image-side, 
+.product-glass-card, 
+.pillar-main-img, 
+.styled-img {
+  user-select: none;
+  cursor: default !important;
+}
+
+/* Keep action elements interactive */
+button, .main-btn, .alt-btn, .cta-primary-btn, .product-glass-card {
+  cursor: pointer !important;
+}/* Prevent text-selection cursor on large background containers and images */
+.home-wrapper, 
+.premium-hero, 
+.hero-image-side, 
+.pillar-main-img, 
+.styled-img,
+.tech-bar-container,
+.product-glass-card {
+  cursor: default !important;
+  user-select: none; /* Stops accidental blue text highlighting */
+  -webkit-user-drag: none; /* Prevents dragging image "ghosts" */
+}
+
+/* Ensure interactive elements always show the pointer finger */
+button, 
+a, 
+.main-btn, 
+.alt-btn, 
+.cta-primary-btn, 
+.product-glass-card {
+  cursor: pointer !important;
+}
+
+/* Global Ultra-Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none; /* Prevents "jitter" on mobile pull-to-refresh */
+}

@@ -19,32 +19,30 @@ const Home = () => {
 const slides = [
   {
     id: 1,
-    title: "Precision Aquaculture ",
-
-    tagline: "Advancing shrimp and fish health through stage-wise nutrition and pond ecosystem management.",
-    image: "/aqua1.png",
+    title: "Precision Aquaculture",
+    tagline: "Science-driven nutrition for healthier shrimp and fish.",
+    image: "/shrimp.png",
     link: "/products/aqua",
-    theme: "aqua-theme" // Uses aqua-blue gradient
+    theme: "aqua-theme"
   },
   {
     id: 2,
-    title: "Resilient Poultry Nutrition Systems",
-
-    tagline: "Comprehensive strategies for mycotoxin management, gut integrity, and peak layer performance.",
-    image: "/poultry.png", 
+    title: "Poultry Nutrition",
+    tagline: "Advanced feed solutions for gut health and performance.",
+    image: "/poultry2.png",
     link: "/products/poultry",
-    theme: "poultry-theme" // Uses poultry-red/brown gradient
+    theme: "poultry-theme"
   },
   {
     id: 3,
-    title: "Optimized Swine Growth & FCR",
-
-    tagline: "Scientific swine farming solutions focusing on digestive health and antibiotic-free productivity.",
-    image: "/swarn.png", 
+    title: "Healthy Swine Growth",
+    tagline: "Smarter nutrition for better growth and feed efficiency.",
+    image: "/swarn1.png",
     link: "/products/swine",
-    theme: "swine-theme" // Uses swine-orange/dark gradient
+    theme: "swine-theme"
   }
 ];
+
 
   // Product Scroller Data
 const productLogos = [
@@ -67,10 +65,7 @@ const productLogos = [
 
   return (
     <div className="home-wrapper">
-      {/* --- PREMIUM HERO CAROUSEL --- */}
-    {/* --- PREMIUM HERO CAROUSEL --- */}
-{/* --- PREMIUM HERO CAROUSEL --- */}
-{/* --- PREMIUM HERO CAROUSEL --- */}
+  
 <section className="premium-hero">
   {slides.map((slide, index) => (
     <div key={slide.id} className={`hero-slide ${slide.theme} ${index === currentSlide ? 'active' : ''}`}>
@@ -138,81 +133,198 @@ const productLogos = [
 <section className="science-story section-padding">
   <div className="container">
     <div className="science-grid">
+      
       <div className="science-content" data-aos="fade-right">
-        <span className="overline">The Science of Trust</span>
-        <h2>Bridging the Gap Between <span className="brand-blue">Biology & Profitability</span></h2>
+        <span className="overline">Few Words About Us</span>
+
+        <h2>
+         Empowering Farmers with <span className="brand-blue">Trusto Biotech Solutions</span>
+
+        </h2>
+        
         <p>
-          At Trusto Biotech, we don't just sell feed additives; we engineer biological 
-          interventions. By utilizing <strong>organic metabolites</strong> and <strong>hydrolyzing enzymes</strong>, 
-          we strengthen the animal's natural defenses, allowing farmers to eliminate 
-          antibiotics while actually <em>increasing</em> their weight gain and FCR.
+          Trusto Biotech develops science-led nutritional and biological solutions that improve
+          animal health, farm efficiency, and long-term sustainability. Our formulations are
+          designed to reduce antibiotic dependency while delivering consistent, high-performance
+          results across modern farming systems.
         </p>
+
+        {/* High-level sector positioning (no repetition) */}
         <div className="science-features">
-          <div className="s-feat"><strong>Bio-Availability:</strong> Nutrients absorbed 30% faster for quicker growth cycles.</div>
-          <div className="s-feat"><strong>Immune Priming:</strong> Proactive defense against EMS, RMS, and gut-related stress.</div>
+          <div className="s-feat">
+            <strong>Aquaculture</strong>
+            Bio-rational ecosystem management focused on survival, stability, and export-grade harvests.
+          </div>
+
+          <div className="s-feat">
+            <strong>Poultry</strong>
+            Gut-focused nutritional strategies that enhance feed efficiency, shell quality, and flock resilience.
+          </div>
+
+          <div className="s-feat">
+            <strong>Swine</strong>
+            Enzyme-driven digestive and growth solutions supporting lean meat quality and antibiotic-free productivity.
+          </div>
         </div>
       </div>
+
       <div className="science-image" data-aos="fade-left">
         <img 
           src="/trus.png" 
-          alt="Biotech Research Lab" 
+          alt="Trusto Biotech Research" 
           className="styled-img" 
         />
       </div>
+      
     </div>
   </div>
 </section>
+
    {/* --- 4. THE PILLAR DEEP DIVE (EXTRAORDINARY VERSION) --- */}
 <section className="pillar-deep-dive section-padding">
   <div className="container">
     
     {/* AQUACULTURE PILLAR */}
-    <div className="pillar-row" data-aos="fade-up">
-      <div className="pillar-image">
-        <img src="/aqua.png" alt="Aquaculture Excellence" className="pillar-main-img" />
-        <div className="experience-tag">Since 2012</div>
-      </div>
-      <div className="pillar-content">
-        <GiShrimp className="pillar-icon aqua-color" />
-        <span className="overline">Core Specialization</span>
-        <h2>Aquaculture <span className="brand-blue">Ecosystem Management</span></h2>
-        <p>
-          We provide stage-wise nutrition and biological pond management to ensure 
-          high survival rates and export-quality harvests. Our focus is on the 
-          balance between the animal and its environment.
-        </p>
-        <div className="pillar-stages">
-          <div className="p-stage"><strong>01. Seed:</strong> Stress resistance & early survival.</div>
-          <div className="p-stage"><strong>02. Growth:</strong> FCR optimization & uniform moulting.</div>
-          <div className="p-stage"><strong>03. Health:</strong> Gut & Hepatopancreas protection.</div>
-        </div>
-        <button className="main-btn" onClick={() => navigate('/products/aqua')}>Explore Aqua Range</button>
-      </div>
+ {/* AQUACULTURE + PRODUCTS FLOW */}
+<section className="aqua-flow">
+
+  {/* AQUACULTURE PILLAR */}
+  <section className="pillar-row high-fidelity aqua-dominance" data-aos="fade-up">
+    <div className="pillar-image-half">
+      <div
+        className="pillar-bg-image aqua-bg"
+        style={{ backgroundImage: `url('/shrimp.png')` }}
+      ></div>
+      <div className="experience-tag-premium">Since 2012</div>
     </div>
 
-    {/* POULTRY PILLAR (REVERSED) */}
-    <div className="pillar-row reverse" data-aos="fade-up">
-      <div className="pillar-content">
-        <GiChicken className="pillar-icon poultry-color" />
-        <span className="overline">35+ Years Experience</span>
-        <h2>Poultry <span className="brand-red">Nutritional Resilience</span></h2>
-        <p>
-          With decades of field experience, we address modern poultry challenges 
-          through non-antibiotic strategies that focus on long-term productivity 
-          and shell integrity.
-        </p>
-        <div className="pillar-stages">
-          <div className="p-stage"><strong>Pre-Starter:</strong> Chick immunity & bone development.</div>
-          <div className="p-stage"><strong>Grower:</strong> Maximize nutrient absorption.</div>
-          <div className="p-stage"><strong>Layer:</strong> Shell quality & peak production.</div>
+    <div className="pillar-content-half">
+      <div className="content-inner">
+        <div className="proven-badge aqua">
+          <span className="badge-line aqua-line"></span>
+          CORE AQUACULTURE SPECIALIZATION
         </div>
-        <button className="main-btn" onClick={() => navigate('/products/poultry')}>Explore Poultry Range</button>
-      </div>
-      <div className="pillar-image">
-        <img src="/poultry.png" alt="Poultry Performance" className="pillar-main-img" />
+
+        <h2>
+          Building Healthier Ponds with{" "}
+          <span className="brand-blue">Trusto Aquaculture Solutions</span>
+        </h2>
+
+        <p>
+          Aquaculture is where Trusto Biotech’s approach comes to life. We focus on
+          pond balance, animal health, and feed efficiency using biological
+          solutions that support survival, growth, and harvest quality—without
+          antibiotics.
+        </p>
+
+        <div className="technical-grid-aqua">
+          <div className="tech-box">
+            <GiShrimp className="tech-icon" />
+            <div>
+              <strong>Pond Health:</strong>
+              <span>Protection against stress, disease, and imbalance.</span>
+            </div>
+          </div>
+
+          <div className="tech-box">
+            <HiOutlineBeaker className="tech-icon" />
+            <div>
+              <strong>Better Digestion:</strong>
+              <span>Improved feed utilization and growth.</span>
+            </div>
+          </div>
+
+          <div className="tech-box">
+            <HiOutlineChartBar className="tech-icon" />
+            <div>
+              <strong>Harvest Quality:</strong>
+              <span>Uniform size, shell strength, and survival.</span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          className="explore-btn-aqua"
+          onClick={() => navigate("/products/aqua")}
+        >
+          Explore Aquaculture Range
+        </button>
       </div>
     </div>
+  </section>
 
+  {/* AQUACULTURE PRODUCTS */}
+  <section className="premium-product-carousel aqua-carousel">
+    <div className="container">
+      <div className="carousel-header text-center">
+        <span className="overline">Aquaculture Products</span>
+        <h2>
+          Trusted <span className="brand-blue">Aqua Solutions</span>
+        </h2>
+      </div>
+
+<div className="aqua-product-scroll">
+  <div className="aqua-scroll-track">
+    {[...productLogos].map((prod, i) => (
+      <div className="aqua-product-card" key={i}>
+        <img src={prod.img} alt={prod.name} />
+        <h4>{prod.name}</h4>
+        <span>View Specification →</span>
+      </div>
+    ))}
+  </div>
+</div>
+<div className="aqua-more-btn-wrapper">
+  <button
+    className="aqua-more-btn"
+    onClick={() => navigate("/products/aqua")}
+  >
+    View More Aquaculture Products
+  </button>
+</div>
+
+    </div>
+  </section>
+
+</section>
+
+
+{/* POULTRY PILLAR - FULL WIDTH EDGE-TO-EDGE */}
+{/* POULTRY PILLAR - HIGH FIDELITY EDGE-TO-EDGE */}
+<section className="pillar-row high-fidelity edge-to-edge" data-aos="fade-up">
+  {/* Full width background image layer */}
+  <div className="pillar-bg-image" style={{ backgroundImage: `url('/poultry1.png')` }}></div>
+  <div className="card-overlay-dark"></div>
+
+  <div className="full-width-inner">
+    <div className="pillar-content-left">
+      <div className="proven-badge">
+         <span className="badge-line"></span>
+         PROVEN NUTRITIONAL EXCELLENCE
+      </div>
+      
+      <h2>Achieving Record Results with <span className="brand-blue">Trusto Poultry Solutions</span></h2>
+      
+      <p>
+        Working with poultry integrators for years, our team utilizes organic acids, 
+        prebiotics, and advanced enzyme technology to enhance egg quality and flock health.
+      </p>
+
+      {/* Horizontal Compact Stages */}
+      <div className="compact-stages-grid">
+        <div className="c-stage"><strong>Immunity:</strong> Pre-starter defenses.</div>
+        <div className="c-stage"><strong>FCR:</strong> Nutrient absorption.</div>
+        <div className="c-stage"><strong>Quality:</strong> Layer production.</div>
+      </div>
+
+      {/* Play Button Wrapper */}
+      <div className="story-btn-wrapper" onClick={() => navigate('/products/poultry')}>
+        <span className="watch-text">Explore Poultry Range</span>
+     
+      </div>
+    </div>
+  </div>
+</section>
     {/* SWINE PILLAR */}
     <div className="pillar-row" data-aos="fade-up">
       <div className="pillar-image">
@@ -238,33 +350,7 @@ const productLogos = [
 
   </div>
 </section>
-{/* --- 5. CONTINUOUS INTERACTIVE PRODUCT CAROUSEL --- */}
-<section className="premium-product-carousel section-padding">
-  <div className="container">
-    <div className="carousel-header text-center" data-aos="fade-up">
-      <span className="overline">Our Formulations</span>
-      <h2>Precision <span className="brand-blue">Biotech Range</span></h2>
-      <p>Scientifically engineered solutions for high-performance farming.</p>
-    </div>
 
-    <div className="infinite-scroller">
-      <div className="scroller-track">
-        {/* We double the array to create a seamless infinite loop */}
-        {[...productLogos, ...productLogos].map((prod, i) => (
-          <div key={i} className="product-glass-card" onClick={() => navigate(prod.link)}>
-            <div className="product-img-wrapper">
-              <img src={prod.img} alt={prod.name} className="product-main-img" />
-            </div>
-            <div className="product-info">
-              <h4>{prod.name}</h4>
-              <span className="view-details">View Specification <HiArrowRight /></span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
 
 
  
