@@ -2242,9 +2242,148 @@
   padding-top: 60px;
 }
 
+/* 1. Reduce padding on the Science Story section */
+.science-story.section-padding {
+  padding-bottom: 30px !important; /* Reduced from 100px */
+}
 
+/* 2. Reduce top padding on the Pillar Deep Dive wrapper */
+.pillar-deep-dive.section-padding {
+  padding-top: 20px !important; /* Reduced from 90px */
+}
 
+/* 3. Tighten the specific Aquaculture section margins */
+.pillar-row.high-fidelity.aqua-dominance {
+  margin-top: 10px !important; /* Reduced from 80px or 30px */
+  margin-bottom: 40px !important;
+}
 
+/* 4. Ensure the Aqua Flow section doesn't add extra space */
+.aqua-flow {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
+/* Mobile Specific Fix */
+@media (max-width: 768px) {
+  .science-story.section-padding {
+    padding-bottom: 20px !important;
+  }
+  .pillar-deep-dive.section-padding {
+    padding-top: 10px !important;
+  }
+  .aqua-dominance {
+    margin-top: 0px !important;
+  }
+}
 
+/* --- REMOVE TOP SPACE & SETUP FULL WIDTH --- */
+.aqua-edge-to-edge {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 0 !important; /* Forces removal of space above */
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 60px 0;
+}
 
+/* Background Image Fix */
+.aqua-bg-fix {
+  position: absolute !important;
+  inset: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  z-index: 1;
+}
+
+/* Gradient Overlay - Matching the Poultry style */
+.aqua-gradient {
+  background: linear-gradient(
+    to right, 
+    rgba(11, 17, 32, 0.9) 0%, 
+    rgba(11, 17, 32, 0.6) 45%, 
+    transparent 100%
+  ) !important;
+}
+
+/* Style overrides for Aqua Theme */
+.aqua-text { color: #0ea5e9 !important; }
+.aqua-line-fix { background: #0ea5e9 !important; }
+.aqua-btn-theme { background-color: #0ea5e9 !important; box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2); }
+.aqua-btn-theme:hover { background-color: #0284c7 !important; }
+
+/* Spacing Fix for the Carousel below */
+.aqua-carousel-tight {
+  padding-top: 40px !important;
+  margin-top: 0 !important;
+}
+
+/* Mobile Adaptation: Stack image top, matter bottom with dark blend */
+@media (max-width: 992px) {
+  .aqua-edge-to-edge {
+    flex-direction: column !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    left: 0 !important;
+    min-height: auto;
+    background: #0b1120;
+  }
+
+  .aqua-bg-fix {
+    position: relative !important;
+    height: 40vh !important;
+    order: 1;
+  }
+
+  /* Shadow blend for mobile */
+  .aqua-bg-fix::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, #0b1120 100%);
+  }
+
+  .aqua-edge-to-edge .full-width-inner {
+    order: 2;
+    padding: 20px 24px 60px !important;
+    text-align: center;
+  }
+
+  .aqua-edge-to-edge .proven-badge, 
+  .aqua-edge-to-edge .compact-stages-grid {
+    justify-content: center;
+  }
+}
+/* Ensure the parent header is relative */
+.carousel-header.text-center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content */
+  
+}
+
+/* Fix for the Centered Overline Line */
+.carousel-header.text-center .overline {
+  padding-left: 0; /* Remove the left padding meant for left-aligned lines */
+  position: relative;
+  display: inline-block;
+}
+
+/* Redefine the line to be centered ABOVE or to the LEFT properly */
+.carousel-header.text-center .overline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -15px; /* Positions it above the text */
+  width: 40px;
+  height: 2px;
+  background: var(--trusto-green);
+  transform: translateX(-50%); /* Perfectly centers the line */
+}
