@@ -558,4 +558,65 @@
   .dropdown-menu.show li a:active {
     color: var(--trusto-green) !important;
   }
+}/* ===============================
+   MOBILE SEARCH (INDUSTRIAL UX)
+================================ */
+@media (max-width: 1024px) {
+
+  .mobile-search-wrapper {
+    margin-bottom: 32px;
+  }
+
+  .mobile-search-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .mobile-search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+
+  .mobile-search-input:focus {
+    border-color: var(--trusto-green);
+    background: rgba(255,255,255,0.12);
+  }
+}
+/* Hide mobile search by default (desktop & tablet) */
+.mobile-search-wrapper {
+  display: none;
+}
+@media (max-width: 1024px) {
+
+  /* Enable mobile-only search */
+  .mobile-search-wrapper {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .mobile-search-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .mobile-search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .mobile-search-input:focus {
+    border-color: var(--trusto-green);
+    background: rgba(255,255,255,0.12);
+  }
 }

@@ -54,6 +54,21 @@ const Navbar = ({ cartCount = 0 }) => {
         {/* RIGHT: NAVIGATION & ACTIONS */}
         <div className="nav-right-section">
           <div className={`nav-menu-wrapper ${isMobileMenuOpen ? 'active' : ''}`}>
+            {/* MOBILE SEARCH BAR */}
+<div className="mobile-search-wrapper">
+  <input
+    type="text"
+    placeholder="Search products..."
+    className="mobile-search-input"
+    onKeyDown={(e) => {
+      if (e.key === "Enter" && e.target.value.trim()) {
+        navigate(`/products?search=${encodeURIComponent(e.target.value)}`);
+        closeMenu();
+      }
+    }}
+  />
+</div>
+
             <ul className="nav-links">
               <li><Link to="/" onClick={closeMenu}>Home</Link></li>
               <li><Link to="/about" onClick={closeMenu}>About Us</Link></li>

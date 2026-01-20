@@ -185,7 +185,7 @@ const Home = () => {
                     <span className="badge-line aqua-line-fix"></span>
                     CORE AQUACULTURE SPECIALIZATION
                   </div>
-                  <h2>Building Healthier Ponds with <span className="brand-blue">Trusto Aqua Solutions</span></h2>
+                  <h2>Premium <span className="brand-blue">Aquaculture Supplements</span> and Pond Health Solutions</h2>
                   <p>Focusing on pond balance, health, and feed efficiency using biological solutions—without antibiotics.</p>
                   <div className="compact-stages-grid">
                     <div className="c-stage"><strong>Pond Health:</strong> Stress & disease protection.</div>
