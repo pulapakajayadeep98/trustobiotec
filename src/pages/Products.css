@@ -1437,4 +1437,114 @@ input[type="range"] {
 @media (max-width: 1024px) {
   .hero-flex-layout { grid-template-columns: 1fr; }
   .hero-gallery-container { height: 400px; }
+}/* 🔥 1. MOBILE FILTER TOGGLE */
+.mobile-filter-toggle {
+  display: none; /* Hidden on desktop */
+  width: calc(100% - 40px);
+  margin: 15px 20px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--trusto-navy);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.mobile-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--trusto-navy);
+}
+
+/* 🔥 2. MOBILE SIDEBAR TRANSFORMATION */
+@media (max-width: 1024px) {
+  .mobile-filter-toggle { display: flex; }
+
+  .filter-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -100%; /* Hidden by default */
+    width: 300px;
+    height: 100vh;
+    z-index: 9999;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid #e2e8f0;
+    padding-top: 40px;
+  }
+
+  .filter-sidebar.mobile-active {
+    left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    backdrop-filter: blur(2px);
+  }
+
+  .mobile-close-btn { display: block; }
+  
+  /* 🔥 3. GRID FIX: One product per row on small phones */
+  .amazon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  /* 🔥 4. CARD COMPACTNESS ON MOBILE */
+  .grid-item.b2b-card {
+    flex-direction: row; /* Side by side on mobile for better space usage */
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+  }
+
+  .grid-item.b2b-card .img-box {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .grid-item.b2b-card h3 {
+    font-size: 0.95rem;
+    min-height: auto;
+  }
+
+  .card-benefits-list { display: none; } /* Hide benefits on small grid to save space */
+  
+  .grid-price { font-size: 1.1rem; margin: 5px 0; }
+
+  /* 🔥 5. HERO DETAIL VIEW ON MOBILE */
+  .hero-flex-layout {
+    grid-template-columns: 1fr; /* Stack image and text */
+    gap: 30px;
+  }
+  
+  .hero-gallery-container {
+    height: 300px;
+  }
+
+  .hero-info-matter h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Fix for the White Header in your screenshot */
+.sector-header-nav {
+  padding: 10px 15px;
+  overflow-x: auto; /* Allow horizontal scroll if many buttons */
+  white-space: nowrap;
+}
+
+.sector-container {
+  justify-content: flex-start;
 }
