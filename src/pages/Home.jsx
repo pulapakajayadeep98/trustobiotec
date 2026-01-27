@@ -39,7 +39,7 @@ const Home = () => {
     },
     {
       id: 3,
-      title: "Healthy Swine Growth",
+      title: "Swine- Coming Soon",
       tagline: "Smarter nutrition for better growth and feed efficiency.",
       image: "/swarn2.png",
       link: "/products/swine",
@@ -256,7 +256,7 @@ const Home = () => {
             </section>
 
             {/* SWINE PILLAR */}
-            <div className="pillar-row" data-aos="fade-up" style={{ padding: '80px 0' }}>
+            <div className="pillar-row swine-hide" data-aos="fade-up" style={{ padding: '80px 0' }}>
               <div className="pillar-image" data-aos="zoom-in-right">
                 <img src="/swarn2.png" alt="Swine Science" className="pillar-main-img" />
               </div>

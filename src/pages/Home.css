@@ -2386,4 +2386,7 @@
   height: 2px;
   background: var(--trusto-green);
   transform: translateX(-50%); /* Perfectly centers the line */
+}/* Hide Swine section temporarily */
+.swine-hide {
+  display: none;
 }
