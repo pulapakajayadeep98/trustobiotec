@@ -7,6 +7,8 @@ import {
   HiOutlineUserGroup,
   HiOutlineSparkles
 } from 'react-icons/hi';
+
+
 import { GiShrimp, GiChicken, GiPig } from 'react-icons/gi';
 import './About.css';
 
@@ -138,24 +140,30 @@ const About = () => {
     </div>
 
     {/* Swine Card */}
-    <div className="sector-card" data-aos="fade-up" data-aos-delay="200">
-      <div className="card-bg" style={{ backgroundImage: `url('/swarn.png')` }}></div>
-      <div className="card-overlay"></div>
-      <div className="card-content">
-        <div className="header-inline">
-          <GiPig className="box-icon" />
-          <h3>Swine – Rapidly Expanding</h3>
-        </div>
-        <div className="card-body-text">
-          <p>Scientific farming solutions engineered for modern productivity:</p>
-          <ul>
-            <li><strong>Digestion:</strong> Balancing microflora to prevent stress.</li>
-            <li><strong>Performance:</strong> Optimized amino acid profiles.</li>
-            <li><strong>Eco-Safe:</strong> Efficient, low-nitrogen waste solutions.</li>
-          </ul>
-        </div>
-      </div>
+  <div className="sector-card" data-aos="fade-up" data-aos-delay="200">
+  <div
+    className="card-bg"
+    style={{ backgroundImage: `url('/fish.jpg')` }}
+  ></div>
+
+  <div className="card-overlay"></div>
+
+  <div className="card-content">
+    <div className="header-inline">
+      <GiShrimp className="box-icon" />
+      <h3>Aquaculture – Core Expertise</h3>
     </div>
+
+    <div className="card-body-text">
+      <p>Advanced aqua health solutions designed for sustainable yield:</p>
+      <ul>
+        <li><strong>Gut Health:</strong> Balanced microbiota for higher survival.</li>
+        <li><strong>Growth:</strong> Enhanced feed efficiency and weight gain.</li>
+        <li><strong>Water Quality:</strong> Reduced ammonia and organic load.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
   </div>
 </section>
