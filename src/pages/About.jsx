@@ -26,7 +26,7 @@ const About = () => {
     </h1>
 
     <p className="hero-subtitle">
-      Advancing Aquaculture, Poultry & Swine Nutrition through
+      Advancing Aquaculture, Poultry Nutrition through
       science-backed, antibiotic-free solutions.
     </p>
     <span className="badge">35+ Years of Excellence</span>

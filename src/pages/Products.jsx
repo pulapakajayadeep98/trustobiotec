@@ -363,7 +363,7 @@ const Products = ({ cart, updateQty }) => {
               <img 
                 src={
                   activeSector === 'AQUA' ? "/aqua4.png" : 
-                  activeSector === 'POULTRY' ? "/poultry-hero.png" : 
+                  activeSector === 'POULTRY' ? "/poultry.png" : 
                   "/swarn.png"
                 } 
                 alt={activeSector} 
