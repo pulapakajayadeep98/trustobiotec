@@ -92,7 +92,8 @@ html { scroll-behavior: smooth; }
     url('/trustolab2.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+ background-attachment: scroll;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -473,20 +474,24 @@ body {
 /* MOBILE SCROLL PERFORMANCE    */
 /* ============================= */
 
-html, body {
-  overscroll-behavior: none;
+/* UPDATED CODE */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Only hide horizontal */
+  height: auto;       /* Ensure height isn't locked to 100% */
 }
 
 body {
+  overflow-x: hidden;
+  overflow-y: auto !important; /* Force vertical scroll to be allowed */
+  height: auto;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
 }
 
+
+
 /* Prevent transform conflicts during scroll */
-.about-page,
-.section-padding {
-  transform: translateZ(0);
-}
+
 /* ============================= */
 /* MOBILE CARD FLOW POLISH      */
 /* ============================= */

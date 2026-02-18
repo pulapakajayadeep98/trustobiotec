@@ -123,7 +123,7 @@ const Home = () => {
               <HiOutlineShieldCheck className="t-icon" />
               <div className="t-text">
                 <h4>CAA Registered</h4>
-                <p>Ensuring 100% compliant, export-quality harvests for global markets.</p>
+                <p>Ensuring 100% compliance, export-quality harvests for global markets.</p>
               </div>
             </div>
             <div className="tech-item" data-aos="fade-up" data-aos-delay="500">
