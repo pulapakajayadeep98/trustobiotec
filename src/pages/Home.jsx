@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GiShrimp, GiChicken, GiPig } from 'react-icons/gi';
-import { 
-  HiArrowRight, 
-  HiOutlineShieldCheck, 
-  HiOutlineChartBar, 
-  HiOutlineBeaker, 
-  HiOutlineUserGroup 
+import {
+  HiArrowRight,
+  HiOutlineShieldCheck,
+  HiOutlineChartBar,
+  HiOutlineBeaker,
+  HiOutlineUserGroup
 } from 'react-icons/hi';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // Fix: Standardized import for React Lenis in Vite environments
-import { ReactLenis } from 'lenis/react'; 
+import { ReactLenis } from 'lenis/react';
 
 import './Home.css';
 
@@ -23,39 +23,39 @@ const Home = () => {
   const slides = [
     {
       id: 1,
-      title: "Precision Aquaculture",
-      tagline: "Science-driven nutrition for healthier shrimp and fish.",
-      image: "/shrimp.png",
-      link: "/products/aqua",
-      theme: "aqua-theme"
-    },
-    {
-      id: 2,
       title: "Poultry Nutrition",
       tagline: "Advanced feed solutions for gut health and performance.",
-      image: "/poultry2.png",
+      image: "/poultry2.webp",
       link: "/products/poultry",
       theme: "poultry-theme"
     },
     {
+      id: 2,
+      title: "Precision Aquaculture",
+      tagline: "Science-driven nutrition for healthier shrimp and fish.",
+      image: "/shrimp.webp",
+      link: "/products/aqua",
+      theme: "aqua-theme"
+    },
+    {
       id: 3,
-      title: "Swine- Coming Soon",
+      title: "Swine - Coming Soon",
       tagline: "Smarter nutrition for better growth and feed efficiency.",
-      image: "/swarn2.png",
+      image: "/swarn2.webp",
       link: "/products/swine",
       theme: "swine-theme"
     }
   ];
 
   const productLogos = [
-    { name: "SEEDGEL aqua", img: "/seedgel.png", link: "/products/aqua?id=1" },
-    { name: "GRO KWIK PLUS", img: "/grokwik.png", link: "/products/aqua?id=2" },
-    { name: "MOULTING GEL", img: "/moultinggel.png", link: "/products/aqua?id=3" },
-    { name: "GUTGEL", img: "/Gutgel.png", link: "/products/aqua?id=6" },
-    { name: "ODO-Q", img: "/odoq.png", link: "/products/aqua?id=8" },
-    { name: "T-SHELL", img: "/T-SHELL.png", link: "/products/aqua?id=9" },
-    { name: "G-GILL", img: "/ggill.png", link: "/products/aqua?id=10" },
-    { name: "Q-POND", img: "/Qpond.png", link: "/products/aqua?id=16" },
+    { name: "SEEDGEL aqua", img: "/seedgel.webp", link: "/products/aqua?id=1" },
+    { name: "GRO KWIK PLUS", img: "/grokwik.webp", link: "/products/aqua?id=2" },
+    { name: "MOULTING GEL", img: "/moultinggel.webp", link: "/products/aqua?id=3" },
+    { name: "GUTGEL", img: "/Gutgel.webp", link: "/products/aqua?id=6" },
+    { name: "ODO-Q", img: "/odoq.webp", link: "/products/aqua?id=8" },
+    { name: "T-SHELL", img: "/T-SHELL.webp", link: "/products/aqua?id=9" },
+    { name: "G-GILL", img: "/ggill.webp", link: "/products/aqua?id=10" },
+    { name: "Q-POND", img: "/Qpond.webp", link: "/products/aqua?id=16" },
   ];
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Home = () => {
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 7000); 
+    }, 7000);
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -77,7 +77,7 @@ const Home = () => {
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
       <div className="home-wrapper">
-        
+
         {/* --- PREMIUM HERO SECTION --- */}
         <section className="premium-hero">
           {slides.map((slide, index) => (
@@ -100,8 +100,8 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div 
-                  className="hero-image-side" 
+                <div
+                  className="hero-image-side"
                   style={{ backgroundImage: `url(${slide.image})` }}
                 ></div>
               </div>
@@ -151,21 +151,29 @@ const Home = () => {
                 </p>
                 <div className="science-features">
                   <div className="s-feat" data-aos="fade-left" data-aos-delay="200">
-                    <strong>Aquaculture</strong>
-                    Bio-rational ecosystem management focused on survival, stability, and export-grade harvests.
-                  </div>
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="400">
                     <strong>Poultry</strong>
                     Gut-focused nutritional strategies that enhance feed efficiency, shell quality, and resilience.
                   </div>
+                  <div className="s-feat" data-aos="fade-left" data-aos-delay="400">
+                    <strong>Aquaculture</strong>
+                    Bio-rational ecosystem management focused on survival, stability, and export-grade harvests.
+                  </div>
                   <div className="s-feat" data-aos="fade-left" data-aos-delay="600">
+                    <strong>Cattle, Sheep & Pet</strong>
+                    Nutrition and health solutions for livestock and companion animals.
+                  </div>
+                  <div className="s-feat" data-aos="fade-left" data-aos-delay="700">
+                    <strong>Camel & Horse</strong>
+                    Performance-focused supplements for stamina, recovery, and wellbeing.
+                  </div>
+                  <div className="s-feat" data-aos="fade-left" data-aos-delay="800">
                     <strong>Swine</strong>
                     Enzyme-driven digestive and growth solutions supporting lean meat quality and productivity.
                   </div>
                 </div>
               </div>
               <div className="science-image" data-aos="zoom-in">
-                <img src="/trus.png" alt="Trusto Biotech Research" className="styled-img" />
+                <img src="/trus.webp" loading="lazy" decoding="async" alt="Trusto Biotech Research" className="styled-img" />
               </div>
             </div>
           </div>
@@ -174,10 +182,10 @@ const Home = () => {
         {/* --- PILLAR DEEP DIVE SECTION --- */}
         <section className="pillar-deep-dive section-padding">
           <div className="container">
-          
+
             {/* AQUACULTURE HIGH FIDELITY */}
             <section className="pillar-row high-fidelity aqua-edge-to-edge" data-aos="fade-up">
-              <div className="pillar-bg-image aqua-bg-fix" style={{ backgroundImage: `url('/aqqq.png')` }}></div>
+              <div className="pillar-bg-image aqua-bg-fix" style={{ backgroundImage: `url('/aqqq.webp')` }}></div>
               <div className="card-overlay-dark aqua-gradient"></div>
               <div className="full-width-inner">
                 <div className="pillar-content-left" data-aos="fade-right" data-aos-delay="200">
@@ -210,13 +218,13 @@ const Home = () => {
                 <div className="aqua-product-scroll">
                   <div className="aqua-scroll-track">
                     {productLogos.map((prod, i) => (
-                      <div 
-                        className="aqua-product-card" 
-                        key={i} 
-                        data-aos="fade-up" 
+                      <div
+                        className="aqua-product-card"
+                        key={i}
+                        data-aos="fade-up"
                         data-aos-delay={i * 100}
                       >
-                        <img src={prod.img} alt={prod.name} />
+                        <img src={prod.img} alt={prod.name} loading="lazy" decoding="async" />
                         <h4>{prod.name}</h4>
                         <span>View Specification →</span>
                       </div>
@@ -233,7 +241,7 @@ const Home = () => {
 
             {/* POULTRY PILLAR */}
             <section className="pillar-row high-fidelity edge-to-edge" data-aos="fade-up">
-              <div className="pillar-bg-image" style={{ backgroundImage: `url('/poultry1.png')` }}></div>
+              <div className="pillar-bg-image" style={{ backgroundImage: `url('/poultry1.webp')` }}></div>
               <div className="card-overlay-dark"></div>
               <div className="full-width-inner">
                 <div className="pillar-content-left" data-aos="fade-right">
@@ -258,7 +266,7 @@ const Home = () => {
             {/* SWINE PILLAR */}
             <div className="pillar-row swine-hide" data-aos="fade-up" style={{ padding: '80px 0' }}>
               <div className="pillar-image" data-aos="zoom-in-right">
-                <img src="/swarn2.png" alt="Swine Science" className="pillar-main-img" />
+                <img src="/swarn2.webp" loading="lazy" decoding="async" alt="Swine Science" className="pillar-main-img" />
               </div>
               <div className="pillar-content" data-aos="fade-left">
                 <GiPig className="pillar-icon swine-color" />

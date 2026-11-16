@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  HiOutlineGlobeAlt, 
-  HiOutlineLightBulb, 
-  HiOutlineShieldCheck, 
+import {
+  HiOutlineGlobeAlt,
+  HiOutlineLightBulb,
+  HiOutlineShieldCheck,
   HiOutlineTrendingUp,
   HiOutlineUserGroup,
   HiOutlineSparkles
@@ -18,8 +18,8 @@ const About = () => {
       {/* 1. HERO SECTION */}
      <section className="about-hero">
   <div className="container hero-content" data-aos="fade-up">
-    
-    
+
+
 
     <h1>
       About <span className="hero-highlight">Trusto Biotech</span>
@@ -41,21 +41,21 @@ const About = () => {
       <h2 className="section-heading">Who We Are</h2>
       <div className="intro-description">
         <p>
-          <strong className="brand-highlight">Trusto Biotech</strong> is a company specializing in Aquaculture and Poultry nutrition solutions. 
-          With over 35 years of industry experience, we are committed to improving animal health, productivity, 
+          <strong className="brand-highlight">Trusto Biotech</strong> is a company specializing in Aquaculture and Poultry nutrition solutions.
+          With over 35 years of industry experience, we are committed to improving animal health, productivity,
           and farm sustainability through innovative, reliable, and farmer-focused solutions.
         </p>
         <p>
-          Built on trust, performance, and consistent results, we partner with farmers and integrators 
+          Built on trust, performance, and consistent results, we partner with farmers and integrators
           across India to address modern farming challenges using non-antibiotic, nutrition-based technologies.
         </p>
       </div>
     </div>
     <div className="intro-image" data-aos="fade-left">
-      <img 
-        src="/trustolab.png" 
-        alt="Biotech Lab Research" 
-        className="styled-img" 
+      <img
+        src="/trustolab.webp"
+        alt="Biotech Lab Research"
+        className="styled-img"
       />
     </div>
   </div>
@@ -70,10 +70,10 @@ const About = () => {
         <GiShrimp className="section-icon aqua-color" />
         <h2>Aquaculture – Our Core Focus</h2>
       </div>
-      
+
       {/* This paragraph stays centered below the group */}
       <p className="section-description">
-        Deeply involved since 2012 in supporting shrimp and fish farming through 
+        Deeply involved since 2012 in supporting shrimp and fish farming through
         stage-wise nutrition and pond ecosystem management.
       </p>
     </div>
@@ -118,10 +118,10 @@ const About = () => {
 {/* 4. POULTRY & SWINE SECTION */}
 <section className="secondary-sectors section-padding">
   <div className="container grid-2 sector-grid-gap">
-    
+
     {/* Poultry Card */}
     <div className="sector-card" data-aos="fade-up">
-      <div className="card-bg" style={{ backgroundImage: `url('/poultry.png')` }}></div>
+      <div className="card-bg" style={{ backgroundImage: `url('/poultry.webp')` }}></div>
       <div className="card-overlay"></div>
       <div className="card-content">
         <div className="header-inline">
@@ -143,7 +143,7 @@ const About = () => {
   <div className="sector-card" data-aos="fade-up" data-aos-delay="200">
   <div
     className="card-bg"
-    style={{ backgroundImage: `url('/fish.jpg')` }}
+    style={{ backgroundImage: `url('/fish.webp')` }}
   ></div>
 
   <div className="card-overlay"></div>
@@ -170,7 +170,7 @@ const About = () => {
 
     {/* Swine Box */}
 
- 
+
       {/* 5. DIFFERENTIATORS */}
       <section className="diff-section section-padding bg-dark text-white">
         <div className="container">
@@ -201,7 +201,7 @@ const About = () => {
           <div className="vm-card" data-aos="fade-right">
             <HiOutlineLightBulb className="vm-icon" />
             <h3>Our Vision</h3>
-            <p>To be a leading biotechnology solutions provider in Aquaculture, Poultry, and Swine nutrition by delivering innovative, safe, and sustainable products that enhance animal health and farm profitability.</p>
+            <p>To be a leading biotechnology solutions provider in Poultry, Aquaculture, Cattle, Sheep & Pet, Camel & Horse, and Swine nutrition by delivering innovative, safe, and sustainable products that enhance animal health and farm profitability.</p>
           </div>
           <div className="vm-card" data-aos="fade-left">
             <HiOutlineTrendingUp className="vm-icon" />

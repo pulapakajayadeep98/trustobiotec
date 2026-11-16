@@ -9,10 +9,10 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.shop-wrapper { 
-  min-height: 100vh; 
-  background: #f4f7f6; 
-  padding-top: var(--nav-height); 
+.shop-wrapper {
+  min-height: 100vh;
+  background: #f4f7f6;
+  padding-top: var(--nav-height);
   overflow: visible; /* Restore natural page behavior */
 }
 
@@ -20,7 +20,7 @@
    2. B2B CATEGORY HEADER
    ========================================================================== */
 .category-header-b2b {
-  background: linear-gradient(rgba(11, 17, 32, 0.85), rgba(11, 17, 32, 0.85)), 
+  background: linear-gradient(rgba(11, 17, 32, 0.85), rgba(11, 17, 32, 0.85)),
               url('https://images.unsplash.com/photo-1660680300128-f3436f8fa072?q=80');
   background-size: cover;
   background-position: center;
@@ -29,27 +29,27 @@
   text-align: left;
 }
 
-.category-header-b2b h1 { 
-  font-size: 3rem; 
-  margin-bottom: 10px; 
-  color: var(--trusto-green); 
+.category-header-b2b h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--trusto-green);
 }
 
-.trust-badges-header { 
-  display: flex; 
-  gap: 30px; 
-  margin-top: 25px; 
-  font-weight: 600; 
-  font-size: 1rem; 
+.trust-badges-header {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /* ==========================================================================
    3. SECTOR NAVIGATION (Stick-to-top)
    ========================================================================== */
-.sector-header-nav { 
-  background: #ffffff; 
-  border-bottom: 1px solid #e2e8f0; 
-  padding: 10px 0; 
+.sector-header-nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 0;
   position: sticky;
   top: var(--nav-height);
   z-index: 1000;
@@ -57,134 +57,134 @@
 
 .sector-container { display: flex; justify-content: center; gap: 30px; }
 
-.sector-btn { 
-  background: none; border: 1px solid transparent; 
-  font-weight: 800; color: #64748b; 
-  padding: 8px 20px; cursor: pointer; 
+.sector-btn {
+  background: none; border: 1px solid transparent;
+  font-weight: 800; color: #64748b;
+  padding: 8px 20px; cursor: pointer;
   border-radius: 30px; transition: var(--transition);
   display: flex; align-items: center; gap: 8px;
 }
 
-.sector-btn.active { 
-  background: var(--trusto-navy); 
-  color: var(--trusto-green); 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+.sector-btn.active {
+  background: var(--trusto-navy);
+  color: var(--trusto-green);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* ==========================================================================
    4. CONSTANT SIDEBAR & NATURAL PAGE SCROLL
    ========================================================================== */
-.shop-container { 
-  display: flex; 
-  max-width: 1440px; 
-  margin: 0 auto; 
-  padding: 30px 20px; 
-  gap: 25px; 
+.shop-container {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  gap: 25px;
   /* 🔥 CRITICAL: Prevents sidebar stretching and allows independent feeling scroll */
-  align-items: flex-start; 
+  align-items: flex-start;
   height: auto;
   overflow: visible;
 }
 
-.filter-sidebar { 
-  width: 280px; 
-  flex-shrink: 0; 
-  background: white; 
-  border-radius: 12px; 
-  padding: 25px; 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-  
+.filter-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
   /* 🔥 STICKY LOGO: Stays fixed on screen while you scroll products */
-  position: sticky; 
-  top: calc(var(--nav-height) + var(--sector-nav-height) + 20px); 
-  
+  position: sticky;
+  top: calc(var(--nav-height) + var(--sector-nav-height) + 20px);
+
   /* 🔥 ONLY takes up necessary space to remove bottom gap */
-  height: max-content; 
+  height: max-content;
   z-index: 10;
 }
 
-.filter-header-row { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 20px; 
+.filter-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.clear-link { 
-  background: none; border: none; 
-  color: #ef4444; font-weight: 700; 
-  cursor: pointer; font-size: 0.85rem; 
+.clear-link {
+  background: none; border: none;
+  color: #ef4444; font-weight: 700;
+  cursor: pointer; font-size: 0.85rem;
 }
 
 /* ==========================================================================
    5. PRODUCT CONTENT AREA (SCROLLABLE)
    ========================================================================== */
-.product-content { 
-  flex-grow: 1; 
-  min-width: 0; 
+.product-content {
+  flex-grow: 1;
+  min-width: 0;
 }
 
-.results-bar { 
-  display: flex; justify-content: space-between; 
-  align-items: center; margin-bottom: 20px; 
-  background: white; padding: 15px 25px; 
-  border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
+.results-bar {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 20px;
+  background: white; padding: 15px 25px;
+  border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
-.amazon-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-  gap: 20px; 
+.amazon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 /* B2B Product Card */
-.grid-item.b2b-card { 
-  background: white; border: 1px solid #edf2f7; 
-  border-radius: 15px; padding: 20px; 
-  display: flex; flex-direction: column; 
+.grid-item.b2b-card {
+  background: white; border: 1px solid #edf2f7;
+  border-radius: 15px; padding: 20px;
+  display: flex; flex-direction: column;
   transition: var(--transition);
 }
 
-.grid-item.b2b-card:hover { 
-  transform: translateY(-5px); 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+.grid-item.b2b-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-.img-box { 
-  height: 180px; 
-  background: #f8fafc; 
-  border-radius: 10px; 
-  margin-bottom: 15px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  position: relative; 
+.img-box {
+  height: 180px;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 .img-box img { max-width: 80%; }
 
-.application-label { 
-  font-size: 0.75rem; 
-  font-weight: 800; 
-  color: #94a3b8; 
-  letter-spacing: 1px; 
+.application-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .card-benefits-list { list-style: none; padding: 10px 0; margin-bottom: 10px; }
-.card-benefits-list li { 
-  font-size: 0.85rem; 
-  color: #475569; 
-  margin-bottom: 6px; 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
+.card-benefits-list li {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.grid-price { 
-  font-size: 1.4rem; 
-  font-weight: 800; 
-  color: var(--trusto-navy); 
-  margin-bottom: 15px; 
+.grid-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--trusto-navy);
+  margin-bottom: 15px;
 }
 
 /* ==========================================================================
@@ -193,25 +193,25 @@
 .b2b-action-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px; margin-top: auto; }
 
 .add-btn-premium { background: #ffd814; border: none; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-.enquire-btn { 
-  background: white; border: 1px solid var(--trusto-navy); 
-  padding: 10px; border-radius: 8px; font-weight: 700; 
-  cursor: pointer; transition: 0.3s; 
+.enquire-btn {
+  background: white; border: 1px solid var(--trusto-navy);
+  padding: 10px; border-radius: 8px; font-weight: 700;
+  cursor: pointer; transition: 0.3s;
 }
 .enquire-btn:hover { border-color: var(--trusto-green); color: var(--trusto-green); }
 
-.qty-row-alt { 
-  display: flex; align-items: center; 
-  justify-content: space-between; 
-  background: #f1f5f9; border-radius: 8px; padding: 2px; 
+.qty-row-alt {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  background: #f1f5f9; border-radius: 8px; padding: 2px;
 }
 
 /* ==========================================================================
    7. BRANDED SLIDER & CHECKBOXES
    ========================================================================== */
-input[type="range"] { 
-  accent-color: var(--trusto-green); 
-  width: 100%; margin: 15px 0; 
+input[type="range"] {
+  accent-color: var(--trusto-green);
+  width: 100%; margin: 15px 0;
 }
 
 .range-values { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: #64748b; }
@@ -565,7 +565,7 @@ input[type="range"] {
   position: sticky;
   top: 120px; /* Adjust based on your Nav + Sector Nav height */
   height: fit-content; /* Only as tall as its content */
-  max-height: 90vh; 
+  max-height: 90vh;
   overflow-y: auto; /* Internal scroll only if filters are very long */
 }
 
@@ -704,8 +704,8 @@ input[type="range"] {
 
 .img-box {
   /* 🔥 Increased height from 200px to 260px for larger presence */
-  height: 260px; 
-  background: #ffffff; 
+  height: 260px;
+  background: #ffffff;
   border-radius: 12px;
   margin-bottom: 15px;
   display: flex;
@@ -718,15 +718,15 @@ input[type="range"] {
 
 .img-box img {
   /* 🔥 Increased max-dimensions so the product fills more of the box */
-  max-width: 95%; 
-  max-height: 95%; 
-  object-fit: contain; 
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Subtle zoom effect to make the larger image feel interactive */
 .grid-item.b2b-card:hover .img-box img {
-  transform: scale(1.08); 
+  transform: scale(1.08);
 }
 
 /* Adjust Quick View to match the larger box */
@@ -735,7 +735,7 @@ input[type="range"] {
   bottom: -50px;
   left: 0;
   right: 0;
-  background: rgba(11, 17, 32, 0.9); 
+  background: rgba(11, 17, 32, 0.9);
   color: #ffffff;
   text-align: center;
   padding: 12px;
@@ -750,7 +750,7 @@ input[type="range"] {
 .amazon-grid {
   display: grid;
   /* Increased minimum width from 260px to 280px */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
 }
 /* Ensure the detail view centers when the sidebar is hidden */
@@ -1145,6 +1145,8 @@ input[type="range"] {
 .aqua-bg { background: linear-gradient(135deg, #0b1120 0%, #0d2c4d 100%); }
 .poultry-bg { background: linear-gradient(135deg, #0b1120 0%, #4d1d0d 100%); }
 .swine-bg { background: linear-gradient(135deg, #0b1120 0%, #2e0d4d 100%); }
+.cattle-bg { background: linear-gradient(135deg, #0b1120 0%, #1f3d0d 100%); }
+.camel-bg { background: linear-gradient(135deg, #0b1120 0%, #4d3a0d 100%); }
 
 .hero-container-inner {
   display: flex;
@@ -1238,6 +1240,8 @@ input[type="range"] {
 .aqua-bg { background: linear-gradient(90deg, #0b1120 0%, #0d2c4d 100%); }
 .poultry-bg { background: linear-gradient(90deg, #0b1120 0%, #4d1d0d 100%); }
 .swine-bg { background: linear-gradient(90deg, #0b1120 0%, #2e0d4d 100%); }
+.cattle-bg { background: linear-gradient(90deg, #0b1120 0%, #1f3d0d 100%); }
+.camel-bg { background: linear-gradient(90deg, #0b1120 0%, #4d3a0d 100%); }
 
 .hero-compact-container {
   display: flex;
@@ -1258,32 +1262,32 @@ input[type="range"] {
   letter-spacing: 1px;
 }
 
-.hero-compact-text h1 { 
+.hero-compact-text h1 {
   font-size: 2.5rem; /* Smaller font for compact view */
-  margin: 10px 0; 
+  margin: 10px 0;
 }
 .hero-compact-text h1 span { color: var(--trusto-green); }
 
-.hero-compact-text p { 
-  font-size: 0.95rem; 
-  color: #cbd5e1; 
-  max-width: 450px; 
-  margin-bottom: 20px; 
+.hero-compact-text p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  max-width: 450px;
+  margin-bottom: 20px;
 }
 
-.hero-compact-stats { 
-  display: flex; 
-  gap: 20px; 
-  font-size: 0.85rem; 
+.hero-compact-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #94a3b8; 
+  color: #94a3b8;
 }
 
 /* Static Image - No Animation */
-.hero-compact-image { 
-  flex: 0 0 35%; 
-  display: flex; 
-  justify-content: flex-end; 
+.hero-compact-image {
+  flex: 0 0 35%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero-compact-image img {
@@ -1491,7 +1495,7 @@ input[type="range"] {
   }
 
   .mobile-close-btn { display: block; }
-  
+
   /* 🔥 3. GRID FIX: One product per row on small phones */
   .amazon-grid {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
@@ -1520,7 +1524,7 @@ input[type="range"] {
   }
 
   .card-benefits-list { display: none; } /* Hide benefits on small grid to save space */
-  
+
   .grid-price { font-size: 1.1rem; margin: 5px 0; }
 
   /* 🔥 5. HERO DETAIL VIEW ON MOBILE */
@@ -1528,7 +1532,7 @@ input[type="range"] {
     grid-template-columns: 1fr; /* Stack image and text */
     gap: 30px;
   }
-  
+
   .hero-gallery-container {
     height: 300px;
   }
@@ -1548,3 +1552,38 @@ input[type="range"] {
 .sector-container {
   justify-content: flex-start;
 }
+/* Name placeholder shown when a product image is not available */
+.product-img-placeholder {
+  width: 85%;
+  height: 85%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px dashed #cbd5e1;
+  background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+  color: #0b1120;
+  box-sizing: border-box;
+  filter: none;
+}
+.img-box .product-img-placeholder { margin: auto; position: absolute; inset: 0; }
+.product-img-placeholder .placeholder-brand {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #16a34a;
+}
+.product-img-placeholder .placeholder-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.hero-gallery-container .product-img-placeholder { width: 100%; height: 100%; }
+.hero-gallery-container .product-img-placeholder .placeholder-name { font-size: 2.2rem; }
+.hero-gallery-container .product-img-placeholder .placeholder-brand { font-size: 0.9rem; }

@@ -70,7 +70,7 @@ const Footer = () => {
         {/* Brand Section */}
         <div className="tf-footer-section tf-brand-col">
           <div className="tf-footer-logo-wrapper">
-            <img src="/trust1.png" alt="Trusto" className="tf-footer-logo-img" />
+            <img src="/trust1.webp" alt="Trusto" className="tf-footer-logo-img" />
           </div>
           <p className="tf-footer-description">
             Delivering trusted, antibiotic-free biotech solutions for aqua and animal health—supporting sustainable farming and farmer prosperity for over 35+ years.

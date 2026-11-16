@@ -87,3 +87,4 @@
 @media (max-width: 900px) {
   .cart-content { grid-template-columns: 1fr; }
 }
+.summary-note { font-size: 0.85rem; color: #64748b; margin: 8px 0 14px; }

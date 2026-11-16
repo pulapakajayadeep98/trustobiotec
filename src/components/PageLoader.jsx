@@ -1,6 +1,6 @@
 import React from "react";
 import "./PageLoader.css";
-import logo from "/trust1.png";
+import logo from "/trust1.webp";
 
 const PageLoader = ({ show }) => {
   if (!show) return null;

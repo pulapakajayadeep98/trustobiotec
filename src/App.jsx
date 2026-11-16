@@ -16,28 +16,13 @@ import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 
-// ✅ Page Loader
-import PageLoader from "./components/PageLoader";
-
 import "./App.css";
 
 /* ---------------- ROUTE CONTENT WRAPPER ---------------- */
 function AppContent({ cart, updateQty, cartCount }) {
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
-
-  // 🔁 Trigger loader on route change
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 700);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
-
   return (
     <>
-      {/* Page Transition Loader */}
-      <PageLoader show={loading} />
-
       <Navbar cartCount={cartCount} />
 
       <main className="content">
