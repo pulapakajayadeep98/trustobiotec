@@ -173,7 +173,7 @@ export const allProducts = {
       id: 16,
       name: "Q-POND",
       image: "/qpond1.webp",
-      size: "1L, 5L & 20L",
+      size: "1L, 5L, 20L",
       tagline: "Water Quality Improver",
       category: "POND QUALITY",
       benefits: ["Improves water colour", "Promotes plankton", "Reduces Vibrio"],
@@ -318,7 +318,7 @@ export const allProducts = {
       id: 104,
       name: "SAN-Q POULTRY",
       image: "/san-q-poultry.webp",
-      size: "1L, 5L & 20L",
+      size: "1L, 5L, 20L",
       tagline: "The Effective Water Sanitizer",
       category: "SANITATION",
       benefits: [
@@ -488,20 +488,140 @@ export const allProducts = {
       dosage: "Broilers: 1 kg per ton of feed. Layers & Breeders: 1.5-2 kg per ton of feed. Or as advised by Veterinarian."
     }
   ],
- CATTLE: [],
- CAMEL: [],
- SWINE: []
+ CATTLE: [
+    {
+      id: 201,
+      name: "CONVERTAL PLUS",
+      size: "500ml & 1L",
+      image: "/convertal-plus.webp",
+      tagline: "An Ultimate Liver Tonic for Sheep, Goats & Dogs",
+      category: "SHEEP, GOATS & DOGS",
+      benefits: [
+        "Improves functional efficiency of the liver",
+        "In fascioliasis, very helpful to regain liver function",
+        "Good appetite, feed intake and better FCR",
+        "Improves digestion and absorption",
+        "Excellent growth and productivity",
+        "Improves body metabolism by eliminating toxins",
+        "Animals become healthy, active and energetic"
+      ],
+      composition: "Liver stimulants, hydrolysing enzymes and organic metabolites etc.",
+      dosage: "Sheep, Goats & Dogs: 5-10 ml per day. Or as advised by Veterinarian."
+    },
+    {
+      id: 202,
+      name: "CONVERTAL PLUS",
+      size: "5L",
+      image: "/convertal-plus.webp",
+      tagline: "An Ultimate Liver Tonic for Cattle",
+      category: "CATTLE",
+      benefits: [
+        "Improves functional efficiency of the liver",
+        "In fascioliasis, very helpful to regain liver function",
+        "Good appetite, feed intake and better FCR",
+        "Improves digestion and absorption",
+        "Excellent growth and productivity",
+        "Improves body metabolism by eliminating toxins",
+        "Animals become healthy, active and energetic"
+      ],
+      composition: "Liver stimulants, hydrolysing enzymes and organic metabolites etc.",
+      dosage: "Cattle: 30-50 ml per day (depending on body weight). Or as advised by Veterinarian."
+    }
+  ],
+ CAMEL: [
+    {
+      id: 301,
+      name: "CONVERTAL PLUS",
+      size: "5L",
+      image: "/convertal-plus.webp",
+      tagline: "An Ultimate Liver Tonic for Camels",
+      category: "CAMEL",
+      benefits: [
+        "Improves functional efficiency of the liver",
+        "In fascioliasis, very helpful to regain liver function",
+        "Good appetite, feed intake and better FCR",
+        "Improves digestion and absorption",
+        "Excellent growth and productivity",
+        "Improves body metabolism by eliminating toxins",
+        "Animals become healthy, active and energetic"
+      ],
+      composition: "Liver stimulants, hydrolysing enzymes and organic metabolites etc.",
+      dosage: "Camel: 50 ml per animal, daily. Or as advised by Veterinarian."
+    },
+    {
+      id: 302,
+      name: "CONVERTAL PLUS",
+      size: "5L",
+      image: "/convertal-plus.webp",
+      tagline: "An Ultimate Liver Tonic for Horses",
+      category: "HORSE",
+      benefits: [
+        "Improves functional efficiency of the liver",
+        "In fascioliasis, very helpful to regain liver function",
+        "Good appetite, feed intake and better FCR",
+        "Improves digestion and absorption",
+        "Excellent growth and productivity",
+        "Improves body metabolism by eliminating toxins",
+        "Animals become healthy, active and energetic"
+      ],
+      composition: "Liver stimulants, hydrolysing enzymes and organic metabolites etc.",
+      dosage: "Horse: 50 ml per animal, daily. Or as advised by Veterinarian."
+    }
+  ],
+ SWINE: [
+    {
+      id: 401,
+      name: "CONVERTAL PLUS",
+      size: "5L",
+      image: "/convertal-plus.webp",
+      tagline: "An Ultimate Liver Tonic for Swine",
+      category: "SWINE",
+      benefits: [
+        "Improves functional efficiency of the liver",
+        "In fascioliasis, very helpful to regain liver function",
+        "Good appetite, feed intake and better FCR",
+        "Improves digestion and absorption",
+        "Excellent growth and productivity",
+        "Improves body metabolism by eliminating toxins",
+        "Animals become healthy, active and energetic"
+      ],
+      composition: "Liver stimulants, hydrolysing enzymes and organic metabolites etc.",
+      dosage: "Swine: 30-50 ml per day. Or as advised by Veterinarian."
+    }
+  ]
 };
 
 // Division tabs, in display order
 export const SECTORS = [
   { key: 'POULTRY', label: 'Poultry', icon: '🐔', image: '/poultry.webp', desc: 'Maximizing bio-efficiency and immunity through nutrition.' },
   { key: 'AQUA', label: 'Aquaculture', icon: '🐟', image: '/aqua4.webp', desc: 'Proven biotech solutions field-tested for aqua excellence.' },
-  { key: 'CATTLE', label: 'Cattle, Sheep & Pet', icon: '🐄', image: '/cattle-sheep-pet.webp', desc: 'Science-led nutrition for cattle, sheep and pets - Coming Soon.' },
-  { key: 'CAMEL', label: 'Camel & Horse', icon: '🐪', image: '/camel-horse.webp', desc: 'Performance and health solutions for camels and horses - Coming Soon.' },
-  { key: 'SWINE', label: 'Swine', icon: '🐷', image: '/swarn.webp', desc: 'Innovative nutritional solutions for swine health - Coming Soon.' },
+  { key: 'CATTLE', label: 'Cattle, Sheep & Pet', icon: '🐄', image: '/cattle-sheep-pet.webp', desc: 'Science-led nutrition and liver care for cattle, sheep, goats and dogs.' },
+  { key: 'CAMEL', label: 'Camel & Horse', icon: '🐪', image: '/camel-horse.webp', desc: 'Performance and health solutions for camels and horses.' },
+  { key: 'SWINE', label: 'Swine', icon: '🐷', image: '/swarn.webp', desc: 'Innovative nutritional solutions for swine health.' },
 ];
 const sectorInfo = (key) => SECTORS.find(s => s.key === key) || SECTORS[0];
+
+// Pack sizes as small chips: "1L & 5L (Liquid), 10Kg (Powder)" -> [1L & 5L · Liquid] [10Kg · Powder]
+const PackSizes = ({ size, large = false }) => {
+  const parts = (!size || size === "0") ? [] : size.split(",").map(s => s.trim()).filter(Boolean);
+  return (
+    <div className={`pack-sizes ${large ? 'pack-sizes-large' : ''}`}>
+      <span className="pack-label">{large ? 'Available Packs' : 'Pack Size'}</span>
+      <div className="pack-chips">
+        {parts.length === 0 && <span className="pack-chip">Contact for details</span>}
+        {parts.map((part, i) => {
+          const m = part.match(/^(.*?)\s*\((.+)\)$/);
+          return (
+            <span key={i} className="pack-chip">
+              <strong>{m ? m[1] : part}</strong>
+              {m && <em>{m[2]}</em>}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 // Shows the product image, or a name placeholder when no image exists / it fails to load
 const ProductImage = ({ src, name, className, lazy = false }) => {
@@ -555,7 +675,7 @@ const Products = ({ cart, updateQty }) => {
 
   const filteredProducts = useMemo(() => {
     const allItems = searchQuery
-      ? Object.values(allProducts).flat() 
+      ? Object.values(allProducts).flat()
       : allProducts[activeSector];
 
     const searchTerm = searchQuery.toLowerCase().trim();
@@ -591,7 +711,7 @@ const Products = ({ cart, updateQty }) => {
             <div className="hero-compact-image">
               <img
                 src={sectorInfo(activeSector).image}
-                alt={sectorInfo(activeSector).label} 
+                alt={sectorInfo(activeSector).label}
               />
             </div>
           </div>
@@ -673,7 +793,7 @@ const Products = ({ cart, updateQty }) => {
                   {p.benefits?.slice(0, 2).map((b, i) => <li key={i}>✔ {b}</li>)}
                 </ul>
                 {/* Replaced Price with Product Size as requested */}
-                <p className="grid-price">{p.size !== "0" ? p.size : "Pack Size: TBD"}</p>
+                <PackSizes size={p.size} />
                 <div className="b2b-action-row">
                   {cart[p.id] > 0 ? (
                     <div className="qty-selector-inline">
@@ -699,7 +819,7 @@ const Products = ({ cart, updateQty }) => {
               <div style={{ fontSize: '5rem', marginBottom: '20px' }}>{sectorInfo(activeSector).icon}</div>
               <h2 style={{ color: '#0b1120', fontSize: '2.5rem', fontWeight: '800' }}>{sectorInfo(activeSector).label} Division Coming Soon</h2>
               <p style={{ color: '#64748b', maxWidth: '500px', margin: '0 auto', fontSize: '1.1rem' }}>
-                We are currently developing scientific {sectorInfo(activeSector).label.toLowerCase()} solutions focused on animal health 
+                We are currently developing scientific {sectorInfo(activeSector).label.toLowerCase()} solutions focused on animal health
                 and antibiotic-free productivity. Our new product range will be available shortly.
               </p>
             </>
@@ -736,7 +856,7 @@ const Products = ({ cart, updateQty }) => {
               <span className="info-category-badge">{selectedProduct.category}</span>
               <h1>{selectedProduct.name}</h1>
               <p className="info-tagline">{selectedProduct.tagline}</p>
-              <p className="price-tag-large">Available Pack: {selectedProduct.size !== "0" ? selectedProduct.size : "Contact for details"}</p>
+              <PackSizes size={selectedProduct.size} large />
             </div>
 
             <div className="technical-info-grid">

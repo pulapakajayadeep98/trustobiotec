@@ -39,7 +39,7 @@ const Home = () => {
     },
     {
       id: 3,
-      title: "Swine - Coming Soon",
+      title: "Swine Health",
       tagline: "Smarter nutrition for better growth and feed efficiency.",
       image: "/swarn2.webp",
       link: "/products/swine",
