@@ -201,7 +201,7 @@ const About = () => {
           <div className="vm-card" data-aos="fade-right">
             <HiOutlineLightBulb className="vm-icon" />
             <h3>Our Vision</h3>
-            <p>To be a leading biotechnology solutions provider in Poultry, Aquaculture, Cattle, Sheep & Pet, Camel & Horse, and Swine nutrition by delivering innovative, safe, and sustainable products that enhance animal health and farm profitability.</p>
+            <p>To be a leading biotechnology solutions provider in complete livestock nutrition by delivering innovative, safe, and sustainable products that enhance animal health and farm profitability.</p>
           </div>
           <div className="vm-card" data-aos="fade-left">
             <HiOutlineTrendingUp className="vm-icon" />
