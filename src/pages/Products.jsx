@@ -593,11 +593,11 @@ export const allProducts = {
 
 // Division tabs, in display order
 export const SECTORS = [
-  { key: 'POULTRY', label: 'Poultry', icon: '🐔', image: '/poultry.webp', desc: 'Maximizing bio-efficiency and immunity through nutrition.' },
-  { key: 'AQUA', label: 'Aquaculture', icon: '🐟', image: '/aqua4.webp', desc: 'Proven biotech solutions field-tested for aqua excellence.' },
-  { key: 'CATTLE', label: 'Cattle, Sheep & Pet', icon: '🐄', image: '/cattle-sheep-pet.webp', desc: 'Science-led nutrition and liver care for cattle, sheep, goats and dogs.' },
-  { key: 'CAMEL', label: 'Camel & Horse', icon: '🐪', image: '/camel-horse.webp', desc: 'Performance and health solutions for camels and horses.' },
-  { key: 'SWINE', label: 'Swine', icon: '🐷', image: '/swarn.webp', desc: 'Innovative nutritional solutions for swine health.' },
+  { key: 'POULTRY', label: 'Poultry', icon: '🐔', image: '/poultry.webp', bg: '/poultry2.webp', bgPos: 'center 40%', desc: 'Maximizing bio-efficiency and immunity through nutrition.' },
+  { key: 'AQUA', label: 'Aquaculture', icon: '🐟', image: '/aqua-shrimp-fish.webp', bg: '/shrimp.webp', bgPos: 'center 45%', desc: 'Proven biotech solutions field-tested for aqua excellence.' },
+  { key: 'CATTLE', label: 'Cattle, Sheep & Pet', icon: '🐄', image: '/cattle-sheep-pet.webp', bg: '/cattle-bg.webp', bgPos: 'center 70%', desc: 'Science-led nutrition and liver care for cattle, sheep, goats and dogs.' },
+  { key: 'CAMEL', label: 'Camel & Horse', icon: '🐪', image: '/camel-horse.webp', bg: '/camel-bg.webp', bgPos: 'center 60%', desc: 'Performance and health solutions for camels and horses.' },
+  { key: 'SWINE', label: 'Swine', icon: '🐷', image: '/swarn.webp', bg: '/swarn2.webp', bgPos: 'center 45%', desc: 'Innovative nutritional solutions for swine health.' },
 ];
 const sectorInfo = (key) => SECTORS.find(s => s.key === key) || SECTORS[0];
 
@@ -704,7 +704,10 @@ const Products = ({ cart, updateQty }) => {
   return (
     <div className="shop-wrapper ecommerce-layout">
       {view === 'grid' && !searchQuery && (
-        <header className={`product-hero-compact ${activeSector.toLowerCase()}-bg`}>
+        <header
+          className={`product-hero-compact product-hero-photo ${activeSector.toLowerCase()}-bg`}
+          style={{ '--hero-bg': `url(${sectorInfo(activeSector).bg})`, '--hero-pos': sectorInfo(activeSector).bgPos }}
+        >
           <div className="hero-compact-container">
             <div className="hero-compact-text">
               <span className="compact-badge">Field Proven Biotech</span>
@@ -717,12 +720,6 @@ const Products = ({ cart, updateQty }) => {
                 <span>✔ Antibiotic-Free</span>
                 <span>✔ Expert Guidance</span>
               </div>
-            </div>
-            <div className="hero-compact-image">
-              <img
-                src={sectorInfo(activeSector).image}
-                alt={sectorInfo(activeSector).label}
-              />
             </div>
           </div>
         </header>

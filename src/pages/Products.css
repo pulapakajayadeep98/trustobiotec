@@ -1629,3 +1629,61 @@ input[type="range"] {
 .pack-sizes-large .pack-label { font-size: 0.8rem; margin-bottom: 10px; }
 .pack-sizes-large .pack-chip { font-size: 1rem; padding: 6px 14px; }
 .pack-sizes-large .pack-chip em { font-size: 0.8rem; }
+
+/* ==========================================================================
+   PRODUCTS HERO – full-width division photo with text on a dark fade
+   ========================================================================== */
+.product-hero-compact.product-hero-photo {
+  position: relative;
+  min-height: 380px;
+  padding: 60px 6%;
+  background:
+    linear-gradient(90deg, rgba(11, 17, 32, 0.9) 0%, rgba(11, 17, 32, 0.7) 38%, rgba(11, 17, 32, 0.15) 75%, rgba(11, 17, 32, 0) 100%),
+    var(--hero-bg) var(--hero-pos, center) / cover no-repeat;
+  background-color: #0b1120;
+}
+
+.product-hero-photo .hero-compact-container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product-hero-photo .hero-compact-text { max-width: 620px; }
+
+.product-hero-photo .compact-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid rgba(74, 222, 128, 0.45);
+  border-radius: 999px;
+  background: rgba(11, 17, 32, 0.35);
+  color: #4ade80;
+}
+
+.product-hero-photo .hero-compact-text h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.product-hero-photo .hero-compact-text p { color: #e2e8f0; }
+
+.product-hero-photo .hero-compact-stats span {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: #f1f5f9;
+}
+
+@media (max-width: 768px) {
+  .product-hero-compact.product-hero-photo {
+    min-height: 300px;
+    padding: 50px 20px;
+    background:
+      linear-gradient(180deg, rgba(11, 17, 32, 0.72) 0%, rgba(11, 17, 32, 0.6) 100%),
+      var(--hero-bg) var(--hero-pos, center) / cover no-repeat;
+  }
+  .product-hero-photo .hero-compact-text { max-width: none; }
+}
+
+.product-hero-photo .hero-compact-stats { gap: 10px; flex-wrap: wrap; }
