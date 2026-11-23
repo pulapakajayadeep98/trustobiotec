@@ -46,11 +46,14 @@ return (
       {/* Success Popup Overlay remains the same */}
 
       {/* Header Section */}
-      <section className="contact-hero">
-        <h1 className="contact-title" data-aos="zoom-in">Get in Touch</h1>
-        <p className="contact-subtitle" data-aos="fade-up" data-aos-delay="100">
-          Have a question about our biotech solutions? Our team is ready to help.
-        </p>
+      <section className="contact-hero contact-hero-photo">
+        <div className="contact-hero-inner">
+          <span className="contact-hero-eyebrow" data-aos="fade-up">We're here for farmers</span>
+          <h1 className="contact-title" data-aos="fade-up" data-aos-delay="100">Get in Touch</h1>
+          <p className="contact-subtitle" data-aos="fade-up" data-aos-delay="200">
+            Have a question about our biotech solutions? Our team is ready to help.
+          </p>
+        </div>
       </section>
 
       <div className="contact-main-grid">

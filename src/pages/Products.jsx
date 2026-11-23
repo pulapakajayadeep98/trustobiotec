@@ -624,7 +624,7 @@ const PackSizes = ({ size, large = false }) => {
 };
 
 // Shows the product image, or a name placeholder when no image exists / it fails to load
-const ProductImage = ({ src, name, className, lazy = false }) => {
+export const ProductImage = ({ src, name, className, lazy = false }) => {
   const [failed, setFailed] = useState(false);
   if (!src || failed) {
     return (
@@ -658,15 +658,25 @@ const Products = ({ cart, updateQty }) => {
   const [selectedCat, setSelectedCat] = useState('All');
   const searchQuery = searchParams.get('search') || '';
 
+  const productId = searchParams.get('id');
+
   useEffect(() => {
     if (category) {
       const upperCategory = category.toUpperCase();
       if (allProducts[upperCategory]) {
         setActiveSector(upperCategory);
-        setView('grid');
+        // ?id=<productId> opens that product's detail view directly
+        const product = productId && allProducts[upperCategory].find(p => p.id === Number(productId));
+        if (product) {
+          setSelectedProduct(product);
+          setView('hero');
+          window.scrollTo(0, 0);
+        } else {
+          setView('grid');
+        }
       }
     }
-  }, [category]);
+  }, [category, productId]);
 
   const categories = useMemo(() => {
     const cats = allProducts[activeSector].map(p => p.category);

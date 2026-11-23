@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GiShrimp, GiChicken, GiPig } from 'react-icons/gi';
+import { GiShrimp, GiChicken, GiPig, GiCow, GiCamel } from 'react-icons/gi';
 import {
   HiArrowRight,
   HiOutlineShieldCheck,
@@ -15,6 +15,7 @@ import 'aos/dist/aos.css';
 import { ReactLenis } from 'lenis/react';
 
 import './Home.css';
+import { allProducts, SECTORS, ProductImage } from './Products';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -39,24 +40,28 @@ const Home = () => {
     },
     {
       id: 3,
-      title: "Swine Health",
-      tagline: "Smarter nutrition for better growth and feed efficiency.",
-      image: "/swarn2.webp",
-      link: "/products/swine",
-      theme: "swine-theme"
+      title: "Veterinary Health",
+      tagline: "Complete care for cattle, sheep, pets, camels, horses and swine.",
+      image: "/veterinary-hero.webp",
+      link: "/products/cattle",
+      theme: "veterinary-theme"
     }
   ];
 
-  const productLogos = [
-    { name: "SEEDGEL aqua", img: "/seedgel.webp", link: "/products/aqua?id=1" },
-    { name: "GRO KWIK PLUS", img: "/grokwik.webp", link: "/products/aqua?id=2" },
-    { name: "MOULTING GEL", img: "/moultinggel.webp", link: "/products/aqua?id=3" },
-    { name: "GUTGEL", img: "/Gutgel.webp", link: "/products/aqua?id=6" },
-    { name: "ODO-Q", img: "/odoq.webp", link: "/products/aqua?id=8" },
-    { name: "T-SHELL", img: "/T-SHELL.webp", link: "/products/aqua?id=9" },
-    { name: "G-GILL", img: "/ggill.webp", link: "/products/aqua?id=10" },
-    { name: "Q-POND", img: "/Qpond.webp", link: "/products/aqua?id=16" },
-  ];
+  // Every product from every division (in division order), each name shown once
+  const ourProducts = (() => {
+    const seen = new Set();
+    const list = [];
+    SECTORS.forEach((sector) => {
+      allProducts[sector.key].forEach((p) => {
+        const key = p.name.trim().toUpperCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        list.push({ ...p, division: sector.label, link: `/products/${sector.key.toLowerCase()}?id=${p.id}` });
+      });
+    });
+    return list;
+  })();
 
   useEffect(() => {
     // Initialize AOS for synchronized entrance animations
@@ -149,31 +154,26 @@ const Home = () => {
                   designed to reduce antibiotic dependency while delivering consistent, high-performance
                   results.
                 </p>
-                <div className="science-features">
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="200">
-                    <strong>Poultry</strong>
-                    Gut-focused nutritional strategies that enhance feed efficiency, shell quality, and resilience.
-                  </div>
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="400">
-                    <strong>Aquaculture</strong>
-                    Bio-rational ecosystem management focused on survival, stability, and export-grade harvests.
-                  </div>
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="600">
-                    <strong>Cattle, Sheep & Pet</strong>
-                    Nutrition and health solutions for livestock and companion animals.
-                  </div>
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="700">
-                    <strong>Camel & Horse</strong>
-                    Performance-focused supplements for stamina, recovery, and wellbeing.
-                  </div>
-                  <div className="s-feat" data-aos="fade-left" data-aos-delay="800">
-                    <strong>Swine</strong>
-                    Enzyme-driven digestive and growth solutions supporting lean meat quality and productivity.
-                  </div>
+                <div className="sector-feats">
+                  {[
+                    { icon: <GiChicken />, title: "Poultry", text: "Gut-focused nutrition that improves feed efficiency, shell quality and resilience." },
+                    { icon: <GiShrimp />, title: "Aquaculture", text: "Bio-rational pond and gut care for survival, stability and export-grade harvests." },
+                    { icon: <GiCow />, title: "Cattle, Sheep & Pet", text: "Nutrition and liver care for livestock and companion animals." },
+                    { icon: <GiCamel />, title: "Camel & Horse", text: "Performance supplements for stamina, recovery and wellbeing." },
+                    { icon: <GiPig />, title: "Swine", text: "Digestive and growth solutions for lean meat and productivity." },
+                  ].map((f, i) => (
+                    <div className="sector-feat" key={f.title} data-aos="fade-up" data-aos-delay={100 + i * 100}>
+                      <span className="sector-feat-icon">{f.icon}</span>
+                      <div>
+                        <h4>{f.title}</h4>
+                        <p>{f.text}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="science-image" data-aos="zoom-in">
-                <img src="/trus.webp" loading="lazy" decoding="async" alt="Trusto Biotech Research" className="styled-img" />
+                <img src="/our-sectors.webp" loading="lazy" decoding="async" alt="Trusto Biotech divisions: Poultry, Aquaculture, Cattle, Sheep & Pet, Camel & Horse and Swine" className="styled-img" />
               </div>
             </div>
           </div>
@@ -207,33 +207,42 @@ const Home = () => {
               </div>
             </section>
 
-            {/* STAGGERED AQUACULTURE PRODUCT SCROLLER */}
+            {/* OUR PRODUCTS: every product, scrolling continuously (pauses on hover) */}
             <section className="premium-product-carousel aqua-carousel-tight">
               <div className="container">
-                {/* Fixed centered line as requested based on your image_69f54b.png */}
                 <div className="carousel-header text-center" data-aos="fade-down">
-                  <span className="overline">Aquaculture Products</span>
-                  <h2>Trusted <span className="brand-blue">Aqua Solutions</span></h2>
+                  <span className="overline">Our Products</span>
+                  <h2>Trusted <span className="brand-blue">Animal Health Solutions</span></h2>
                 </div>
-                <div className="aqua-product-scroll">
-                  <div className="aqua-scroll-track">
-                    {productLogos.map((prod, i) => (
-                      <div
-                        className="aqua-product-card"
-                        key={i}
-                        data-aos="fade-up"
-                        data-aos-delay={i * 100}
+              </div>
+              <div className="all-products-marquee">
+                <div
+                  className="all-products-track"
+                  style={{ animationDuration: `${ourProducts.length * 3.5}s` }}
+                >
+                  {[0, 1].map((copy) =>
+                    ourProducts.map((prod) => (
+                      <button
+                        type="button"
+                        className="aqua-product-card all-product-card"
+                        key={`${copy}-${prod.id}`}
+                        onClick={() => navigate(prod.link)}
+                        tabIndex={copy === 0 ? 0 : -1}
+                        aria-hidden={copy === 1}
                       >
-                        <img src={prod.img} alt={prod.name} loading="lazy" decoding="async" />
+                        <span className="all-product-division">{prod.division}</span>
+                        <ProductImage src={prod.image} name={prod.name} className="all-product-img" lazy />
                         <h4>{prod.name}</h4>
-                        <span>View Specification →</span>
-                      </div>
-                    ))}
-                  </div>
+                        <span className="all-product-link">View Specification →</span>
+                      </button>
+                    ))
+                  )}
                 </div>
+              </div>
+              <div className="container">
                 <div className="aqua-more-btn-wrapper" data-aos="zoom-in">
-                  <button className="aqua-more-btn" onClick={() => navigate("/products/aqua")}>
-                    View More Aquaculture Products
+                  <button className="aqua-more-btn" onClick={() => navigate("/products")}>
+                    View All Products ({ourProducts.length})
                   </button>
                 </div>
               </div>

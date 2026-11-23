@@ -1,0 +1,45 @@
+/* Animal silhouettes walking to the right, standing on top of the footer */
+.animal-parade {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 110px;
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.animal-parade-track {
+  display: flex;
+  align-items: flex-end;
+  gap: 48px;
+  padding-right: 48px; /* keeps spacing equal at the seam between copies */
+  width: max-content;
+  will-change: transform;
+  animation: parade-walk 60s linear infinite;
+}
+
+/* Track holds 4 identical sets: shifting by one set (25%) loops seamlessly */
+@keyframes parade-walk {
+  from { transform: translateX(-25%); }
+  to   { transform: translateX(0); }
+}
+
+/* Animals stay level and glide smoothly with the track (no up/down bobbing) */
+.parade-animal {
+  display: block;
+  width: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .animal-parade { height: 80px; margin-top: 24px; }
+  .animal-parade-track { gap: 28px; padding-right: 28px; animation-duration: 45s; }
+  .parade-animal { zoom: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animal-parade-track,
+  .parade-animal { animation: none; }
+}

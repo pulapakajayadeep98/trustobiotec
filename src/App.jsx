@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AnimalParade from "./components/AnimalParade";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
@@ -50,6 +51,7 @@ function AppContent({ cart, updateQty, cartCount }) {
         </Routes>
       </main>
 
+      <AnimalParade />
       <Footer />
     </>
   );

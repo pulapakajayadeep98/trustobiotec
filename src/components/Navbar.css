@@ -620,3 +620,54 @@
     background: rgba(255,255,255,0.12);
   }
 }
+
+/* ==========================================================================
+   HOME PAGE: transparent navbar over the hero image (desktop, top of page)
+   ========================================================================== */
+@media (min-width: 769px) {
+  .navbar.nav-over-hero {
+    background: transparent !important;
+    border-bottom-color: transparent;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* soft dark fade behind the bar so the links stay readable on any slide */
+  .navbar.nav-over-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 -40px 0;
+    background: linear-gradient(to bottom, rgba(11, 17, 32, 0.55), rgba(11, 17, 32, 0));
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .navbar.nav-over-hero .nav-links a,
+  .navbar.nav-over-hero .dropdown-trigger {
+    color: #ffffff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .navbar.nav-over-hero .nav-links a:hover,
+  .navbar.nav-over-hero .dropdown-trigger:hover {
+    color: #4ade80;
+  }
+
+  /* dropdown items keep their normal dark text on the white menu */
+  .navbar.nav-over-hero .dropdown-menu a {
+    color: #0b1120;
+    text-shadow: none;
+  }
+
+  .navbar.nav-over-hero .search-bar-inner {
+    background: transparent;
+  }
+
+  .navbar.nav-over-hero .search-bar-inner input {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+  }
+}

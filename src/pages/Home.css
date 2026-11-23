@@ -2395,3 +2395,299 @@
 .swine-hide {
   display: none;
 }
+
+/* Veterinary slide: keep the animals (right side of the image) clear of the text panel */
+.premium-hero .veterinary-theme .hero-image-side {
+  background-position: right center !important;
+  background-color: #fefeff;
+}
+
+/* ==========================================================================
+   HERO HEIGHT + FEATURE CARDS (desktop/tablet; the bar stays hidden on mobile)
+   ========================================================================== */
+@media (min-width: 769px) {
+  .premium-hero { min-height: 100vh; }
+
+  .tech-bar-section {
+    background: var(--soft-bg, #f8fafc);
+    padding: 70px 20px 30px;
+  }
+
+  /* No longer overlapping the hero: three separate cards */
+  .tech-bar-section .tech-bar-container {
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    gap: 28px;
+  }
+
+  .tech-bar-section .tech-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 36px 28px 32px;
+    background: #ffffff;
+    border: 1px solid #eef2f6;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(11, 17, 32, 0.06);
+    border-top: 4px solid var(--trusto-green, #16a34a);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .tech-bar-section .tech-item:not(:last-child) { border-right: 1px solid #eef2f6; }
+
+  .tech-bar-section .tech-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.12);
+  }
+
+  .tech-bar-section .t-icon {
+    font-size: 2rem;
+    width: 64px;
+    height: 64px;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #f0fdf4;
+    filter: none;
+  }
+
+  .tech-bar-section .t-text h4 { font-size: 1.1rem; margin-bottom: 10px; }
+  .tech-bar-section .t-text p { font-size: 0.95rem; line-height: 1.6; }
+}
+
+/* Hero glass card: centre it in the visible area below the fixed navbar */
+@media (min-width: 769px) {
+  .premium-hero .hero-text-side {
+    box-sizing: border-box;
+    padding-top: calc(var(--nav-height, 90px) + 90px);
+    padding-bottom: 40px;
+    padding-left: 3.5%;
+    padding-right: 24px;
+    align-items: center;
+  }
+
+  .premium-hero .hero-content-wrapper {
+    max-width: 680px;
+    padding: 44px 48px;
+  }
+
+  .premium-hero .hero-content-wrapper h1 {
+    font-size: clamp(2.4rem, 3.6vw, 3.4rem);
+    letter-spacing: -0.5px;
+  }
+
+  .premium-hero .hero-content-wrapper p {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+  }
+}
+
+/* ==========================================================================
+   SECTOR LIST (Few Words About Us) – icon cards
+   ========================================================================== */
+.sector-feats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.sector-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e8eef3;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(11, 17, 32, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* odd one out (5th card) spans the full row */
+.sector-feat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+.sector-feat:hover {
+  transform: translateY(-3px);
+  border-color: #bbf7d0;
+  box-shadow: 0 14px 28px rgba(22, 163, 74, 0.1);
+}
+
+.sector-feat-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #16a34a;
+  background: #f0fdf4;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.sector-feat:hover .sector-feat-icon { background: #16a34a; color: #ffffff; }
+
+.sector-feat h4 {
+  margin: 2px 0 4px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0b1120;
+}
+
+.sector-feat p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+@media (max-width: 600px) {
+  .sector-feats { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   FEATURE CARDS (R&D / CAA / Profit) – cleaner card design
+   ========================================================================== */
+@media (min-width: 769px) {
+  .tech-bar-section { padding: 60px 20px 10px; }
+
+  .tech-bar-section .tech-item {
+    position: relative;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+    padding: 30px 28px;
+    border: 1px solid #e8eef3;
+    border-top: 1px solid #e8eef3;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(11, 17, 32, 0.05);
+  }
+
+  /* accent bar that grows along the bottom on hover */
+  .tech-bar-section .tech-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, #16a34a, #4ade80);
+    transition: width 0.35s ease;
+  }
+
+  .tech-bar-section .tech-item:hover::after { width: 100%; }
+
+  .tech-bar-section .tech-item:hover {
+    transform: translateY(-5px);
+    border-color: #bbf7d0;
+    box-shadow: 0 18px 36px rgba(22, 163, 74, 0.12);
+  }
+
+  .tech-bar-section .t-icon {
+    width: 56px;
+    height: 56px;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 1.75rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    box-shadow: 0 8px 18px rgba(22, 163, 74, 0.25);
+  }
+
+  .tech-bar-section .t-text h4 {
+    font-size: 1.02rem;
+    margin: 4px 0 8px;
+    letter-spacing: 0.6px;
+  }
+
+  .tech-bar-section .t-text p {
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
+}
+
+/* ==========================================================================
+   OUR PRODUCTS – every product, continuous scroll (pauses on hover)
+   ========================================================================== */
+.all-products-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0 40px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.all-products-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  padding-right: 28px; /* equal spacing at the loop seam */
+  animation-name: all-products-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.all-products-marquee:hover .all-products-track,
+.all-products-track:focus-within { animation-play-state: paused; }
+
+/* two identical copies: moving by half loops seamlessly */
+@keyframes all-products-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.all-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #eef2f6;
+  font: inherit;
+  color: inherit;
+}
+
+.all-product-division {
+  align-self: flex-start;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #15803d !important;
+  background: #f0fdf4;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.all-product-card .all-product-img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+.all-product-card .product-img-placeholder.all-product-img { position: static; }
+.all-product-card .product-img-placeholder .placeholder-name { font-size: 1rem; }
+
+.all-product-card h4 {
+  min-height: 2.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.all-product-link { margin-top: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .all-products-track { animation: none; }
+  .all-products-marquee { overflow-x: auto; }
+}

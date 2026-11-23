@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; //
+import { Link, useNavigate, useLocation } from 'react-router-dom'; //
 import {
   HiMenuAlt3,
   HiX,
@@ -16,6 +16,9 @@ const Navbar = ({ cartCount = 0 }) => {
   const [searchQuery, setSearchQuery] = useState(''); //
 
   const navigate = useNavigate(); //
+  const { pathname } = useLocation();
+  // Home + Contact pages, top of page: transparent bar over the hero image (desktop only, see Navbar.css)
+  const overHero = (pathname === '/' || pathname === '/contact') && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -39,7 +42,7 @@ const Navbar = ({ cartCount = 0 }) => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${overHero ? 'nav-over-hero' : ''}`}>
       <div className="nav-container">
 
         {/* LEFT: LOGO */}
